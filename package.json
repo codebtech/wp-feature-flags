@@ -19,6 +19,8 @@
   "author": "Mohan Raj <https://mohanraj.dev>",
   "license": "ISC",
   "dependencies": {
+    "@types/wordpress__components": "^23.0.1",
+    "@wordpress/components": "^23.6.0",
     "ts-loader": "^9.4.2",
     "typescript": "^5.0.2"
   }

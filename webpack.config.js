@@ -7,7 +7,7 @@ const config = {
 	entry: {
 		...defaultConfig.entry,
 		index: path.resolve(__dirname, 'src/index.ts'),
-		// settings: path.resolve(__dirname, 'src/entry-points/settings.tsx'),
+		settings: path.resolve(__dirname, 'src/settings.tsx'),
 	},
 	output: {
 		...defaultConfig.output,

@@ -69,6 +69,42 @@ add_action(
 
 add_action(
 	'admin_enqueue_scripts',
+	function( string $page ): void {
+		if ( 'toplevel_page_mr-feature-flags' === $page ) {
+			load_settings_scripts();
+		}
+	}
+);
+
+/**
+ * Load settings page assets
+ *
+ * @return void
+ */
+function load_settings_scripts(): void {
+	$plugin_url          = plugin_dir_url( MR_FEATURE_FLAGS_PLUGIN_PATH );
+	$settings_asset_file = require_once plugin_dir_path( MR_FEATURE_FLAGS_PLUGIN_PATH ) . 'build/settings.asset.php'; // @phpcs:ignore
+
+	wp_enqueue_script(
+		'mr-feature-flags-settings',
+		$plugin_url . 'build/settings.js',
+		$settings_asset_file['dependencies'],
+		$settings_asset_file['version'],
+		true
+	);
+
+	wp_localize_script(
+		'mr-feature-flags-settings',
+		'mrFeatureFlags',
+		[
+			'flags' => get_option( FeatureFlags::$option_name ),
+		]
+	);
+
+}
+
+add_action(
+	'admin_enqueue_scripts',
 	function(): void {
 		$plugin_url        = plugin_dir_url( MR_FEATURE_FLAGS_PLUGIN_PATH );
 		$script_asset_file = include_once plugin_dir_path( MR_FEATURE_FLAGS_PLUGIN_PATH ) . 'build/index.asset.php';
@@ -98,3 +134,6 @@ add_action(
 
 	}
 );
+
+$admin_settings = new Settings();
+$admin_settings->register_feature_settings();
