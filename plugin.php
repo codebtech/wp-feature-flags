@@ -137,3 +137,24 @@ add_action(
 
 $admin_settings = new Settings();
 $admin_settings->register_feature_settings();
+
+add_filter( 'plugin_action_links_mr-feature-flags/plugin.php', function ( $links )
+	{
+		// Build and escape the URL.
+		$url = esc_url(
+			add_query_arg(
+				'page',
+				'mr-feature-flags',
+				get_admin_url() . 'admin.php'
+			)
+		);
+		// Create the link.
+		$settings_link = "<a href='$url'>" . __( 'Settings', 'mr-feature-flags' ) . '</a>';
+		// Adds the link to the end of the array.
+		array_push(
+			$links,
+			$settings_link
+		);
+		return $links;
+	}
+);
