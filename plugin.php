@@ -49,12 +49,6 @@ add_action(
 			true
 		);
 
-		wp_enqueue_style(
-			'mr-feature-flags-style',
-			$plugin_url . 'build/index.css',
-			[],
-			$script_asset_file['version']
-		);
 
 		wp_localize_script(
 			'mr-feature-flags-script',
@@ -86,26 +80,35 @@ function load_settings_scripts(): void {
 	$settings_asset_file = require_once plugin_dir_path( MR_FEATURE_FLAGS_PLUGIN_PATH ) . 'build/settings.asset.php'; // @phpcs:ignore
 
 	wp_enqueue_script(
-		'mr-feature-flags-settings',
+		'mr-feature-flags',
 		$plugin_url . 'build/settings.js',
 		$settings_asset_file['dependencies'],
 		$settings_asset_file['version'],
 		true
 	);
 
+	wp_enqueue_style( 'wp-edit-blocks' );
+
 	wp_localize_script(
-		'mr-feature-flags-settings',
+		'mr-feature-flags',
 		'mrFeatureFlags',
 		[
 			'flags' => get_option( FeatureFlags::$option_name ),
 		]
 	);
 
+	wp_enqueue_style(
+		'mr-feature-flags',
+		$plugin_url . 'build/settings.css',
+		[],
+		$settings_asset_file['version']
+	);
+
 }
 
 add_action(
 	'admin_enqueue_scripts',
-	function(): void {
+	function(string $page): void {
 		$plugin_url        = plugin_dir_url( MR_FEATURE_FLAGS_PLUGIN_PATH );
 		$script_asset_file = include_once plugin_dir_path( MR_FEATURE_FLAGS_PLUGIN_PATH ) . 'build/index.asset.php';
 
@@ -117,12 +120,7 @@ add_action(
 			true
 		);
 
-		wp_enqueue_style(
-			'mr-feature-flags-style',
-			$plugin_url . 'build/index.css',
-			[],
-			$script_asset_file['version']
-		);
+
 
 		wp_localize_script(
 			'mr-feature-flags-script',
@@ -158,3 +156,5 @@ add_filter( 'plugin_action_links_mr-feature-flags/plugin.php', function ( $links
 		return $links;
 	}
 );
+
+// FeatureFlags::add_flag('Registration');

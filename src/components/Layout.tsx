@@ -1,46 +1,41 @@
-import {
-	ToggleControl,
-	TextControl,
-	Flex,
-	FlexItem,
-} from '@wordpress/components';
 import { useState } from '@wordpress/element';
+import LineItem from './LineItem';
+import { Flag } from '../../types';
+import SubmitControls from './SubmitControls';
 
-interface flag {
-	name: string;
-	enabled: boolean;
-}
 const Layout = (): JSX.Element => {
-	const [flags] = useState(window.mrFeatureFlags.flags);
+	const [flags, setFlags] = useState(window.mrFeatureFlags.flags);
+	if (!flags.length) {
+		return (
+			<>
+				<p>
+					Welcome to feature flag dashboard. You can add new flags
+					`Add flags` action.
+				</p>
+				<SubmitControls isNew={true} />
+			</>
+		);
+	}
 	return (
-		<div id="mr-feature-flag-layout">
-			<h1>Feature Flags settings</h1>
-			<p>You can manage all available flags here.</p>
-			<div id="mr-feature-flag-content">
-				{flags.map((flag: flag) => {
-					return (
-						<div id="mr-feature-flag-item" key={flag.name}>
-							<Flex justify={'flex-start'}>
-								<FlexItem>
-									<TextControl
-										value={flag.name.toUpperCase()}
-										disabled
-										onChange={() => null}
-									/>
-								</FlexItem>
-								<FlexItem>
-									<ToggleControl
-										label={flag.name}
-										checked={flag.enabled}
-										onChange={() => null}
-									/>
-								</FlexItem>
-							</Flex>
-						</div>
-					);
-				})}
+		<>
+			<div id="mr-feature-flag-layout">
+				<h1>Feature Flags settings</h1>
+				<p>Manage all feature flags.</p>
+				<div id="mr-feature-flag-content">
+					{flags.map((flag: Flag) => {
+						return (
+							<LineItem
+								key={flag.id}
+								item={flag}
+								flags={flags}
+								setFlags={setFlags}
+							/>
+						);
+					})}
+					<SubmitControls />
+				</div>
 			</div>
-		</div>
+		</>
 	);
 };
 

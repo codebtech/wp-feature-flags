@@ -35,8 +35,9 @@ class Settings {
 	 * @since 1.0.0
 	 */
 	public function register_settings() {
+
 		add_menu_page(
-			'MR Feature Flags',
+			'Feature Flags',
 			'Feature Flags',
 			'manage_options',
 			'mr-feature-flags',

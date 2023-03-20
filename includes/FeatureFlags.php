@@ -58,9 +58,18 @@ class FeatureFlags {
 			throw new \Error( "Flag \"{$flag}\" already exists" );
 		}
 
+		$flag_key = 1;
+
+		if ( is_array( $flags ) && count( $flags ) ) {
+			$flag_key = count( $flags ) + 1;
+		}
+
+		// $flag_key = count( $flags ) ? count( $flags ) + 1 : 1;
+		// ddd( $flag_key );
 		$new_flag = [
+			'id'      => $flag_key,
 			'name'    => $flag,
-			'enabled' => true,
+			'enabled' => false,
 		];
 
 		if ( $flags ) {
