@@ -4,8 +4,13 @@ import { Flag } from '../../types';
 import SubmitControls from './SubmitControls';
 
 const Layout = (): JSX.Element => {
-	const [flags, setFlags] = useState(window.mrFeatureFlags.flags);
-	if (!flags.length) {
+	const [flags, setFlags] = useState<Flag[] | undefined>(
+		window.mrFeatureFlags.flags
+	);
+
+	const flagsCount = flags?.length || 0;
+
+	if (!flagsCount) {
 		return (
 			<>
 				<p>
@@ -22,7 +27,7 @@ const Layout = (): JSX.Element => {
 				<h1>Feature Flags settings</h1>
 				<p>Manage all feature flags.</p>
 				<div id="mr-feature-flag-content">
-					{flags.map((flag: Flag) => {
+					{flags?.map((flag: Flag) => {
 						return (
 							<LineItem
 								key={flag.id}
@@ -32,7 +37,13 @@ const Layout = (): JSX.Element => {
 							/>
 						);
 					})}
-					<SubmitControls />
+
+					<SubmitControls
+						setFlags={setFlags}
+						flags={flags}
+						isNew={false}
+						flagsCount={flagsCount}
+					/>
 				</div>
 			</div>
 		</>

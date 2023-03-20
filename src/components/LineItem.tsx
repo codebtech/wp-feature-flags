@@ -5,6 +5,7 @@ import {
 	FlexItem,
 	Button,
 	Modal,
+	BaseControl,
 } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 import { Flag } from '../../types';
@@ -29,6 +30,11 @@ const LineItem = ({ flags, setFlags, item }: any): JSX.Element => {
 	};
 
 	const handleFlagEdit = (value: string, flagId: number) => {
+		if (value.match(/^[a-zA-Z0-9\_-]*$/)) {
+			console.log('match found');
+		} else {
+			console.log('no match');
+		}
 		const updatedFlags = flags.map((flag: Flag) => {
 			if (flag.id === flagId) {
 				flag.name = value;
@@ -42,6 +48,14 @@ const LineItem = ({ flags, setFlags, item }: any): JSX.Element => {
 		setOpen(true);
 	};
 	const closeModal = () => setOpen(false);
+
+	const handleDeleteModal = (flag: Flag) => {
+		if (flag.name) {
+			openModal();
+			return;
+		}
+		handleDeleteFlag(flag.id);
+	};
 
 	return (
 		<>
@@ -65,10 +79,18 @@ const LineItem = ({ flags, setFlags, item }: any): JSX.Element => {
 							isDestructive
 							variant="tertiary"
 							label="Delete Flag"
-							onClick={() => openModal()}
+							onClick={() => handleDeleteModal(item)}
 						/>
 					</FlexItem>
 				</Flex>
+				{!item.name && (
+					<BaseControl
+						help="Flag name should not be empty"
+						id={item.id}
+					>
+						{}
+					</BaseControl>
+				)}
 				<hr />
 			</div>
 			{isOpen && (

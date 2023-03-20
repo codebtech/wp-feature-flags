@@ -1,13 +1,23 @@
 import { Flex, FlexItem, Button } from '@wordpress/components';
 
-const SubmitControls = ({ isNew }: { isNew?: boolean }): JSX.Element => {
+const SubmitControls = (props: any): JSX.Element => {
+	const { isNew, flags, setFlags, flagsCount } = props;
+	const handleNewFlag = () => {
+		const newFlag = { id: flagsCount + 1, name: '', enabled: false };
+		const clonedFlags = [...flags, newFlag];
+		setFlags(clonedFlags);
+	};
+
+	const handleSave = () => {
+		console.log(flags);
+	};
 	return (
 		<div id="mr-feature-flag-submit-controls">
 			<Flex justify={'flex-start'}>
 				<FlexItem>
 					<Button
 						variant="primary"
-						onClick={() => null}
+						onClick={handleNewFlag}
 						style={{ marginRight: 15 }}
 						icon={'plus'}
 					>
@@ -17,7 +27,7 @@ const SubmitControls = ({ isNew }: { isNew?: boolean }): JSX.Element => {
 				{!isNew && (
 					<>
 						<FlexItem>
-							<Button variant="primary" onClick={() => null}>
+							<Button variant="primary" onClick={handleSave}>
 								Save
 							</Button>
 						</FlexItem>
