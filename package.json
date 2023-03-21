@@ -20,7 +20,11 @@
   "license": "ISC",
   "dependencies": {
     "@types/wordpress__components": "^23.0.1",
+    "@wordpress/api-fetch": "^6.26.0",
     "@wordpress/components": "^23.6.0",
+    "@wordpress/data": "^8.6.0",
+    "@wordpress/i18n": "^4.29.0",
+    "@wordpress/notices": "^3.29.0",
     "ts-loader": "^9.4.2",
     "typescript": "^5.0.2"
   }

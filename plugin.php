@@ -19,6 +19,7 @@
 declare( strict_types = 1 );
 
 namespace MR\FeatureFlags;
+use MR\FeatureFlags\Api\FlagOptions;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -133,8 +134,22 @@ add_action(
 	}
 );
 
-$admin_settings = new Settings();
-$admin_settings->register_feature_settings();
+$mr_feature_flags_admin_settings = new Settings();
+$mr_feature_flags_admin_settings->register_feature_settings();
+
+$mr_feature_flags_register_api = new FlagOptions();
+$mr_feature_flags_register_api->register_flags_endpoints();
+
+
+// add_action ('init', function() {
+
+// 	$request = new \WP_REST_Request( 'GET', '/feature-flags/v1/flags' );
+// 	$request->set_query_params( [] );
+// 	$response = rest_do_request( $request );
+// 	ddd(rest_get_server()->response_to_data( $response, false ));
+
+// });
+
 
 add_filter( 'plugin_action_links_mr-feature-flags/plugin.php', function ( $links )
 	{

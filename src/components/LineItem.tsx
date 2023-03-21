@@ -10,8 +10,15 @@ import {
 import { useState } from '@wordpress/element';
 import { Flag } from '../../types';
 
-const LineItem = ({ flags, setFlags, item }: any): JSX.Element => {
+const LineItem = ({
+	flags,
+	setFlags,
+	item,
+	setDisableSave,
+}: any): JSX.Element => {
 	const [isOpen, setOpen] = useState(false);
+
+	const [hasError, setHasError] = useState(false);
 
 	const handleDeleteFlag = (flagId: number) => {
 		const updatedFlags = flags.filter((flag: Flag) => flag.id !== flagId);
@@ -31,9 +38,11 @@ const LineItem = ({ flags, setFlags, item }: any): JSX.Element => {
 
 	const handleFlagEdit = (value: string, flagId: number) => {
 		if (value.match(/^[a-zA-Z0-9\_-]*$/)) {
-			console.log('match found');
+			setHasError(false);
+			setDisableSave(false);
 		} else {
-			console.log('no match');
+			setHasError(true);
+			setDisableSave(true);
 		}
 		const updatedFlags = flags.map((flag: Flag) => {
 			if (flag.id === flagId) {
@@ -83,13 +92,22 @@ const LineItem = ({ flags, setFlags, item }: any): JSX.Element => {
 						/>
 					</FlexItem>
 				</Flex>
-				{!item.name && (
-					<BaseControl
-						help="Flag name should not be empty"
-						id={item.id}
-					>
-						{}
-					</BaseControl>
+				{hasError && (
+					<>
+						<BaseControl
+							className="flag-name-error"
+							help="Flag name should not contain spaces. Allowed special characters are - and _"
+							id={item.id}
+						>
+							{}
+						</BaseControl>
+						<BaseControl
+							help="Example flag names formats: Registration, AB-testing, Auth0_Login"
+							id={item.id}
+						>
+							{}
+						</BaseControl>
+					</>
 				)}
 				<hr />
 			</div>

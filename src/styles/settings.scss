@@ -1,3 +1,19 @@
 #mr-feature-flag-slug {
-    padding-bottom: 10px;
+	padding-bottom: 10px;
+}
+
+.flag-name-error > p {
+	color: #cc1818;
+}
+
+.feature-flag-snackbar {
+	bottom: 3.5rem;
+	position: fixed;
+}
+
+.feature-flag-loader {
+	.components-spinner {
+		width: 20px;
+		height: 20px;
+	}
 }

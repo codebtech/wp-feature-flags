@@ -1,15 +1,32 @@
 import { Flex, FlexItem, Button } from '@wordpress/components';
+import { Flag } from '../../types';
+import { updateFlags } from '../utils';
+import { useState } from '@wordpress/element';
+import Notices from './Snackbar';
+import { dispatch } from '@wordpress/data';
 
 const SubmitControls = (props: any): JSX.Element => {
-	const { isNew, flags, setFlags, flagsCount } = props;
+	const { isNew, flags, setFlags, flagsCount, disableSave } = props;
+	const [isSaving, setIsSaving] = useState<boolean>(false);
+
 	const handleNewFlag = () => {
 		const newFlag = { id: flagsCount + 1, name: '', enabled: false };
 		const clonedFlags = [...flags, newFlag];
 		setFlags(clonedFlags);
 	};
 
-	const handleSave = () => {
-		console.log(flags);
+	const handleSave = async () => {
+		setIsSaving(true);
+		const cleanFlags: Flag[] = flags.filter(
+			(item: Flag) => item.name !== ''
+		);
+		await updateFlags(cleanFlags);
+
+		setIsSaving(false);
+
+		dispatch('core/notices').createSuccessNotice('✅ Saved successfully!', {
+			type: 'snackbar',
+		});
 	};
 	return (
 		<div id="mr-feature-flag-submit-controls">
@@ -27,8 +44,12 @@ const SubmitControls = (props: any): JSX.Element => {
 				{!isNew && (
 					<>
 						<FlexItem>
-							<Button variant="primary" onClick={handleSave}>
-								Save
+							<Button
+								variant="primary"
+								onClick={handleSave}
+								disabled={disableSave || isSaving}
+							>
+								{isSaving ? 'Saving' : 'Save'}
 							</Button>
 						</FlexItem>
 						<FlexItem>
@@ -42,6 +63,8 @@ const SubmitControls = (props: any): JSX.Element => {
 					</>
 				)}
 			</Flex>
+
+			<Notices />
 		</div>
 	);
 };
