@@ -1,5 +1,3 @@
-import './styles/index.scss';
-
 const { mrFeatureFlags } = window;
 
 mrFeatureFlags.isEnabled = (flag: string) => {
@@ -12,3 +10,5 @@ mrFeatureFlags.isEnabled = (flag: string) => {
 
 	return false;
 };
+
+export {};
