@@ -4,11 +4,12 @@ import {
 	Flex,
 	FlexItem,
 	Button,
-	Modal,
 	BaseControl,
 } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 import { Flag } from '../../types';
+import DeleteModal from './DeleteModal';
+import SdkModal from './SdkModal';
 
 const LineItem = ({
 	flags,
@@ -17,6 +18,8 @@ const LineItem = ({
 	setDisableSave,
 }: any): JSX.Element => {
 	const [isOpen, setOpen] = useState(false);
+
+	const [isSdkOpen, setIsSdkOpen] = useState(false);
 
 	const [hasError, setHasError] = useState(false);
 
@@ -58,12 +61,22 @@ const LineItem = ({
 	};
 	const closeModal = () => setOpen(false);
 
+	const openSdkModal = () => {
+		setIsSdkOpen(true);
+	};
+
+	const closeSdkModal = () => setIsSdkOpen(false);
+
 	const handleDeleteModal = (flag: Flag) => {
 		if (flag.name) {
 			openModal();
 			return;
 		}
 		handleDeleteFlag(flag.id);
+	};
+
+	const handleSdkModal = () => {
+		openSdkModal();
 	};
 
 	return (
@@ -76,13 +89,24 @@ const LineItem = ({
 							onChange={(value) => handleFlagEdit(value, item.id)}
 						/>
 					</FlexItem>
-					<FlexItem style={{ marginTop: 7, marginLeft: 10 }}>
+					<FlexItem style={{ marginTop: 7, marginLeft: 40 }}>
 						<ToggleControl
 							checked={item.enabled}
 							onChange={() => handleFlagToggle(item.id)}
 						/>
 					</FlexItem>
-					<FlexItem style={{ marginBottom: 6 }}>
+					<FlexItem>
+						<Button
+							variant="secondary"
+							label="Click to see SDK setting"
+							showTooltip
+							tooltipPosition="top right"
+							onClick={handleSdkModal}
+						>
+							SDK
+						</Button>
+					</FlexItem>
+					<FlexItem style={{ marginBottom: 6, marginLeft: 20 }}>
 						<Button
 							icon={'trash'}
 							isDestructive
@@ -112,26 +136,25 @@ const LineItem = ({
 				<hr />
 			</div>
 			{isOpen && (
-				<Modal
-					title={`Delete Feature Flag`}
-					onRequestClose={closeModal}
-				>
-					<p>
-						Are you sure want to delete flag &quot;{item.name}
-						&quot;?
-					</p>
-					<Button
-						isDestructive
-						variant="secondary"
-						onClick={() => handleDeleteFlag(item.id)}
-						style={{ marginRight: 10 }}
-					>
-						Yes
-					</Button>
-					<Button variant="tertiary" onClick={closeModal}>
-						Cancel
-					</Button>
-				</Modal>
+				<DeleteModal
+					closeModal={closeModal}
+					item={item}
+					handleDeleteFlag={handleDeleteFlag}
+				/>
+			)}
+			{isSdkOpen && (
+				<SdkModal item={item} closeSdkModal={closeSdkModal} />
+				// <Modal title={`SDK snippets`} onRequestClose={closeSdkModal}>
+				// 	<p>{`<?php
+				// 		use MR\FeatureFlags\FeatureFlags;
+				// 		if ( FeatureFlags::is_enabled( 'login' ) ) {
+				// 			add_theme_support('menus');
+				// 		}`}</p>
+
+				// 	<Button variant="tertiary" onClick={closeSdkModal}>
+				// 		Close
+				// 	</Button>
+				// </Modal>
 			)}
 		</>
 	);
