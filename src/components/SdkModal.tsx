@@ -4,12 +4,12 @@ const SdkModal = (props: any): JSX.Element => {
 	const { item, closeSdkModal } = props;
 	return (
 		<Modal title={`SDK snippets`} onRequestClose={closeSdkModal}>
-			<p>{`<?php
-						use MR\FeatureFlags\FeatureFlags;
-						if ( FeatureFlags::is_enabled( '${item.name}' ) ) {
-  							add_theme_support('menus');
-						}`}</p>
-
+			<p>{`if (window.mrFeatureFlags.isEnabled('DeskNet')) {
+	render(<SettingsPage />, document.getElementById('desknet_settings'));
+}`}</p>
+			<p>{`if ( \MR\FeatureFlags\FeatureFlags::is_enabled( 'Teal' ) ) {
+    add_theme_support('menus');
+}`}</p>
 			<Button variant="tertiary" onClick={closeSdkModal}>
 				Close
 			</Button>

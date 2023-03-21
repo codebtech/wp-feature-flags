@@ -28,7 +28,7 @@ class Helper {
 	 */
 	public static function search_flag( $flags, $field, $flag ) {
 		foreach ( $flags as $key => $value ) {
-			if ( $value[ $field ] === $flag ) {
+			if ( $value[ $field ] === $flag && true === $value['enabled'] ) {
 				return $value;
 			}
 		}

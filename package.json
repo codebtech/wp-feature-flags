@@ -25,6 +25,7 @@
     "@wordpress/data": "^8.6.0",
     "@wordpress/i18n": "^4.29.0",
     "@wordpress/notices": "^3.29.0",
+    "react-syntax-highlighter": "^15.5.0",
     "ts-loader": "^9.4.2",
     "typescript": "^5.0.2"
   }

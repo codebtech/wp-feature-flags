@@ -1,12 +1,12 @@
 const { mrFeatureFlags } = window;
+import { Flag } from '../types';
 
 mrFeatureFlags.isEnabled = (flag: string) => {
-	const isFlagExist = mrFeatureFlags.flags.find(
-		(item: { name: string; enabled: boolean }) =>
-			item.name === flag && item.enabled === true
+	const isFlagExist: Flag[] = mrFeatureFlags.flags.filter(
+		(item: Flag) => item.name === flag && item.enabled === true
 	);
 
-	if (isFlagExist) return true;
+	if (isFlagExist[0]?.name) return true;
 
 	return false;
 };
