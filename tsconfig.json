@@ -3,7 +3,7 @@
       "outDir": "./build",
       "jsx": "react-jsx",
       "module": "ESNext",
-      "target": "es2021",
+      "target": "es2022",
       "moduleResolution": "node",
       "resolveJsonModule": true,
       "sourceMap": true,

@@ -22,9 +22,9 @@ const Layout = (): JSX.Element => {
 
 	const [disableSave, setDisableSave] = useState(false);
 
-	const flagsCount = flags?.length || 0;
+	const lastFlag = flags?.at(-1)?.id || 0;
 
-	if (!flagsCount && !isLoading) {
+	if (!lastFlag && !isLoading) {
 		return (
 			<>
 				<p>
@@ -64,7 +64,7 @@ const Layout = (): JSX.Element => {
 							setFlags={setFlags}
 							flags={flags}
 							isNew={false}
-							flagsCount={flagsCount}
+							lastFlag={lastFlag}
 							disableSave={disableSave}
 						/>
 					)}

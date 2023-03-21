@@ -6,11 +6,11 @@ import Notices from './Snackbar';
 import { dispatch } from '@wordpress/data';
 
 const SubmitControls = (props: any): JSX.Element => {
-	const { isNew, flags, setFlags, flagsCount, disableSave } = props;
+	const { isNew, flags, setFlags, lastFlag, disableSave } = props;
 	const [isSaving, setIsSaving] = useState<boolean>(false);
 
 	const handleNewFlag = () => {
-		const newFlag = { id: flagsCount + 1, name: '', enabled: false };
+		const newFlag = { id: lastFlag + 1, name: '', enabled: false };
 		const clonedFlags = [...flags, newFlag];
 		setFlags(clonedFlags);
 	};
