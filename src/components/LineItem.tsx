@@ -106,7 +106,7 @@ const LineItem = ({
 							SDK
 						</Button>
 					</FlexItem>
-					<FlexItem style={{ marginBottom: 6, marginLeft: 20 }}>
+					<FlexItem style={{ marginBottom: 6, marginLeft: 55 }}>
 						<Button
 							icon={'trash'}
 							isDestructive

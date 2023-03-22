@@ -10,7 +10,12 @@ const SubmitControls = (props: any): JSX.Element => {
 	const [isSaving, setIsSaving] = useState<boolean>(false);
 
 	const handleNewFlag = () => {
-		const newFlag = { id: lastFlag + 1, name: '', enabled: false };
+		const newFlag = {
+			id: lastFlag + 1,
+			name: '',
+			enabled: false,
+			preProdEnabled: true,
+		};
 		const clonedFlags = [...flags, newFlag];
 		setFlags(clonedFlags);
 	};

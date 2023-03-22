@@ -4,6 +4,7 @@ import LineItem from './LineItem';
 import { Flag } from '../../types';
 import SubmitControls from './SubmitControls';
 import { getFlags } from '../utils';
+import Header from './Header';
 
 const Layout = (): JSX.Element => {
 	const [flags, setFlags] = useState<Flag[] | undefined>(undefined);
@@ -35,6 +36,20 @@ const Layout = (): JSX.Element => {
 			</>
 		);
 	}
+
+	const MapFlags = ({ flagsData }: any): any => {
+		return flagsData?.map((flag: Flag) => {
+			return (
+				<LineItem
+					key={flag.id}
+					item={flag}
+					flags={flags}
+					setFlags={setFlags}
+					setDisableSave={setDisableSave}
+				/>
+			);
+		});
+	};
 	return (
 		<>
 			<div id="mr-feature-flag-layout">
@@ -46,17 +61,10 @@ const Layout = (): JSX.Element => {
 							<Spinner />
 						</div>
 					) : (
-						flags?.map((flag: Flag) => {
-							return (
-								<LineItem
-									key={flag.id}
-									item={flag}
-									flags={flags}
-									setFlags={setFlags}
-									setDisableSave={setDisableSave}
-								/>
-							);
-						})
+						<>
+							<Header />
+							{flags && <MapFlags flagsData={flags}></MapFlags>}
+						</>
 					)}
 
 					{!isLoading && (
