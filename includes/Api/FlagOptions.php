@@ -23,7 +23,14 @@ class FlagOptions {
 	 *
 	 * @var string $option_name
 	 */
-	public static $option_name = 'mr_feature_flags';
+	public static $option_name = 'mr_feature_flags1';
+
+	/**
+	 * Name of flag environment.
+	 *
+	 * @var string $env_option_name
+	 */
+	public static $env_option_name = 'mr_feature_flags_env';
 
 	/**
 	 * Register feature flag endpoints.
@@ -52,6 +59,18 @@ class FlagOptions {
 					]
 				);
 
+				register_rest_route(
+					'feature-flags/v1',
+					'flags/env',
+					[
+						[
+							'methods'             => \WP_REST_SERVER::READABLE,
+							'callback'            => [ $this, 'get_flag_env' ],
+							'permission_callback' => '__return_true',
+						],
+					]
+				);
+
 			}
 		);
 	}
@@ -64,8 +83,10 @@ class FlagOptions {
 	public function get_all_flags() {
 		$flags = get_option( self::$option_name );
 
+		// die(var_dump($flags));
+
 		if ( empty( $flags ) ) {
-			return new \WP_Error( 'no_flags', 'Flags not found', array( 'status' => 404 ) );
+			return rest_ensure_response( [ 'message' => 'no flags found' ] );
 		}
 
 		return rest_ensure_response( $flags );
@@ -74,10 +95,23 @@ class FlagOptions {
 	/**
 	 * Insert / Update flags in options table.
 	 *
+	 * @param WP_Request $request API request.
+	 *
 	 * @return mixed List of flags.
 	 */
 	public function post_flags( $request ) {
 		$flags = $request->get_json_params();
+
+		// var_dump($flags);
+
+		// $existing_meta = get_option( self::$option_name );
+
+
+
+		// if ( is_array( $existing_meta[1]['flags'] ) ) {
+		// 	$existing_meta[1]['flags'] = $flags;
+		// }
+
 
 		if ( is_array( $flags ) ) {
 			$result = update_option( self::$option_name, $flags );
@@ -91,6 +125,21 @@ class FlagOptions {
 		} else {
 			return new \WP_Error( 'invalid_input', 'Cannot update flags', array( 'status' => 400 ) );
 		}
+	}
+
+	/**
+	 * Get Feature Flag environment.
+	 *
+	 * @return mixed List of flags.
+	 */
+	public function get_flag_env() {
+		$env = get_option( self::$env_option_name );
+
+		if ( empty( $env ) ) {
+			return rest_ensure_response( [ 'env' => 'prod' ] );
+		}
+
+		return rest_ensure_response( $env );
 	}
 
 	/**

@@ -128,6 +128,7 @@ add_action(
 			'mrFeatureFlags',
 			[
 				'flags' => get_option( FeatureFlags::$option_name ),
+				'env' => get_option( FeatureFlags::$env_option_name )
 			]
 		);
 
@@ -172,4 +173,5 @@ add_filter( 'plugin_action_links_mr-feature-flags/plugin.php', function ( $links
 	}
 );
 
-// FeatureFlags::add_flag('Registration');
+
+// update_option( 'mr_feature_flags1', [ 'env' => 'pre-prod', 'flags' => [["id" => 1, "name" => "Test", "preProdEnabled" => true, "enabled" => false]]] );

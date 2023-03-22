@@ -29,10 +29,14 @@ const LineItem = ({
 		closeModal();
 	};
 
-	const handleFlagToggle = (flagId: number) => {
+	const handleFlagToggle = (flagId: number, flagEnv = 'prod') => {
 		const updatedFlags = flags.map((flag: Flag) => {
 			if (flag.id === flagId) {
-				flag.enabled = !flag.enabled;
+				if (flagEnv === 'prod') {
+					flag.enabled = !flag.enabled;
+				} else {
+					flag.preProdEnabled = !flag.preProdEnabled;
+				}
 			}
 			return flag;
 		});
@@ -89,13 +93,22 @@ const LineItem = ({
 							onChange={(value) => handleFlagEdit(value, item.id)}
 						/>
 					</FlexItem>
+					<FlexItem style={{ marginTop: 7, marginLeft: 55 }}>
+						<ToggleControl
+							checked={item.preProdEnabled}
+							onChange={() =>
+								handleFlagToggle(item.id, 'preProd')
+							}
+						/>
+					</FlexItem>
 					<FlexItem style={{ marginTop: 7, marginLeft: 40 }}>
 						<ToggleControl
 							checked={item.enabled}
 							onChange={() => handleFlagToggle(item.id)}
 						/>
 					</FlexItem>
-					<FlexItem>
+
+					<FlexItem style={{ marginLeft: 20 }}>
 						<Button
 							variant="secondary"
 							label="Click to see SDK setting"
@@ -106,7 +119,7 @@ const LineItem = ({
 							SDK
 						</Button>
 					</FlexItem>
-					<FlexItem style={{ marginBottom: 6, marginLeft: 55 }}>
+					<FlexItem style={{ marginBottom: 6, marginLeft: 50 }}>
 						<Button
 							icon={'trash'}
 							isDestructive
@@ -144,17 +157,6 @@ const LineItem = ({
 			)}
 			{isSdkOpen && (
 				<SdkModal item={item} closeSdkModal={closeSdkModal} />
-				// <Modal title={`SDK snippets`} onRequestClose={closeSdkModal}>
-				// 	<p>{`<?php
-				// 		use MR\FeatureFlags\FeatureFlags;
-				// 		if ( FeatureFlags::is_enabled( 'login' ) ) {
-				// 			add_theme_support('menus');
-				// 		}`}</p>
-
-				// 	<Button variant="tertiary" onClick={closeSdkModal}>
-				// 		Close
-				// 	</Button>
-				// </Modal>
 			)}
 		</>
 	);

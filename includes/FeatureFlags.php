@@ -26,6 +26,13 @@ class FeatureFlags {
 	public static $option_name = 'mr_feature_flags';
 
 	/**
+	 * Name of flag environment.
+	 *
+	 * @var string $env_option_name
+	 */
+	public static $env_option_name = 'mr_feature_flags_env';
+
+	/**
 	 * Check if given feature is enabled or not.
 	 *
 	 * @param string $flag name of the flag.

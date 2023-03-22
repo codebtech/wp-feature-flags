@@ -5,18 +5,24 @@ import { Flag } from '../../types';
 import SubmitControls from './SubmitControls';
 import { getFlags } from '../utils';
 import Header from './Header';
+import Environment from './Environment';
 
 const Layout = (): JSX.Element => {
 	const [flags, setFlags] = useState<Flag[] | undefined>(undefined);
 	const [isLoading, setIsLoading] = useState<boolean>(true);
+	const [env, setEnv] = useState<string>('');
 
 	useEffect(() => {
 		const logFlags = async () => {
 			const result = await getFlags();
-			if (Array.isArray(result)) {
-				setFlags(result);
-				setIsLoading(false);
+			console.log(result);
+			if (result.env) {
+				setEnv(result.env);
 			}
+			if (result.flags) {
+				setFlags(result.flags);
+			}
+			setIsLoading(false);
 		};
 		logFlags();
 	}, [getFlags, setFlags, setIsLoading]);
@@ -37,34 +43,43 @@ const Layout = (): JSX.Element => {
 		);
 	}
 
-	const MapFlags = ({ flagsData }: any): any => {
-		return flagsData?.map((flag: Flag) => {
-			return (
-				<LineItem
-					key={flag.id}
-					item={flag}
-					flags={flags}
-					setFlags={setFlags}
-					setDisableSave={setDisableSave}
-				/>
-			);
-		});
-	};
+	// const MapFlags = ({ flagsData }: any): any => {
+	// 	return flagsData?.map((flag: Flag) => {
+	// 		return (
+	// 			<LineItem
+	// 				key={flag.id}
+	// 				item={flag}
+	// 				flags={flags}
+	// 				setFlags={setFlags}
+	// 				setDisableSave={setDisableSave}
+	// 			/>
+	// 		);
+	// 	});
+	// };
 	return (
 		<>
 			<div id="mr-feature-flag-layout">
 				<h1>Feature Flags settings</h1>
 				<p>Manage all feature flags.</p>
 				<div id="mr-feature-flag-content">
+					<Environment env={env} setEnv={setEnv} />
+					<Header />
 					{isLoading ? (
 						<div className="feature-flag-loader">
 							<Spinner />
 						</div>
 					) : (
-						<>
-							<Header />
-							{flags && <MapFlags flagsData={flags}></MapFlags>}
-						</>
+						flags?.map((flag: Flag) => {
+							return (
+								<LineItem
+									key={flag.id}
+									item={flag}
+									flags={flags}
+									setFlags={setFlags}
+									setDisableSave={setDisableSave}
+								/>
+							);
+						})
 					)}
 
 					{!isLoading && (
@@ -74,6 +89,7 @@ const Layout = (): JSX.Element => {
 							isNew={false}
 							lastFlag={lastFlag}
 							disableSave={disableSave}
+							env={env}
 						/>
 					)}
 				</div>
