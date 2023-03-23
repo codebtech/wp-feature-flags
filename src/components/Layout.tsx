@@ -15,7 +15,7 @@ const Layout = (): JSX.Element => {
 	useEffect(() => {
 		const logFlags = async () => {
 			const result = await getFlags();
-			console.log(result);
+			// console.log(result);
 			if (result.env) {
 				setEnv(result.env);
 			}
@@ -31,39 +31,13 @@ const Layout = (): JSX.Element => {
 
 	const lastFlag = flags?.at(-1)?.id || 0;
 
-	if (!lastFlag && !isLoading) {
-		return (
-			<>
-				<p>
-					Welcome to feature flag dashboard. You can add new flags
-					`Add flags` action.
-				</p>
-				<SubmitControls isNew={true} />
-			</>
-		);
-	}
-
-	// const MapFlags = ({ flagsData }: any): any => {
-	// 	return flagsData?.map((flag: Flag) => {
-	// 		return (
-	// 			<LineItem
-	// 				key={flag.id}
-	// 				item={flag}
-	// 				flags={flags}
-	// 				setFlags={setFlags}
-	// 				setDisableSave={setDisableSave}
-	// 			/>
-	// 		);
-	// 	});
-	// };
 	return (
 		<>
 			<div id="mr-feature-flag-layout">
 				<h1>Feature Flags settings</h1>
-				<p>Manage all feature flags.</p>
 				<div id="mr-feature-flag-content">
 					<Environment env={env} setEnv={setEnv} />
-					<Header />
+					{lastFlag ? <Header /> : ''}
 					{isLoading ? (
 						<div className="feature-flag-loader">
 							<Spinner />

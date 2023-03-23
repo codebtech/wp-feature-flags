@@ -4,9 +4,17 @@ import Snippet from './Snippet';
 const SdkModal = (props: any): JSX.Element => {
 	const { item, closeSdkModal } = props;
 
-	const jsSnippet = `if (window.mrFeatureFlags.isEnabled('${item.name}')) {
+	const jsSnippet = `
+//For Pre production environment
+if (window.mrFeatureFlags.isEnabled('${item.name}', 'pre-prod')) {
 	// js code goes here...
-}`;
+}
+
+//For Production environment
+if (window.mrFeatureFlags.isEnabled('${item.name}')) {
+	// js code goes here...
+}
+`;
 
 	const phpSnippet = `if ( /\MR/\FeatureFlags/\FeatureFlags::is_enabled( '${item.name}' ) ) {
 	// php code goes here...

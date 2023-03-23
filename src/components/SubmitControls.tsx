@@ -16,9 +16,17 @@ const SubmitControls = (props: any): JSX.Element => {
 			enabled: false,
 			preProdEnabled: true,
 		};
-		const clonedFlags = [...flags, newFlag];
 
-		setFlags(clonedFlags);
+		let latestFlags = [];
+
+		if (flags?.length) {
+			latestFlags = [...flags, newFlag];
+		} else {
+			latestFlags = [newFlag];
+		}
+		// const clonedFlags = [...flags, newFlag];
+
+		setFlags(latestFlags);
 	};
 
 	const handleSave = async () => {

@@ -80,6 +80,16 @@ function load_settings_scripts(): void {
 	$plugin_url          = plugin_dir_url( MR_FEATURE_FLAGS_PLUGIN_PATH );
 	$settings_asset_file = require_once plugin_dir_path( MR_FEATURE_FLAGS_PLUGIN_PATH ) . 'build/settings.asset.php'; // @phpcs:ignore
 
+	// $feature_flag_meta = get_option( FeatureFlags::$option_name );
+	// $feature_flag_env  = 'prod';
+	// if(isset($feature_flag_meta['env'])) {
+	// 	$feature_flag_env  = $feature_flag_meta['env'];
+	// }
+
+
+	// if($feature_flag_meta['env'] === '') {
+	// 	$feature_flag_env  = 'prod';
+	// }
 	wp_enqueue_script(
 		'mr-feature-flags',
 		$plugin_url . 'build/settings.js',
@@ -89,14 +99,6 @@ function load_settings_scripts(): void {
 	);
 
 	wp_enqueue_style( 'wp-edit-blocks' );
-
-	wp_localize_script(
-		'mr-feature-flags',
-		'mrFeatureFlags',
-		[
-			'flags' => get_option( FeatureFlags::$option_name ),
-		]
-	);
 
 	wp_enqueue_style(
 		'mr-feature-flags',
@@ -121,14 +123,30 @@ add_action(
 			true
 		);
 
+		$feature_flag_env  = 'prod';
+
+		$feature_flag_meta = get_option( FeatureFlags::$option_name );
+		$feature_flags_list = [];
+		if(isset($feature_flag_meta['flags'])) {
+			$feature_flags_list = $feature_flag_meta['flags'];
+		}
+		if(isset($feature_flag_meta['env'])) {
+			$feature_flag_env  = $feature_flag_meta['env'];
+		}
+		// $feature_flag_env  = $feature_flag_meta['env'];
+
+		// if($feature_flag_meta['env'] === '') {
+		// 	$feature_flag_env  = 'prod';
+		// }
+
 
 
 		wp_localize_script(
 			'mr-feature-flags-script',
 			'mrFeatureFlags',
 			[
-				'flags' => get_option( FeatureFlags::$option_name ),
-				'env' => get_option( FeatureFlags::$env_option_name )
+				'flags' => $feature_flags_list,
+				'env'   => $feature_flag_env
 			]
 		);
 
