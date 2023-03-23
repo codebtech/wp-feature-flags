@@ -4,8 +4,3 @@ export interface Flag {
 	enabled: boolean;
 	preProdEnabled?: boolean;
 }
-
-export interface FlagProps {
-	env: string;
-	flags: Flag[];
-}

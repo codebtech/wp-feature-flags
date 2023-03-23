@@ -5,8 +5,19 @@ import { useState } from '@wordpress/element';
 import Notices from './Snackbar';
 import { dispatch } from '@wordpress/data';
 
-const SubmitControls = (props: any): JSX.Element => {
-	const { isNew, flags, setFlags, lastFlag, disableSave } = props;
+interface SubmitControlsProps {
+	flags: Flag[];
+	setFlags: (flags: Flag[]) => void;
+	lastFlag: number;
+	disableSave: boolean;
+}
+
+const SubmitControls = ({
+	flags,
+	setFlags,
+	lastFlag,
+	disableSave,
+}: SubmitControlsProps): JSX.Element => {
 	const [isSaving, setIsSaving] = useState<boolean>(false);
 
 	const handleNewFlag = () => {
@@ -54,27 +65,24 @@ const SubmitControls = (props: any): JSX.Element => {
 						Add Flag
 					</Button>
 				</FlexItem>
-				{!isNew && (
-					<>
-						<FlexItem>
-							<Button
-								variant="primary"
-								onClick={handleSave}
-								disabled={disableSave || isSaving}
-							>
-								{isSaving ? 'Saving' : 'Save'}
-							</Button>
-						</FlexItem>
-						<FlexItem>
-							<Button
-								variant="tertiary"
-								onClick={() => location.reload()}
-							>
-								Cancel
-							</Button>
-						</FlexItem>
-					</>
-				)}
+
+				<FlexItem>
+					<Button
+						variant="primary"
+						onClick={handleSave}
+						disabled={disableSave || isSaving}
+					>
+						{isSaving ? 'Saving' : 'Save'}
+					</Button>
+				</FlexItem>
+				<FlexItem>
+					<Button
+						variant="tertiary"
+						onClick={() => location.reload()}
+					>
+						Cancel
+					</Button>
+				</FlexItem>
 			</Flex>
 
 			<Notices />

@@ -2,9 +2,14 @@ import { Modal, Button } from '@wordpress/components';
 import Snippet from './Snippet';
 import { useMemo, useState, useEffect } from '@wordpress/element';
 import { useCopyToClipboard } from '@wordpress/compose';
+import { Flag } from '../../types';
 
-const SdkModal = (props: any): JSX.Element => {
-	const { item, closeSdkModal } = props;
+interface SdkModalProps {
+	item: Flag;
+	closeSdkModal: () => void;
+}
+
+const SdkModal = ({ item, closeSdkModal }: SdkModalProps): JSX.Element => {
 	const [hasJsCopied, setHasJsCopied] = useState(false);
 	const [hasPhpCopied, setHasPhpCopied] = useState(false);
 

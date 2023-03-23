@@ -1,6 +1,15 @@
 import { Modal, Button } from '@wordpress/components';
-const DeleteModal = (props: any): JSX.Element => {
-	const { closeModal, item, handleDeleteFlag } = props;
+import { Flag } from '../../types';
+interface DeleteModalProps {
+	closeModal: () => void;
+	item: Flag;
+	handleDeleteFlag: (id: number) => void;
+}
+const DeleteModal = ({
+	closeModal,
+	item,
+	handleDeleteFlag,
+}: DeleteModalProps): JSX.Element => {
 	return (
 		<Modal title={`Delete Feature Flag`} onRequestClose={closeModal}>
 			<p>
