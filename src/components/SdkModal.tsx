@@ -71,7 +71,7 @@ domReady(function () {
 						right: 40,
 						width: 40,
 						height: 40,
-						bottom: 45,
+						top: 142,
 						color: 'darkgray',
 					}}
 					isPressed={false}

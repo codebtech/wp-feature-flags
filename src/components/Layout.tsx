@@ -17,6 +17,7 @@ const Layout = (): JSX.Element => {
 			if (fetchedFlags) {
 				setFlags(fetchedFlags);
 			}
+
 			setIsLoading(false);
 		};
 		logFlags();

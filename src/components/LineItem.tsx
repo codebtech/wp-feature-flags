@@ -6,7 +6,7 @@ import {
 	Button,
 	BaseControl,
 } from '@wordpress/components';
-import { useState } from '@wordpress/element';
+import { useState, useRef, useEffect } from '@wordpress/element';
 import { Flag } from '../../types';
 import DeleteModal from './DeleteModal';
 import SdkModal from './SdkModal';
@@ -22,6 +22,14 @@ const LineItem = ({
 	const [isSdkOpen, setIsSdkOpen] = useState(false);
 
 	const [hasError, setHasError] = useState(false);
+
+	const inputRef = useRef<HTMLInputElement>(null);
+
+	useEffect(() => {
+		if (inputRef.current && '' === item.name) {
+			inputRef.current.focus();
+		}
+	}, [inputRef, item]);
 
 	const handleDeleteFlag = (flagId: number) => {
 		const updatedFlags = flags.filter((flag: Flag) => flag.id !== flagId);
@@ -89,6 +97,7 @@ const LineItem = ({
 				<Flex justify={'flex-start'}>
 					<FlexItem>
 						<TextControl
+							ref={inputRef}
 							value={item.name}
 							onChange={(value) => handleFlagEdit(value, item.id)}
 						/>
