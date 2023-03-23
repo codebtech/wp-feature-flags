@@ -6,7 +6,7 @@ import Notices from './Snackbar';
 import { dispatch } from '@wordpress/data';
 
 const SubmitControls = (props: any): JSX.Element => {
-	const { isNew, flags, setFlags, lastFlag, disableSave, env } = props;
+	const { isNew, flags, setFlags, lastFlag, disableSave } = props;
 	const [isSaving, setIsSaving] = useState<boolean>(false);
 
 	const handleNewFlag = () => {
@@ -14,7 +14,6 @@ const SubmitControls = (props: any): JSX.Element => {
 			id: lastFlag + 1,
 			name: '',
 			enabled: false,
-			preProdEnabled: true,
 		};
 
 		let latestFlags = [];
@@ -24,7 +23,6 @@ const SubmitControls = (props: any): JSX.Element => {
 		} else {
 			latestFlags = [newFlag];
 		}
-		// const clonedFlags = [...flags, newFlag];
 
 		setFlags(latestFlags);
 	};
@@ -34,11 +32,8 @@ const SubmitControls = (props: any): JSX.Element => {
 		const cleanFlags: Flag[] = flags.filter(
 			(item: Flag) => item.name !== ''
 		);
-		const latestEnv: string = env;
 
-		console.log({ env: latestEnv, flags: cleanFlags });
-		// return;
-		await updateFlags({ env: latestEnv, flags: cleanFlags });
+		await updateFlags({ ...cleanFlags });
 
 		setIsSaving(false);
 

@@ -5,16 +5,13 @@ export default function (): JSX.Element {
 			<FlexItem>
 				<h4>Flag Name</h4>
 			</FlexItem>
-			<FlexItem style={{ marginLeft: 150 }}>
-				<h4>Pre-Prod</h4>
+			<FlexItem style={{ marginLeft: 140 }}>
+				<h4>Status</h4>
 			</FlexItem>
-			<FlexItem style={{ marginLeft: 40 }}>
-				<h4>Prod</h4>
-			</FlexItem>
-			<FlexItem style={{ marginLeft: 15 }}>
+			<FlexItem style={{ marginLeft: 60 }}>
 				<h4>SDK Settings</h4>
 			</FlexItem>
-			<FlexItem style={{ marginLeft: 20 }}>
+			<FlexItem style={{ marginLeft: 30 }}>
 				<h4>Delete Flag</h4>
 			</FlexItem>
 		</Flex>

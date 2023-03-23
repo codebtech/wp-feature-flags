@@ -23,7 +23,7 @@ class FlagOptions {
 	 *
 	 * @var string $option_name
 	 */
-	public static $option_name = 'mr_feature_flags1';
+	public static $option_name = 'mr_feature_flags';
 
 	/**
 	 * Name of flag environment.
@@ -83,10 +83,8 @@ class FlagOptions {
 	public function get_all_flags() {
 		$flags = get_option( self::$option_name );
 
-		// die(var_dump($flags));
-
 		if ( empty( $flags ) ) {
-			return rest_ensure_response( [ 'message' => 'no flags found' ] );
+			return rest_ensure_response( [] );
 		}
 
 		return rest_ensure_response( $flags );
@@ -101,17 +99,6 @@ class FlagOptions {
 	 */
 	public function post_flags( $request ) {
 		$flags = $request->get_json_params();
-
-		// var_dump($flags);
-
-		// $existing_meta = get_option( self::$option_name );
-
-
-
-		// if ( is_array( $existing_meta[1]['flags'] ) ) {
-		// 	$existing_meta[1]['flags'] = $flags;
-		// }
-
 
 		if ( is_array( $flags ) ) {
 			$result = update_option( self::$option_name, $flags );

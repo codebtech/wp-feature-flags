@@ -51,11 +51,18 @@ add_action(
 		);
 
 
+		$feature_flag_meta = get_option( FeatureFlags::$option_name );
+		$flags_list = [];
+		if(is_array($feature_flag_meta)) {
+			$flags_list = $feature_flag_meta;
+		}
+
+
 		wp_localize_script(
 			'mr-feature-flags-script',
 			'mrFeatureFlags',
 			[
-				'flags' => get_option( FeatureFlags::$option_name ),
+				'flags' => $flags_list,
 			]
 		);
 
@@ -80,16 +87,6 @@ function load_settings_scripts(): void {
 	$plugin_url          = plugin_dir_url( MR_FEATURE_FLAGS_PLUGIN_PATH );
 	$settings_asset_file = require_once plugin_dir_path( MR_FEATURE_FLAGS_PLUGIN_PATH ) . 'build/settings.asset.php'; // @phpcs:ignore
 
-	// $feature_flag_meta = get_option( FeatureFlags::$option_name );
-	// $feature_flag_env  = 'prod';
-	// if(isset($feature_flag_meta['env'])) {
-	// 	$feature_flag_env  = $feature_flag_meta['env'];
-	// }
-
-
-	// if($feature_flag_meta['env'] === '') {
-	// 	$feature_flag_env  = 'prod';
-	// }
 	wp_enqueue_script(
 		'mr-feature-flags',
 		$plugin_url . 'build/settings.js',
@@ -123,30 +120,18 @@ add_action(
 			true
 		);
 
-		$feature_flag_env  = 'prod';
-
 		$feature_flag_meta = get_option( FeatureFlags::$option_name );
-		$feature_flags_list = [];
-		if(isset($feature_flag_meta['flags'])) {
-			$feature_flags_list = $feature_flag_meta['flags'];
+		$flags_list = [];
+		if(is_array($feature_flag_meta)) {
+			$flags_list = $feature_flag_meta;
 		}
-		if(isset($feature_flag_meta['env'])) {
-			$feature_flag_env  = $feature_flag_meta['env'];
-		}
-		// $feature_flag_env  = $feature_flag_meta['env'];
-
-		// if($feature_flag_meta['env'] === '') {
-		// 	$feature_flag_env  = 'prod';
-		// }
-
 
 
 		wp_localize_script(
 			'mr-feature-flags-script',
 			'mrFeatureFlags',
 			[
-				'flags' => $feature_flags_list,
-				'env'   => $feature_flag_env
+				'flags' => $flags_list,
 			]
 		);
 
@@ -159,15 +144,6 @@ $mr_feature_flags_admin_settings->register_feature_settings();
 $mr_feature_flags_register_api = new FlagOptions();
 $mr_feature_flags_register_api->register_flags_endpoints();
 
-
-// add_action ('init', function() {
-
-// 	$request = new \WP_REST_Request( 'GET', '/feature-flags/v1/flags' );
-// 	$request->set_query_params( [] );
-// 	$response = rest_do_request( $request );
-// 	ddd(rest_get_server()->response_to_data( $response, false ));
-
-// });
 
 
 add_filter( 'plugin_action_links_mr-feature-flags/plugin.php', function ( $links )
@@ -192,4 +168,4 @@ add_filter( 'plugin_action_links_mr-feature-flags/plugin.php', function ( $links
 );
 
 
-// update_option( 'mr_feature_flags1', [ 'env' => 'pre-prod', 'flags' => [["id" => 1, "name" => "Test", "preProdEnabled" => true, "enabled" => false]]] );
+// update_option( 'mr_feature_flags', [ ["id" => 1, "name" => "login", "enabled" => false],["id" => 2, "name" => "Reg", "enabled" => false]] );

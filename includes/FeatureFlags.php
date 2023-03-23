@@ -23,14 +23,8 @@ class FeatureFlags {
 	 *
 	 * @var string $option_name
 	 */
-	public static $option_name = 'mr_feature_flags1';
+	public static $option_name = 'mr_feature_flags';
 
-	/**
-	 * Name of flag environment.
-	 *
-	 * @var string $env_option_name
-	 */
-	public static $env_option_name = 'mr_feature_flags_env';
 
 	/**
 	 * Check if given feature is enabled or not.
@@ -42,7 +36,7 @@ class FeatureFlags {
 	public static function is_enabled( string $flag ): bool {
 		$flags = get_option( self::$option_name );
 
-		if ( isset( $flags['env'] ) && Helper::search_flag( $flags['env'], 'name', $flag ) ) {
+		if ( Helper::search_flag( $flags, 'name', $flag ) ) {
 			return true;
 		}
 

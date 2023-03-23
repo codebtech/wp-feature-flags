@@ -37,14 +37,8 @@ class Helper {
 	public static function search_flag( $flags, $field, $flag ) {
 		if ( is_array( $flags ) ) {
 			foreach ( $flags as $key => $value ) {
-				$current_env = get_option( self::$env_option_name );
-				$env_field = 'enabled';
- 				if( $current_env === 'pre-prod' ) {
-					$env_field = 'preProdEnabled';
-				}
-
-				if ( $value[ $field ] === $flag && true === $value[ $env_field]  ) {
-					return $value;
+				if ( $value[ $field ] === $flag && true === $value['enabled'] ) {
+					return true;
 				}
 			}
 		}

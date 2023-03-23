@@ -93,14 +93,6 @@ const LineItem = ({
 							onChange={(value) => handleFlagEdit(value, item.id)}
 						/>
 					</FlexItem>
-					<FlexItem style={{ marginTop: 7, marginLeft: 55 }}>
-						<ToggleControl
-							checked={item.preProdEnabled}
-							onChange={() =>
-								handleFlagToggle(item.id, 'preProd')
-							}
-						/>
-					</FlexItem>
 					<FlexItem style={{ marginTop: 7, marginLeft: 40 }}>
 						<ToggleControl
 							checked={item.enabled}
@@ -108,7 +100,7 @@ const LineItem = ({
 						/>
 					</FlexItem>
 
-					<FlexItem style={{ marginLeft: 20 }}>
+					<FlexItem style={{ marginLeft: 60 }}>
 						<Button
 							variant="secondary"
 							label="Click to see SDK setting"
@@ -116,7 +108,7 @@ const LineItem = ({
 							tooltipPosition="top right"
 							onClick={handleSdkModal}
 						>
-							SDK
+							{'</> SDK'}
 						</Button>
 					</FlexItem>
 					<FlexItem style={{ marginBottom: 6, marginLeft: 50 }}>

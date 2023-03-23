@@ -5,22 +5,17 @@ import { Flag } from '../../types';
 import SubmitControls from './SubmitControls';
 import { getFlags } from '../utils';
 import Header from './Header';
-import Environment from './Environment';
 
 const Layout = (): JSX.Element => {
 	const [flags, setFlags] = useState<Flag[] | undefined>(undefined);
 	const [isLoading, setIsLoading] = useState<boolean>(true);
-	const [env, setEnv] = useState<string>('');
 
 	useEffect(() => {
 		const logFlags = async () => {
-			const result = await getFlags();
-			// console.log(result);
-			if (result.env) {
-				setEnv(result.env);
-			}
-			if (result.flags) {
-				setFlags(result.flags);
+			const fetchedFlags = await getFlags();
+
+			if (fetchedFlags) {
+				setFlags(fetchedFlags);
 			}
 			setIsLoading(false);
 		};
@@ -36,7 +31,6 @@ const Layout = (): JSX.Element => {
 			<div id="mr-feature-flag-layout">
 				<h1>Feature Flags settings</h1>
 				<div id="mr-feature-flag-content">
-					<Environment env={env} setEnv={setEnv} />
 					{lastFlag ? <Header /> : ''}
 					{isLoading ? (
 						<div className="feature-flag-loader">
@@ -63,7 +57,6 @@ const Layout = (): JSX.Element => {
 							isNew={false}
 							lastFlag={lastFlag}
 							disableSave={disableSave}
-							env={env}
 						/>
 					)}
 				</div>

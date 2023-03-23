@@ -1,19 +1,14 @@
 const { mrFeatureFlags } = window;
 import { Flag } from '../types';
 
-mrFeatureFlags.isEnabled = (flag: string, env = 'prod') => {
-	let envFlag = 'enabled';
-	if (env === 'pre-prod') {
-		envFlag = 'preProdEnabled';
-	}
+mrFeatureFlags.isEnabled = (flag: string) => {
 	const isFlagExist: Flag | undefined = mrFeatureFlags.flags.find(
 		(item: Flag) => {
-			//@ts-ignore
-			return item.name === flag && item[envFlag] === true;
+			return item.name === flag && item.enabled === true;
 		}
 	);
 
-	if (isFlagExist?.name) return true;
+	if (isFlagExist) return true;
 
 	return false;
 };
