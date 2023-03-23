@@ -11,12 +11,19 @@ import { Flag } from '../../types';
 import DeleteModal from './DeleteModal';
 import SdkModal from './SdkModal';
 
+interface LineItemProps {
+	flags: Flag[];
+	setFlags: (flags: Flag[]) => void;
+	item: Flag;
+	setDisableSave: (toggle: boolean) => void;
+}
+
 const LineItem = ({
 	flags,
 	setFlags,
 	item,
 	setDisableSave,
-}: any): JSX.Element => {
+}: LineItemProps): JSX.Element => {
 	const [isOpen, setOpen] = useState(false);
 
 	const [isSdkOpen, setIsSdkOpen] = useState(false);
@@ -135,13 +142,13 @@ const LineItem = ({
 						<BaseControl
 							className="flag-name-error"
 							help="Flag name should not contain spaces. Allowed special characters are - and _"
-							id={item.id}
+							id={`${item.id}`}
 						>
 							{}
 						</BaseControl>
 						<BaseControl
 							help="Example flag names formats: Registration, AB-testing, Auth0_Login"
-							id={item.id}
+							id={`${item.id}`}
 						>
 							{}
 						</BaseControl>
