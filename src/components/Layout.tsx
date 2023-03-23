@@ -7,7 +7,7 @@ import { getFlags } from '../utils';
 import Header from './Header';
 
 const Layout = (): JSX.Element => {
-	const [flags, setFlags] = useState<Flag[] | undefined>(undefined);
+	const [flags, setFlags] = useState<Flag[]>([]);
 	const [isLoading, setIsLoading] = useState<boolean>(true);
 
 	useEffect(() => {
@@ -55,7 +55,6 @@ const Layout = (): JSX.Element => {
 						<SubmitControls
 							setFlags={setFlags}
 							flags={flags}
-							isNew={false}
 							lastFlag={lastFlag}
 							disableSave={disableSave}
 						/>

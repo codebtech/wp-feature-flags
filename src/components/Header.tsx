@@ -8,7 +8,7 @@ export default function (): JSX.Element {
 			<FlexItem style={{ marginLeft: 140 }}>
 				<h4>Status</h4>
 			</FlexItem>
-			<FlexItem style={{ marginLeft: 60 }}>
+			<FlexItem style={{ marginLeft: 80 }}>
 				<h4>SDK Settings</h4>
 			</FlexItem>
 			<FlexItem style={{ marginLeft: 30 }}>

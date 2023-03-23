@@ -1,8 +1,9 @@
 import apiFetch from '@wordpress/api-fetch';
+import { Flag } from '../../types';
 import { FEATURE_FLAG_NAMESPACE, FEATURE_FLAG_ROUTE } from '../constants';
 
-export const getFlags = async (): Promise<any> => {
-	const result: any = await apiFetch({
+export const getFlags = async (): Promise<Flag[]> => {
+	const result: Flag[] = await apiFetch({
 		method: 'GET',
 		path: `${FEATURE_FLAG_NAMESPACE}/${FEATURE_FLAG_ROUTE}`,
 	});
@@ -10,7 +11,7 @@ export const getFlags = async (): Promise<any> => {
 };
 
 export const updateFlags = async (
-	flags: any
+	flags: Flag[]
 ): Promise<{ status: number; success: boolean } | Error> => {
 	const result: { status: number; success: boolean } | Error = await apiFetch(
 		{
