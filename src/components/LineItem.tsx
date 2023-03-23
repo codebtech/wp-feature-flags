@@ -4,21 +4,39 @@ import {
 	Flex,
 	FlexItem,
 	Button,
-	Modal,
 	BaseControl,
 } from '@wordpress/components';
-import { useState } from '@wordpress/element';
+import { useState, useRef, useEffect } from '@wordpress/element';
 import { Flag } from '../../types';
+import DeleteModal from './DeleteModal';
+import SdkModal from './SdkModal';
+
+interface LineItemProps {
+	flags: Flag[];
+	setFlags: (flags: Flag[]) => void;
+	item: Flag;
+	setDisableSave: (toggle: boolean) => void;
+}
 
 const LineItem = ({
 	flags,
 	setFlags,
 	item,
 	setDisableSave,
-}: any): JSX.Element => {
+}: LineItemProps): JSX.Element => {
 	const [isOpen, setOpen] = useState(false);
 
+	const [isSdkOpen, setIsSdkOpen] = useState(false);
+
 	const [hasError, setHasError] = useState(false);
+
+	const inputRef = useRef<HTMLInputElement>(null);
+
+	useEffect(() => {
+		if (inputRef.current && '' === item.name) {
+			inputRef.current.focus();
+		}
+	}, [inputRef, item]);
 
 	const handleDeleteFlag = (flagId: number) => {
 		const updatedFlags = flags.filter((flag: Flag) => flag.id !== flagId);
@@ -26,10 +44,14 @@ const LineItem = ({
 		closeModal();
 	};
 
-	const handleFlagToggle = (flagId: number) => {
+	const handleFlagToggle = (flagId: number, flagEnv = 'prod') => {
 		const updatedFlags = flags.map((flag: Flag) => {
 			if (flag.id === flagId) {
-				flag.enabled = !flag.enabled;
+				if (flagEnv === 'prod') {
+					flag.enabled = !flag.enabled;
+				} else {
+					flag.preProdEnabled = !flag.preProdEnabled;
+				}
 			}
 			return flag;
 		});
@@ -58,6 +80,12 @@ const LineItem = ({
 	};
 	const closeModal = () => setOpen(false);
 
+	const openSdkModal = () => {
+		setIsSdkOpen(true);
+	};
+
+	const closeSdkModal = () => setIsSdkOpen(false);
+
 	const handleDeleteModal = (flag: Flag) => {
 		if (flag.name) {
 			openModal();
@@ -66,23 +94,40 @@ const LineItem = ({
 		handleDeleteFlag(flag.id);
 	};
 
+	const handleSdkModal = () => {
+		openSdkModal();
+	};
+
 	return (
 		<>
 			<div id="mr-feature-flag-item" key={item.id}>
 				<Flex justify={'flex-start'}>
 					<FlexItem>
 						<TextControl
+							ref={inputRef}
 							value={item.name}
 							onChange={(value) => handleFlagEdit(value, item.id)}
 						/>
 					</FlexItem>
-					<FlexItem style={{ marginTop: 7, marginLeft: 10 }}>
+					<FlexItem style={{ marginTop: 7, marginLeft: 40 }}>
 						<ToggleControl
 							checked={item.enabled}
 							onChange={() => handleFlagToggle(item.id)}
 						/>
 					</FlexItem>
-					<FlexItem style={{ marginBottom: 6 }}>
+
+					<FlexItem style={{ marginLeft: 60 }}>
+						<Button
+							variant="secondary"
+							label="Click to see SDK setting"
+							showTooltip
+							tooltipPosition="top right"
+							onClick={handleSdkModal}
+						>
+							{'</> SDK'}
+						</Button>
+					</FlexItem>
+					<FlexItem style={{ marginBottom: 6, marginLeft: 50 }}>
 						<Button
 							icon={'trash'}
 							isDestructive
@@ -97,13 +142,13 @@ const LineItem = ({
 						<BaseControl
 							className="flag-name-error"
 							help="Flag name should not contain spaces. Allowed special characters are - and _"
-							id={item.id}
+							id={`${item.id}`}
 						>
 							{}
 						</BaseControl>
 						<BaseControl
 							help="Example flag names formats: Registration, AB-testing, Auth0_Login"
-							id={item.id}
+							id={`${item.id}`}
 						>
 							{}
 						</BaseControl>
@@ -112,26 +157,14 @@ const LineItem = ({
 				<hr />
 			</div>
 			{isOpen && (
-				<Modal
-					title={`Delete Feature Flag`}
-					onRequestClose={closeModal}
-				>
-					<p>
-						Are you sure want to delete flag &quot;{item.name}
-						&quot;?
-					</p>
-					<Button
-						isDestructive
-						variant="secondary"
-						onClick={() => handleDeleteFlag(item.id)}
-						style={{ marginRight: 10 }}
-					>
-						Yes
-					</Button>
-					<Button variant="tertiary" onClick={closeModal}>
-						Cancel
-					</Button>
-				</Modal>
+				<DeleteModal
+					closeModal={closeModal}
+					item={item}
+					handleDeleteFlag={handleDeleteFlag}
+				/>
+			)}
+			{isSdkOpen && (
+				<SdkModal item={item} closeSdkModal={closeSdkModal} />
 			)}
 		</>
 	);

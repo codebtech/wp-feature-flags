@@ -26,6 +26,13 @@ class FlagOptions {
 	public static $option_name = 'mr_feature_flags';
 
 	/**
+	 * Name of flag environment.
+	 *
+	 * @var string $env_option_name
+	 */
+	public static $env_option_name = 'mr_feature_flags_env';
+
+	/**
 	 * Register feature flag endpoints.
 	 *
 	 * @return void
@@ -52,6 +59,18 @@ class FlagOptions {
 					]
 				);
 
+				register_rest_route(
+					'feature-flags/v1',
+					'flags/env',
+					[
+						[
+							'methods'             => \WP_REST_SERVER::READABLE,
+							'callback'            => [ $this, 'get_flag_env' ],
+							'permission_callback' => '__return_true',
+						],
+					]
+				);
+
 			}
 		);
 	}
@@ -65,7 +84,7 @@ class FlagOptions {
 		$flags = get_option( self::$option_name );
 
 		if ( empty( $flags ) ) {
-			return new \WP_Error( 'no_flags', 'Flags not found', array( 'status' => 404 ) );
+			return rest_ensure_response( [] );
 		}
 
 		return rest_ensure_response( $flags );
@@ -73,6 +92,8 @@ class FlagOptions {
 
 	/**
 	 * Insert / Update flags in options table.
+	 *
+	 * @param WP_Request $request API request.
 	 *
 	 * @return mixed List of flags.
 	 */
@@ -91,6 +112,21 @@ class FlagOptions {
 		} else {
 			return new \WP_Error( 'invalid_input', 'Cannot update flags', array( 'status' => 400 ) );
 		}
+	}
+
+	/**
+	 * Get Feature Flag environment.
+	 *
+	 * @return mixed List of flags.
+	 */
+	public function get_flag_env() {
+		$env = get_option( self::$env_option_name );
+
+		if ( empty( $env ) ) {
+			return rest_ensure_response( [ 'env' => 'prod' ] );
+		}
+
+		return rest_ensure_response( $env );
 	}
 
 	/**

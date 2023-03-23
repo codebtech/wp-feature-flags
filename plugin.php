@@ -51,11 +51,18 @@ add_action(
 		);
 
 
+		$feature_flag_meta = get_option( FeatureFlags::$option_name );
+		$flags_list = [];
+		if(is_array($feature_flag_meta)) {
+			$flags_list = $feature_flag_meta;
+		}
+
+
 		wp_localize_script(
 			'mr-feature-flags-script',
 			'mrFeatureFlags',
 			[
-				'flags' => get_option( FeatureFlags::$option_name ),
+				'flags' => $flags_list,
 			]
 		);
 
@@ -90,14 +97,6 @@ function load_settings_scripts(): void {
 
 	wp_enqueue_style( 'wp-edit-blocks' );
 
-	wp_localize_script(
-		'mr-feature-flags',
-		'mrFeatureFlags',
-		[
-			'flags' => get_option( FeatureFlags::$option_name ),
-		]
-	);
-
 	wp_enqueue_style(
 		'mr-feature-flags',
 		$plugin_url . 'build/settings.css',
@@ -121,13 +120,18 @@ add_action(
 			true
 		);
 
+		$feature_flag_meta = get_option( FeatureFlags::$option_name );
+		$flags_list = [];
+		if(is_array($feature_flag_meta)) {
+			$flags_list = $feature_flag_meta;
+		}
 
 
 		wp_localize_script(
 			'mr-feature-flags-script',
 			'mrFeatureFlags',
 			[
-				'flags' => get_option( FeatureFlags::$option_name ),
+				'flags' => $flags_list,
 			]
 		);
 
@@ -140,15 +144,6 @@ $mr_feature_flags_admin_settings->register_feature_settings();
 $mr_feature_flags_register_api = new FlagOptions();
 $mr_feature_flags_register_api->register_flags_endpoints();
 
-
-// add_action ('init', function() {
-
-// 	$request = new \WP_REST_Request( 'GET', '/feature-flags/v1/flags' );
-// 	$request->set_query_params( [] );
-// 	$response = rest_do_request( $request );
-// 	ddd(rest_get_server()->response_to_data( $response, false ));
-
-// });
 
 
 add_filter( 'plugin_action_links_mr-feature-flags/plugin.php', function ( $links )
@@ -172,4 +167,5 @@ add_filter( 'plugin_action_links_mr-feature-flags/plugin.php', function ( $links
 	}
 );
 
-// FeatureFlags::add_flag('Registration');
+
+// update_option( 'mr_feature_flags', [ ["id" => 1, "name" => "login", "enabled" => false],["id" => 2, "name" => "Reg", "enabled" => false]] );

@@ -4,6 +4,7 @@ import LineItem from './LineItem';
 import { Flag } from '../../types';
 import SubmitControls from './SubmitControls';
 import { getFlags } from '../utils';
+import Header from './Header';
 
 const Layout = (): JSX.Element => {
 	const [flags, setFlags] = useState<Flag[] | undefined>(undefined);
@@ -11,11 +12,13 @@ const Layout = (): JSX.Element => {
 
 	useEffect(() => {
 		const logFlags = async () => {
-			const result = await getFlags();
-			if (Array.isArray(result)) {
-				setFlags(result);
-				setIsLoading(false);
+			const fetchedFlags = await getFlags();
+
+			if (fetchedFlags) {
+				setFlags(fetchedFlags);
 			}
+
+			setIsLoading(false);
 		};
 		logFlags();
 	}, [getFlags, setFlags, setIsLoading]);
@@ -24,23 +27,12 @@ const Layout = (): JSX.Element => {
 
 	const lastFlag = flags?.at(-1)?.id || 0;
 
-	if (!lastFlag && !isLoading) {
-		return (
-			<>
-				<p>
-					Welcome to feature flag dashboard. You can add new flags
-					`Add flags` action.
-				</p>
-				<SubmitControls isNew={true} />
-			</>
-		);
-	}
 	return (
 		<>
 			<div id="mr-feature-flag-layout">
 				<h1>Feature Flags settings</h1>
-				<p>Manage all feature flags.</p>
 				<div id="mr-feature-flag-content">
+					{lastFlag ? <Header /> : ''}
 					{isLoading ? (
 						<div className="feature-flag-loader">
 							<Spinner />

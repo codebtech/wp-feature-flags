@@ -53,3 +53,4 @@ class Settings {
 		echo '<div id="mr_feature_flags_settings_screen"></div>';
 	}
 }
+

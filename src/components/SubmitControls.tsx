@@ -10,9 +10,21 @@ const SubmitControls = (props: any): JSX.Element => {
 	const [isSaving, setIsSaving] = useState<boolean>(false);
 
 	const handleNewFlag = () => {
-		const newFlag = { id: lastFlag + 1, name: '', enabled: false };
-		const clonedFlags = [...flags, newFlag];
-		setFlags(clonedFlags);
+		const newFlag = {
+			id: lastFlag + 1,
+			name: '',
+			enabled: false,
+		};
+
+		let latestFlags = [];
+
+		if (flags?.length) {
+			latestFlags = [...flags, newFlag];
+		} else {
+			latestFlags = [newFlag];
+		}
+
+		setFlags(latestFlags);
 	};
 
 	const handleSave = async () => {
@@ -20,7 +32,8 @@ const SubmitControls = (props: any): JSX.Element => {
 		const cleanFlags: Flag[] = flags.filter(
 			(item: Flag) => item.name !== ''
 		);
-		await updateFlags(cleanFlags);
+
+		await updateFlags({ ...cleanFlags });
 
 		setIsSaving(false);
 
