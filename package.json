@@ -4,7 +4,8 @@
   "description": "Allows developers to enable / disable features based on flags.",
   "scripts": {
     "start": "wp-scripts start",
-    "build": "wp-scripts build"
+    "build": "wp-scripts build",
+    "lint:js": "wp-scripts lint-js"
   },
   "devDependencies": {
     "@wordpress/eslint-plugin": "^12.0.1",
