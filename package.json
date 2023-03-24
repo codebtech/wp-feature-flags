@@ -5,9 +5,16 @@
   "scripts": {
     "start": "wp-scripts start",
     "build": "wp-scripts build",
-    "lint:js": "wp-scripts lint-js"
+    "lint:js": "wp-scripts lint-js",
+    "test": "wp-scripts test-unit-js",
+    "test:watch": "wp-scripts test-unit-js --watch"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "12.1.2",
+    "@types/jest": "^29.5.0",
+    "@types/react-syntax-highlighter": "^15.5.6",
+    "@types/wordpress__components": "^23.0.1",
     "@wordpress/eslint-plugin": "^12.0.1",
     "@wordpress/scripts": "^19.2.2",
     "eslint": "^7.18.0",
@@ -20,15 +27,20 @@
   "author": "Mohan Raj <https://mohanraj.dev>",
   "license": "ISC",
   "dependencies": {
-    "@types/react-syntax-highlighter": "^15.5.6",
-    "@types/wordpress__components": "^23.0.1",
     "@wordpress/api-fetch": "^6.26.0",
     "@wordpress/components": "^23.6.0",
     "@wordpress/data": "^8.6.0",
     "@wordpress/i18n": "^4.29.0",
     "@wordpress/notices": "^3.29.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
     "react-syntax-highlighter": "^15.5.0",
+    "react-test-renderer": "^18.2.0",
     "ts-loader": "^9.4.2",
     "typescript": "^5.0.2"
+  },
+  "jest": {
+    "preset": "@wordpress/jest-preset-default",
+    "verbose": true
   }
 }

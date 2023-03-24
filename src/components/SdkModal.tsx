@@ -14,8 +14,8 @@ const SdkModal = ({ item, closeSdkModal }: SdkModalProps): JSX.Element => {
 	const [hasPhpCopied, setHasPhpCopied] = useState(false);
 
 	useEffect(() => {
-		let jsTimeout: number | null = null;
-		let phpTimeout: number | null = null;
+		let jsTimeout: NodeJS.Timeout | null = null;
+		let phpTimeout: NodeJS.Timeout | null = null;
 
 		if (hasJsCopied) {
 			jsTimeout = setTimeout(() => {

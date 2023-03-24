@@ -26,7 +26,8 @@
       "allowSyntheticDefaultImports": true,
       "forceConsistentCasingInFileNames": true,
       "isolatedModules": true,
-      "typeRoots": ["./types"]
+      "typeRoots": ["./types"],
+      "types": ["jest","node", "@types/jest"]
     },
-    "include": [ "src", "types/window.d.ts" ],
+    "include": [ "src", "types/window.d.ts"],
   }
