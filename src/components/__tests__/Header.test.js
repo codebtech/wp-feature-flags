@@ -1,9 +1,27 @@
 import { render, screen } from '@testing-library/react';
-import '@testing-library/jest-dom';
 import Header from '../Header';
 
-describe('Header Component', () => {
-	it('should render without error', () => {
-		expect(1).toBe(1);
+jest.mock('@wordpress/components', () => ({
+	...jest.requireActual('@wordpress/components'),
+	Flex: jest.fn().mockImplementation(({ children }) => <div>{children}</div>),
+	FlexItem: jest
+		.fn()
+		.mockImplementation(({ children }) => <div>{children}</div>),
+}));
+
+describe('Header component', () => {
+	it('renders component with all header fields', () => {
+		render(<Header />);
+		const flagName = screen.getByText('Flag Name');
+		expect(flagName).toBeInTheDocument();
+
+		const status = screen.getByText('Status');
+		expect(status).toBeInTheDocument();
+
+		const sdk = screen.getByText('SDK Settings');
+		expect(sdk).toBeInTheDocument();
+
+		const deleteFlag = screen.getByText('Delete Flag');
+		expect(deleteFlag).toBeInTheDocument();
 	});
 });
