@@ -1,6 +1,6 @@
 <?php
 /**
- * This is the init file for the plugin
+ * Utility class to expose flag methods.
  *
  * @package mr-feature-flags
  * @since 1.0.0
@@ -11,12 +11,12 @@ declare(strict_types=1);
 namespace MR\FeatureFlags;
 
 /**
- * Class FeatureFlags
+ * Class Utils
  *
  * @package mr-feature-flags
  * @since 1.0.0
  */
-class FeatureFlags {
+class Utils {
 
 	/**
 	 * Name in options table.

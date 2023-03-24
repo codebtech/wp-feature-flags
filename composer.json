@@ -28,6 +28,6 @@
     "scripts": {
         "lint:php": "phpcs .",
         "lint:php-fix": "phpcbf .",
-        "test:php": "phpunit --dont-report-useless-tests --configuration ./phpunit.xml.dist"
+        "test:php": "phpunit --dont-report-useless-tests --configuration ./phpunit.xml --testdox"
     }
 }

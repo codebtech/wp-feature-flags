@@ -19,13 +19,6 @@ namespace MR\FeatureFlags;
 class Helper {
 
 	/**
-	 * Name of flag environment.
-	 *
-	 * @var string $env_option_name
-	 */
-	public static $env_option_name = 'mr_feature_flags_env';
-
-	/**
 	 * Flag search helper.
 	 *
 	 * @param array  $flags flags array.

@@ -19,7 +19,7 @@
 declare( strict_types = 1 );
 
 namespace MR\FeatureFlags;
-use MR\FeatureFlags\Api\FlagOptions;
+use MR\FeatureFlags\Api\Flags;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -141,14 +141,14 @@ add_action(
 $mr_feature_flags_admin_settings = new Settings();
 $mr_feature_flags_admin_settings->register_feature_settings();
 
-$mr_feature_flags_register_api = new FlagOptions();
+$mr_feature_flags_register_api = new Flags();
 $mr_feature_flags_register_api->register_flags_endpoints();
 
 
 
 add_filter( 'plugin_action_links_mr-feature-flags/plugin.php', function ( $links )
 	{
-		// Build and escape the URL.
+
 		$url = esc_url(
 			add_query_arg(
 				'page',
@@ -156,9 +156,9 @@ add_filter( 'plugin_action_links_mr-feature-flags/plugin.php', function ( $links
 				get_admin_url() . 'admin.php'
 			)
 		);
-		// Create the link.
+
 		$settings_link = "<a href='$url'>" . __( 'Settings', 'mr-feature-flags' ) . '</a>';
-		// Adds the link to the end of the array.
+
 		array_push(
 			$links,
 			$settings_link
@@ -166,6 +166,3 @@ add_filter( 'plugin_action_links_mr-feature-flags/plugin.php', function ( $links
 		return $links;
 	}
 );
-
-
-// update_option( 'mr_feature_flags', [ ["id" => 1, "name" => "login", "enabled" => false],["id" => 2, "name" => "Reg", "enabled" => false]] );
