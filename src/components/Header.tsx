@@ -7,10 +7,10 @@ export default function (): JSX.Element {
 			<FlexItem>
 				<h4>{__('Flag Name', 'mr-feature-flags')}</h4>
 			</FlexItem>
-			<FlexItem style={{ marginLeft: 140 }}>
+			<FlexItem style={{ marginLeft: 160 }}>
 				<h4>{__('Status', 'mr-feature-flags')}</h4>
 			</FlexItem>
-			<FlexItem style={{ marginLeft: 60 }}>
+			<FlexItem style={{ marginLeft: 75 }}>
 				<h4>{__('SDK Settings', 'mr-feature-flags')}</h4>
 			</FlexItem>
 			<FlexItem style={{ marginLeft: 30 }}>
