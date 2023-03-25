@@ -42,12 +42,16 @@ class Flags {
 						[
 							'methods'             => \WP_REST_SERVER::READABLE,
 							'callback'            => [ $this, 'get_all_flags' ],
-							'permission_callback' => '__return_true',
+							'permission_callback' => function () {
+								return current_user_can( 'manage_options' );
+							},
 						],
 						[
 							'methods'             => \WP_REST_SERVER::EDITABLE,
 							'callback'            => [ $this, 'post_flags' ],
-							'permission_callback' => '__return_true',
+							'permission_callback' => function () {
+								return current_user_can( 'manage_options' );
+							},
 						],
 					]
 				);

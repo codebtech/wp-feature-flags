@@ -120,7 +120,7 @@ add_action(
 			true
 		);
 
-		$feature_flag_meta = get_option( FeatureFlags::$option_name );
+		$feature_flag_meta = get_option( Utils::$option_name );
 		$flags_list = [];
 		if(is_array($feature_flag_meta)) {
 			$flags_list = $feature_flag_meta;

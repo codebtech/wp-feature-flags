@@ -5,31 +5,25 @@
 		"plugin:cypress/recommended"
 	],
 	"parser": "@typescript-eslint/parser",
-	"plugins": [
-		"@typescript-eslint"
-	],
+	"plugins": ["@typescript-eslint"],
 	"rules": {
 		"prettier/prettier": "warn",
 		"import/no-unresolved": 0,
 		"@typescript-eslint/ban-ts-comment": "off",
 		"camelcase": "off"
 	},
-	"overrides":
-		[{
-		  "files": ["*.jsx"],
-		  "rules": {
-			"@typescript-eslint/explicit-module-boundary-types": ["off"]
-		  }
-		}],
+	"overrides": [
+		{
+			"files": ["*.jsx"],
+			"rules": {
+				"@typescript-eslint/explicit-module-boundary-types": ["off"]
+			}
+		}
+	],
 	"settings": {
 		"import/resolver": {
 			"alias": {
-				"map": [
-					[
-						"src",
-						"./src"
-					],
-				]
+				"map": [["src", "./src"]]
 			}
 		}
 	}
