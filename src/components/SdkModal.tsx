@@ -4,6 +4,7 @@ import { useMemo, useState, useEffect } from '@wordpress/element';
 import { useCopyToClipboard } from '@wordpress/compose';
 import { Flag } from '../../types';
 import { __ } from '@wordpress/i18n';
+import TsPanel from './TsPanel';
 
 interface SdkModalProps {
 	item: Flag;
@@ -84,7 +85,7 @@ domReady(function () {
 					variant={'tertiary'}
 					ref={phpRef}
 				/>
-				<Snippet data={phpSnippet} />
+				<Snippet data={phpSnippet} language={'php'} />
 			</div>
 			<div className="mr-feature-flag-js-snippet-container">
 				<h3>{__('JavaScript Snippet', 'mr-feature-flags')}</h3>
@@ -101,7 +102,10 @@ domReady(function () {
 					variant={'tertiary'}
 					ref={jsRef}
 				/>
-				<Snippet data={jsSnippet} />
+				<Snippet data={jsSnippet} language={'typescript'} />
+			</div>
+			<div className="mr-feature-flags-ts-snipper-container">
+				<TsPanel />
 			</div>
 		</Modal>
 	);
