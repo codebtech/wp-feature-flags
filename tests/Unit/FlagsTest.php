@@ -1,13 +1,10 @@
 <?php
 
 namespace MR\FeatureFlags\Api;
-
 use \PHPUnit\Framework\TestCase;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use \Brain\Monkey;
 use \Brain\Monkey\Functions;
-
-
 
 
 class FlagsTest extends \PHPUnit\Framework\TestCase
@@ -57,59 +54,46 @@ class FlagsTest extends \PHPUnit\Framework\TestCase
 		$this->assertEquals($result, $mock_option_value);
 	}
 
-	// public function test_post_flag_works() {
-	// 	$request = \Brain\Monkey\Functions\mock('WP_Request', [['id'=>1, 'name'=>'Test','enabled'=>true]]);
+	public function test_post_flags_methods_should_return_success_if_input_is_array() {
 
-	// 	$mock_option_value = [['id'=>1, 'name'=>'Test','enabled'=>true]];
-	// 	\Brain\Monkey\Functions\when('update_option')->justReturn($mock_option_value);
-	// 	\Brain\Monkey\Functions\when('rest_ensure_response')->returnArg();
+        $request_mock = \Mockery::mock('WP_Request');
+        $request_mock->shouldReceive('get_json_params')->andReturn(['param1' => 'value1']);
 
-	// 	$flags = new Flags();
-	// 	$result = $flags->post_flags($request);
-	// 	var_dump($result);
+		\Brain\Monkey\Functions\when('update_option')->justReturn(true);
+		\Brain\Monkey\Functions\when('rest_ensure_response')->returnArg();
 
-	// }
+        global $wp;
+        $wp = new \stdClass();
+        $wp->request = $request_mock;
 
-	// public function test_post_flags() {
-	// 	$request_data = array( 'flag1' => true, 'flag2' => false );
-	// 	$request = \Brain\Monkey\Functions\mock( 'WP_REST_Request' );
-	// 	$request->expects( 'get_json_params' )->once()->andReturn( $request_data );
+		$flags = new Flags();
+		$result = $flags->post_flags($request_mock);
 
-	// 	\Brain\Monkey\Functions\expect( 'update_option' )
-	// 		->once()
-	// 		->with( self::$option_name, $request_data )
-	// 		->andReturn( true );
+		$this->assertEquals(['status'=>200, 'success' => true], $result);
 
-	// 	$result = $this->obj->post_flags( $request );
+        unset($GLOBALS['wp']);
+    }
 
-	// 	$this->assertInstanceOf( 'WP_REST_Response', $result );
-	// 	$this->assertEquals(
-	// 		array(
-	// 			'status'  => 200,
-	// 			'success' => true,
-	// 		),
-	// 	);
-	// }
+	public function test_post_flags_methods_should_throw_error_if_input_is_not_an_array() {
 
-	public function test_post_flags() {
-		// Set up mock request object with JSON data
-		$request_data = array( 'flag1' => true, 'flag2' => false );
-		$request = new \stdClass();
-		$request->set_body_params( $request_data );
+        $request_mock = \Mockery::mock('WP_Request');
+        $request_mock->shouldReceive('get_json_params')->andReturn('test');
 
-		// Mock the update_option function
-		$expected_option_name = 'my_option';
-		$expected_option_value = $request_data;
-		\Brain\Monkey\Functions\expect( 'update_option' )
-			->once()
-			->with( $expected_option_name, $expected_option_value )
-			->andReturn( true );
+        global $wp;
+        $wp = new \stdClass();
+        $wp->request = $request_mock;
 
-		// Call the post_flags method with the mock request
-		$response = $this->obj->post_flags( $request );
+		$error_mock = \Mockery::mock('WP_Error');
 
-		// Check that the response is a WP_REST_Response object with expected data
-		$this->assertInstanceOf( 'WP_REST_Response', $response );
-		$this->assertEquals( array( 'status' => 200, 'success' => true ), $response->get_data() );
-	}
+		\Brain\Monkey\Functions\expect('post_flags')->andReturn($error_mock);
+
+
+		$flags = new Flags();
+		$result = $flags->post_flags($request_mock);
+
+		$this->assertInstanceOf('WP_Error', $result);
+
+    }
+
+
 }
