@@ -1,9 +1,9 @@
-name: JS lint & test
+name: JS
 on: [push]
 
 jobs:
   build:
-    name: JS Lint & Test
+    name: Lint & Test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
