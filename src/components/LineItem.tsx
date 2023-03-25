@@ -105,6 +105,7 @@ const LineItem = ({
 				<Flex justify={'flex-start'}>
 					<FlexItem>
 						<TextControl
+							style={{ width: 180 }}
 							ref={inputRef}
 							value={item.name}
 							onChange={(value) => handleFlagEdit(value, item.id)}
