@@ -37,8 +37,8 @@ class Settings {
 	public function register_settings() {
 
 		add_menu_page(
-			'Feature Flags',
-			'Feature Flags',
+			__( 'Feature Flags', 'mr-feature-flags' ),
+			__( 'Feature Flags', 'mr-feature-flags' ),
 			'manage_options',
 			'mr-feature-flags',
 			[ $this, 'render_page' ],

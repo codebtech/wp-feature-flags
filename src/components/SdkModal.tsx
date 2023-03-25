@@ -3,6 +3,7 @@ import Snippet from './Snippet';
 import { useMemo, useState, useEffect } from '@wordpress/element';
 import { useCopyToClipboard } from '@wordpress/compose';
 import { Flag } from '../../types';
+import { __ } from '@wordpress/i18n';
 
 interface SdkModalProps {
 	item: Flag;
@@ -48,7 +49,7 @@ domReady(function () {
 	}, [item.name]);
 
 	const phpSnippet = useMemo(() => {
-		return `if ( MR\\FeatureFlags\\FeatureFlags::is_enabled( '${item.name}' ) ) {
+		return `if ( MR\\FeatureFlags\\Utils::is_enabled( '${item.name}' ) ) {
 	// php code goes here...
 }`;
 	}, [item.name]);
@@ -68,7 +69,7 @@ domReady(function () {
 	return (
 		<Modal title={`SDK snippets`} onRequestClose={closeSdkModal}>
 			<div className="mr-feature-flag-php-snippet-container">
-				<h3>PHP Snippet</h3>
+				<h3>{__('PHP Snippet', 'mr-feature-flags')}</h3>
 				<Button
 					icon={hasPhpCopied ? 'yes-alt' : 'clipboard'}
 					style={{
@@ -86,7 +87,7 @@ domReady(function () {
 				<Snippet data={phpSnippet} />
 			</div>
 			<div className="mr-feature-flag-js-snippet-container">
-				<h3>JS Snippet</h3>
+				<h3>{__('JavaScript Snippet', 'mr-feature-flags')}</h3>
 				<Button
 					icon={hasJsCopied ? 'yes-alt' : 'clipboard'}
 					style={{

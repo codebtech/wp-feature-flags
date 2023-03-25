@@ -4,6 +4,7 @@ import { updateFlags } from '../utils';
 import { useState } from '@wordpress/element';
 import Notices from './Snackbar';
 import { dispatch } from '@wordpress/data';
+import { __ } from '@wordpress/i18n';
 
 interface SubmitControlsProps {
 	flags: Flag[];
@@ -62,7 +63,7 @@ const SubmitControls = ({
 						style={{ marginRight: 15 }}
 						icon={'plus'}
 					>
-						Add Flag
+						{__('Add Flag', 'mr-feature-flags')}
 					</Button>
 				</FlexItem>
 
@@ -72,7 +73,9 @@ const SubmitControls = ({
 						onClick={handleSave}
 						disabled={disableSave || isSaving}
 					>
-						{isSaving ? 'Saving' : 'Save'}
+						{isSaving
+							? __('Saving', 'mr-feature-flags')
+							: __('Save', 'mr-feature-flags')}
 					</Button>
 				</FlexItem>
 				<FlexItem>
@@ -80,7 +83,7 @@ const SubmitControls = ({
 						variant="tertiary"
 						onClick={() => location.reload()}
 					>
-						Cancel
+						{__('Cancel', 'mr-feature-flags')}
 					</Button>
 				</FlexItem>
 			</Flex>

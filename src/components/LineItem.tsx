@@ -10,6 +10,7 @@ import { useState, useRef, useEffect } from '@wordpress/element';
 import { Flag } from '../../types';
 import DeleteModal from './DeleteModal';
 import SdkModal from './SdkModal';
+import { __ } from '@wordpress/i18n';
 
 interface LineItemProps {
 	flags: Flag[];
@@ -119,12 +120,15 @@ const LineItem = ({
 					<FlexItem style={{ marginLeft: 60 }}>
 						<Button
 							variant="secondary"
-							label="Click to see SDK setting"
+							label={__(
+								'Click to see SDK setting',
+								'mr-feature-flags'
+							)}
 							showTooltip
 							tooltipPosition="top right"
 							onClick={handleSdkModal}
 						>
-							{'</> SDK'}
+							{__('</> SDK', 'mr-feature-flags')}
 						</Button>
 					</FlexItem>
 					<FlexItem style={{ marginBottom: 6, marginLeft: 50 }}>
@@ -132,7 +136,7 @@ const LineItem = ({
 							icon={'trash'}
 							isDestructive
 							variant="tertiary"
-							label="Delete Flag"
+							label={__('Delete Flag', 'mr-feature-flags')}
 							onClick={() => handleDeleteModal(item)}
 						/>
 					</FlexItem>
@@ -141,13 +145,19 @@ const LineItem = ({
 					<>
 						<BaseControl
 							className="flag-name-error"
-							help="Flag name should not contain spaces. Allowed special characters are - and _"
+							help={__(
+								'Flag name should not contain spaces. Allowed special characters are - and _',
+								'mr-feature-flags'
+							)}
 							id={`${item.id}`}
 						>
 							{}
 						</BaseControl>
 						<BaseControl
-							help="Example flag names formats: Registration, AB-testing, Auth0_Login"
+							help={__(
+								'Example flag names formats: Registration, AB-testing, Auth0_Login',
+								'mr-feature-flags'
+							)}
 							id={`${item.id}`}
 						>
 							{}
