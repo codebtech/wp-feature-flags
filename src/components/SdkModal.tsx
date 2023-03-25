@@ -4,7 +4,7 @@ import { useMemo, useState, useEffect } from '@wordpress/element';
 import { useCopyToClipboard } from '@wordpress/compose';
 import { Flag } from '../../types';
 import { __ } from '@wordpress/i18n';
-import TsPanel from './TsPanel';
+import TsSupport from './TsSupport';
 
 interface SdkModalProps {
 	item: Flag;
@@ -74,12 +74,10 @@ domReady(function () {
 				<Button
 					icon={hasPhpCopied ? 'yes-alt' : 'clipboard'}
 					style={{
-						position: 'absolute',
-						right: 40,
-						width: 40,
-						height: 40,
-						top: 142,
 						color: 'darkgray',
+						float: 'right',
+						position: 'relative',
+						right: 40,
 					}}
 					isPressed={false}
 					variant={'tertiary'}
@@ -92,11 +90,10 @@ domReady(function () {
 				<Button
 					icon={hasJsCopied ? 'yes-alt' : 'clipboard'}
 					style={{
-						position: 'absolute',
-						right: 40,
-						width: 40,
-						height: 40,
 						color: 'darkgray',
+						float: 'right',
+						position: 'relative',
+						right: 40,
 					}}
 					isPressed={false}
 					variant={'tertiary'}
@@ -105,7 +102,7 @@ domReady(function () {
 				<Snippet data={jsSnippet} language={'typescript'} />
 			</div>
 			<div className="mr-feature-flags-ts-snipper-container">
-				<TsPanel />
+				<TsSupport flag={item} />
 			</div>
 		</Modal>
 	);
