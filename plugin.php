@@ -19,6 +19,7 @@
 declare( strict_types = 1 );
 
 namespace MR\FeatureFlags;
+
 use MR\FeatureFlags\Api\Flags;
 
 // If this file is called directly, abort.
@@ -52,8 +53,8 @@ add_action(
 
 
 		$feature_flag_meta = get_option( FeatureFlags::$option_name );
-		$flags_list = [];
-		if(is_array($feature_flag_meta)) {
+		$flags_list        = [];
+		if ( is_array( $feature_flag_meta ) ) {
 			$flags_list = $feature_flag_meta;
 		}
 
@@ -108,7 +109,7 @@ function load_settings_scripts(): void {
 
 add_action(
 	'admin_enqueue_scripts',
-	function(string $page): void {
+	function( string $page ): void {
 		$plugin_url        = plugin_dir_url( MR_FEATURE_FLAGS_PLUGIN_PATH );
 		$script_asset_file = include_once plugin_dir_path( MR_FEATURE_FLAGS_PLUGIN_PATH ) . 'build/index.asset.php';
 
@@ -121,8 +122,8 @@ add_action(
 		);
 
 		$feature_flag_meta = get_option( Utils::$option_name );
-		$flags_list = [];
-		if(is_array($feature_flag_meta)) {
+		$flags_list        = [];
+		if ( is_array( $feature_flag_meta ) ) {
 			$flags_list = $feature_flag_meta;
 		}
 
@@ -146,9 +147,9 @@ $mr_feature_flags_register_api->register_flags_endpoints();
 
 
 
-add_filter( 'plugin_action_links_mr-feature-flags/plugin.php', function ( $links )
-	{
-
+add_filter(
+	'plugin_action_links_mr-feature-flags/plugin.php',
+	function ( $links ) { 
 		$url = esc_url(
 			add_query_arg(
 				'page',
