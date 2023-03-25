@@ -52,6 +52,7 @@ class Flags {
 							'permission_callback' => function () {
 								return current_user_can( 'manage_options' );
 							},
+							'validate_callback'   => [ $this, 'validate_flag_input' ],
 						],
 					]
 				);
@@ -98,4 +99,28 @@ class Flags {
 		}
 	}
 
+	/**
+	 * Validates flag input from POST method.
+	 *
+	 * @param \WP_REST_Request $param Request object.
+	 *
+	 * @return bool
+	 */
+	public function validate_flag_input( $param ) {
+		$input_data = $param->get_json_params();
+		$valid_keys = [ 'id', 'name', 'enabled' ];
+
+		if ( ! isset( $input_data ) || ! is_array( $input_data ) || 0 === count( $input_data ) ) {
+			return false;
+		}
+
+		foreach ( $input_data as $flag_key => $flag ) {
+			foreach ( $valid_keys as $key => $value ) {
+				if ( ! array_key_exists( $value, $flag ) ) {
+					return false;
+				}
+			}
+		}
+		return true;
+	}
 }
