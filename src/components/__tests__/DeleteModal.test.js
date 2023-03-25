@@ -17,7 +17,7 @@ describe('DeleteModal component', () => {
 		render(<DeleteModal item={flag} />);
 
 		const modalText = screen.getByText(
-			`Are you sure want to delete flag "${flag.name}"?`
+			`Are you sure want to delete flag "${flag.name}" ?`
 		);
 		expect(modalText).toBeInTheDocument();
 	});
