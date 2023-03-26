@@ -23,3 +23,7 @@ export const updateFlags = async (
 
 	return result;
 };
+
+export const checkIfFlagExists = (flags: Flag[], flagName: string): boolean => {
+	return flags.filter((flag) => flag.name === flagName).length > 0;
+};
