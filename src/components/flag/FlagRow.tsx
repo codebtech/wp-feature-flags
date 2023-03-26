@@ -7,11 +7,11 @@ import {
 	BaseControl,
 } from '@wordpress/components';
 import { useState, useRef, useEffect } from '@wordpress/element';
-import { Flag } from '../../types';
-import DeleteModal from './DeleteModal';
-import SdkModal from './SdkModal';
+import { Flag } from '../../../types';
+import DeleteModal from '../modals/DeleteModal';
+import SdkModal from '../modals/SdkModal';
 import { __ } from '@wordpress/i18n';
-import { checkIfFlagExists } from '../utils';
+import { checkIfFlagExists } from '../../utils';
 
 interface LineItemProps {
 	flags: Flag[];
@@ -20,7 +20,7 @@ interface LineItemProps {
 	setDisableSave: (toggle: boolean) => void;
 }
 
-const LineItem = ({
+const FlagRow = ({
 	flags,
 	setFlags,
 	item,
@@ -200,4 +200,4 @@ const LineItem = ({
 	);
 };
 
-export default LineItem;
+export default FlagRow;

@@ -1,6 +1,6 @@
 import { Modal, Button } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import { Flag } from '../../types';
+import { Flag } from '../../../types';
 interface DeleteModalProps {
 	closeModal: () => void;
 	item: Flag;

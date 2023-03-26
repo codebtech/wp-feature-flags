@@ -1,9 +1,9 @@
 import { useState, useEffect } from '@wordpress/element';
 import { Spinner } from '@wordpress/components';
-import LineItem from './LineItem';
-import { Flag } from '../../types';
+import FlagRow from './FlagRow';
+import { Flag } from '../../../types';
 import SubmitControls from './SubmitControls';
-import { getFlags } from '../utils';
+import { getFlags } from '../../utils';
 import Header from './Header';
 import { __ } from '@wordpress/i18n';
 
@@ -41,7 +41,7 @@ const Layout = (): JSX.Element => {
 					) : (
 						flags?.map((flag: Flag) => {
 							return (
-								<LineItem
+								<FlagRow
 									key={flag.id}
 									item={flag}
 									flags={flags}
