@@ -31,7 +31,10 @@ domReady(function () {
 	}, [item.name]);
 
 	return (
-		<Modal title={`SDK snippets`} onRequestClose={closeSdkModal}>
+		<Modal
+			title={`SDK for feature flag: ${item.name}`}
+			onRequestClose={closeSdkModal}
+		>
 			<div className="mr-feature-flag-php-snippet-container">
 				<h3>{__('PHP Snippet', 'mr-feature-flags')}</h3>
 				<Clipboard
@@ -41,6 +44,7 @@ domReady(function () {
 						float: 'right',
 						position: 'relative',
 						right: 40,
+						top: 24,
 					}}
 				/>
 				<Snippet data={phpSnippet} language={'php'} />
