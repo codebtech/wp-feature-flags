@@ -1,6 +1,6 @@
 import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
-import Clipboard from './Clipboard';
+import Clipboard from '../common/Clipboard';
 
 import Snippet from './Snippet';
 
@@ -20,7 +20,7 @@ export {};`;
 	}, []);
 
 	return (
-		<div className="mr-feature-flags-php-snippet-container">
+		<div className="mr-feature-flags-ts-snippet-container">
 			<h3>{__('TypeScript support', 'mr-feature-flags')}</h3>
 			<p>
 				Create a file named{' '}

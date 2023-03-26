@@ -1,4 +1,4 @@
 import { render } from '@wordpress/element';
-import Layout from './components/Layout';
+import Flags from './components/flag/Flags';
 import './styles/settings.scss';
-render(<Layout />, document.getElementById('mr_feature_flags_settings_screen'));
+render(<Flags />, document.getElementById('mr_feature_flags_settings_screen'));

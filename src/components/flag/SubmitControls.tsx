@@ -1,8 +1,8 @@
 import { Flex, FlexItem, Button } from '@wordpress/components';
-import { Flag } from '../../types';
-import { updateFlags } from '../utils';
+import { Flag } from '../../../types';
+import { updateFlags } from '../../utils';
 import { useState } from '@wordpress/element';
-import Notices from './Snackbar';
+import Notices from '../common/Snackbar';
 import { dispatch } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
