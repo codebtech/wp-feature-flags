@@ -1,5 +1,6 @@
 import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
+import Clipboard from './Clipboard';
 
 import Snippet from './Snippet';
 
@@ -26,6 +27,15 @@ export {};`;
 				<span className="mr-feature-flags-slug">flags.d.ts</span> at the
 				root of the plugin / theme and add below declaration.
 			</p>
+			<Clipboard
+				text={tsSnippet}
+				style={{
+					color: 'darkgray',
+					float: 'right',
+					position: 'relative',
+					right: 40,
+				}}
+			/>
 			<Snippet data={tsSnippet} language={'typescript'} />
 		</div>
 	);
