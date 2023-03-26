@@ -49,8 +49,10 @@ const SubmitControls = ({
 
 		setIsSaving(false);
 
-		dispatch('core/notices').createSuccessNotice('✅ Saved successfully!', {
+		dispatch('core/notices').createSuccessNotice('Saved successfully!', {
 			type: 'snackbar',
+			id: 'mr-feature-flags-snackbar',
+			icon: <>✅</>,
 		});
 	};
 	return (
