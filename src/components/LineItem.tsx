@@ -11,6 +11,7 @@ import { Flag } from '../../types';
 import DeleteModal from './DeleteModal';
 import SdkModal from './SdkModal';
 import { __ } from '@wordpress/i18n';
+import { checkIfFlagExists } from '../utils';
 
 interface LineItemProps {
 	flags: Flag[];
@@ -31,6 +32,8 @@ const LineItem = ({
 
 	const [hasError, setHasError] = useState(false);
 
+	const [flagExist, setFlagExist] = useState(false);
+
 	const inputRef = useRef<HTMLInputElement>(null);
 
 	useEffect(() => {
@@ -45,14 +48,10 @@ const LineItem = ({
 		closeModal();
 	};
 
-	const handleFlagToggle = (flagId: number, flagEnv = 'prod') => {
+	const handleFlagToggle = (flagId: number) => {
 		const updatedFlags = flags.map((flag: Flag) => {
 			if (flag.id === flagId) {
-				if (flagEnv === 'prod') {
-					flag.enabled = !flag.enabled;
-				} else {
-					flag.preProdEnabled = !flag.preProdEnabled;
-				}
+				flag.enabled = !flag.enabled;
 			}
 			return flag;
 		});
@@ -60,12 +59,22 @@ const LineItem = ({
 	};
 
 	const handleFlagEdit = (value: string, flagId: number) => {
+		//Flag alphanumeric validation
 		if (value.match(/^[a-zA-Z0-9\_-]*$/)) {
 			setHasError(false);
 			setDisableSave(false);
 		} else {
 			setHasError(true);
 			setDisableSave(true);
+		}
+
+		//Existing flag check
+		if (checkIfFlagExists(flags, value)) {
+			setFlagExist(true);
+			setDisableSave(true);
+		} else {
+			setFlagExist(false);
+			setDisableSave(false);
 		}
 		const updatedFlags = flags.map((flag: Flag) => {
 			if (flag.id === flagId) {
@@ -142,7 +151,17 @@ const LineItem = ({
 						/>
 					</FlexItem>
 				</Flex>
-				{hasError && (
+				{flagExist && (
+					<BaseControl
+						className="flag-name-error"
+						help={__('Flag name already exists.')}
+						id={`${item.id}`}
+					>
+						{}
+					</BaseControl>
+				)}
+
+				{hasError && !flagExist && (
 					<>
 						<BaseControl
 							className="flag-name-error"
