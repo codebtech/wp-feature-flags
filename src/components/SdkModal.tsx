@@ -1,10 +1,10 @@
-import { Modal, Button } from '@wordpress/components';
+import { Modal } from '@wordpress/components';
 import Snippet from './Snippet';
-import { useMemo, useState, useEffect } from '@wordpress/element';
-import { useCopyToClipboard } from '@wordpress/compose';
+import { useMemo } from '@wordpress/element';
 import { Flag } from '../../types';
 import { __ } from '@wordpress/i18n';
 import TsSupport from './TsSupport';
+import Clipboard from './Clipboard';
 
 interface SdkModalProps {
 	item: Flag;
@@ -12,34 +12,6 @@ interface SdkModalProps {
 }
 
 const SdkModal = ({ item, closeSdkModal }: SdkModalProps): JSX.Element => {
-	const [hasJsCopied, setHasJsCopied] = useState(false);
-	const [hasPhpCopied, setHasPhpCopied] = useState(false);
-
-	useEffect(() => {
-		let jsTimeout: NodeJS.Timeout | null = null;
-		let phpTimeout: NodeJS.Timeout | null = null;
-
-		if (hasJsCopied) {
-			jsTimeout = setTimeout(() => {
-				setHasJsCopied(false);
-			}, 4000);
-		}
-
-		if (hasPhpCopied) {
-			phpTimeout = setTimeout(() => {
-				setHasPhpCopied(false);
-			}, 4000);
-		}
-		return () => {
-			if (jsTimeout) {
-				window.clearTimeout(jsTimeout);
-			}
-			if (phpTimeout) {
-				window.clearTimeout(phpTimeout);
-			}
-		};
-	}, [hasJsCopied, hasPhpCopied]);
-
 	const jsSnippet = useMemo(() => {
 		return `import domReady from '@wordpress/dom-ready';
 domReady(function () {
@@ -58,49 +30,31 @@ domReady(function () {
 }`;
 	}, [item.name]);
 
-	const jsRef = useCopyToClipboard<HTMLButtonElement>(jsSnippet, onJsCopy);
-
-	function onJsCopy() {
-		setHasJsCopied(true);
-	}
-
-	const phpRef = useCopyToClipboard<HTMLButtonElement>(phpSnippet, onPhpCopy);
-
-	function onPhpCopy() {
-		setHasPhpCopied(true);
-	}
-
 	return (
 		<Modal title={`SDK snippets`} onRequestClose={closeSdkModal}>
 			<div className="mr-feature-flag-php-snippet-container">
 				<h3>{__('PHP Snippet', 'mr-feature-flags')}</h3>
-				<Button
-					icon={hasPhpCopied ? 'yes-alt' : 'clipboard'}
+				<Clipboard
+					text={phpSnippet}
 					style={{
 						color: 'darkgray',
 						float: 'right',
 						position: 'relative',
 						right: 40,
 					}}
-					isPressed={false}
-					variant={'tertiary'}
-					ref={phpRef}
 				/>
 				<Snippet data={phpSnippet} language={'php'} />
 			</div>
 			<div className="mr-feature-flag-js-snippet-container">
 				<h3>{__('JavaScript Snippet', 'mr-feature-flags')}</h3>
-				<Button
-					icon={hasJsCopied ? 'yes-alt' : 'clipboard'}
+				<Clipboard
+					text={jsSnippet}
 					style={{
 						color: 'darkgray',
 						float: 'right',
 						position: 'relative',
 						right: 40,
 					}}
-					isPressed={false}
-					variant={'tertiary'}
-					ref={jsRef}
 				/>
 				<Snippet data={jsSnippet} language={'typescript'} />
 			</div>
