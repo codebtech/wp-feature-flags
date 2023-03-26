@@ -43,14 +43,17 @@ const SdkModal = ({ item, closeSdkModal }: SdkModalProps): JSX.Element => {
 	const jsSnippet = useMemo(() => {
 		return `import domReady from '@wordpress/dom-ready';
 domReady(function () {
-	if (window.mrFeatureFlags.isEnabled('${item.name}')) {
+	if (
+		typeof window?.mrFeatureFlags !== 'undefined' &&
+		window.mrFeatureFlags.isEnabled('Menus')
+	) {
 		// js code goes here...
 	}
- });`;
+});`;
 	}, [item.name]);
 
 	const phpSnippet = useMemo(() => {
-		return `if ( MR\\FeatureFlags\\Utils::is_enabled( '${item.name}' ) ) {
+		return `if ( class_exists( 'MR\\FeatureFlags\\Utils' ) && MR\\FeatureFlags\\Utils::is_enabled( '${item.name}' ) ) {
 	// php code goes here...
 }`;
 	}, [item.name]);
@@ -102,7 +105,7 @@ domReady(function () {
 				<Snippet data={jsSnippet} language={'typescript'} />
 			</div>
 			<div className="mr-feature-flags-ts-snipper-container">
-				<TsSupport flag={item} />
+				<TsSupport />
 			</div>
 		</Modal>
 	);
