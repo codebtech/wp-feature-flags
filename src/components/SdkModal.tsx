@@ -4,6 +4,7 @@ import { useMemo, useState, useEffect } from '@wordpress/element';
 import { useCopyToClipboard } from '@wordpress/compose';
 import { Flag } from '../../types';
 import { __ } from '@wordpress/i18n';
+import TsSupport from './TsSupport';
 
 interface SdkModalProps {
 	item: Flag;
@@ -42,14 +43,17 @@ const SdkModal = ({ item, closeSdkModal }: SdkModalProps): JSX.Element => {
 	const jsSnippet = useMemo(() => {
 		return `import domReady from '@wordpress/dom-ready';
 domReady(function () {
-	if (window.mrFeatureFlags.isEnabled('${item.name}')) {
+	if (
+		typeof window?.mrFeatureFlags !== 'undefined' &&
+		window.mrFeatureFlags.isEnabled('Menus')
+	) {
 		// js code goes here...
 	}
- });`;
+});`;
 	}, [item.name]);
 
 	const phpSnippet = useMemo(() => {
-		return `if ( MR\\FeatureFlags\\Utils::is_enabled( '${item.name}' ) ) {
+		return `if ( class_exists( 'MR\\FeatureFlags\\Utils' ) && MR\\FeatureFlags\\Utils::is_enabled( '${item.name}' ) ) {
 	// php code goes here...
 }`;
 	}, [item.name]);
@@ -73,35 +77,35 @@ domReady(function () {
 				<Button
 					icon={hasPhpCopied ? 'yes-alt' : 'clipboard'}
 					style={{
-						position: 'absolute',
-						right: 40,
-						width: 40,
-						height: 40,
-						top: 142,
 						color: 'darkgray',
+						float: 'right',
+						position: 'relative',
+						right: 40,
 					}}
 					isPressed={false}
 					variant={'tertiary'}
 					ref={phpRef}
 				/>
-				<Snippet data={phpSnippet} />
+				<Snippet data={phpSnippet} language={'php'} />
 			</div>
 			<div className="mr-feature-flag-js-snippet-container">
 				<h3>{__('JavaScript Snippet', 'mr-feature-flags')}</h3>
 				<Button
 					icon={hasJsCopied ? 'yes-alt' : 'clipboard'}
 					style={{
-						position: 'absolute',
-						right: 40,
-						width: 40,
-						height: 40,
 						color: 'darkgray',
+						float: 'right',
+						position: 'relative',
+						right: 40,
 					}}
 					isPressed={false}
 					variant={'tertiary'}
 					ref={jsRef}
 				/>
-				<Snippet data={jsSnippet} />
+				<Snippet data={jsSnippet} language={'typescript'} />
+			</div>
+			<div className="mr-feature-flags-ts-snipper-container">
+				<TsSupport />
 			</div>
 		</Modal>
 	);
