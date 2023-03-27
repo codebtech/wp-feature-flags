@@ -25,7 +25,6 @@ domReady(function () {
 					float: 'right',
 					position: 'relative',
 					right: 40,
-					top: 24,
 				}}
 			/>
 			<Snippet data={jsSnippet} language={'typescript'} />

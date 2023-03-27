@@ -5,7 +5,7 @@ import Clipboard from '../common/Clipboard';
 
 export default function ({ flag }: { flag: string }): JSX.Element {
 	const phpSnippet = useMemo(() => {
-		return `if ( class_exists( '\\MR\\FeatureFlags\\Utils' ) && \\MR\\FeatureFlags\\Utils::is_enabled( '${flag}' ) ) {
+		return `if ( class_exists( '\\MR\\FeatureFlags\\Flag' ) && \\MR\\FeatureFlags\\Flag::is_enabled( '${flag}' ) ) {
 	// php code goes here...
 }`;
 	}, [flag]);
