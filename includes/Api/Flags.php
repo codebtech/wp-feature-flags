@@ -110,8 +110,12 @@ class Flags {
 		$input_data = $param->get_json_params();
 		$valid_keys = [ 'id', 'name', 'enabled' ];
 
-		if ( ! isset( $input_data ) || ! is_array( $input_data ) || 0 === count( $input_data ) ) {
+		if ( ! isset( $input_data ) || ! is_array( $input_data ) ) {
 			return false;
+		}
+
+		if ( 0 === count( $input_data ) ) {
+			return true;
 		}
 
 		foreach ( $input_data as $flag_key => $flag ) {
