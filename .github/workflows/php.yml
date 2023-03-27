@@ -31,7 +31,7 @@ jobs:
           restore-keys: ${{ runner.os }}-composer-
 
       - name: Install Composer dependencies
-        run: composer install
+        run: composer update
 
       - name: PHP Lint
         run: composer run lint:php
