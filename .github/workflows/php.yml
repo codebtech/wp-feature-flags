@@ -31,10 +31,10 @@ jobs:
           restore-keys: ${{ runner.os }}-composer-
 
       - name: Install Composer dependencies
-        run: composer install
+        run: composer update
 
       - name: PHP Lint
-        run: vendor/bin/phpcs
+        run: composer run lint:php
 
       - name: PHP test
-        run: vendor/bin/phpunit --testdox
+        run: composer run test:php

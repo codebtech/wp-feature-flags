@@ -9,7 +9,7 @@ use \Brain\Monkey\Functions;
 
 
 
-class UtilsTest extends \PHPUnit\Framework\TestCase
+class FlagTest extends \PHPUnit\Framework\TestCase
 {
 	public function setUp() : void {
 		parent::setUp();
@@ -27,7 +27,7 @@ class UtilsTest extends \PHPUnit\Framework\TestCase
 
 		\Brain\Monkey\Functions\when('get_option')->justReturn($mock_option_value);
 
-		$result = Utils::is_enabled('Test');
+		$result = Flag::is_enabled('Test');
 		$this->assertTrue($result);
 	}
 
@@ -36,7 +36,7 @@ class UtilsTest extends \PHPUnit\Framework\TestCase
 
 		\Brain\Monkey\Functions\when('get_option')->justReturn($mock_option_value);
 
-		$result = Utils::is_enabled('Test');
+		$result = Flag::is_enabled('Test');
 		$this->assertFalse($result);
 	}
 
@@ -45,7 +45,7 @@ class UtilsTest extends \PHPUnit\Framework\TestCase
 
 		\Brain\Monkey\Functions\when('get_option')->justReturn($mock_option_value);
 
-		$result = Utils::is_enabled('Test');
+		$result = Flag::is_enabled('Test');
 		$this->assertFalse($result);
 	}
 
@@ -54,7 +54,7 @@ class UtilsTest extends \PHPUnit\Framework\TestCase
 
 		\Brain\Monkey\Functions\when('get_option')->justReturn($mock_option_value);
 
-		$result = Utils::is_enabled('Test1');
+		$result = Flag::is_enabled('Test1');
 		$this->assertFalse($result);
 	}
 

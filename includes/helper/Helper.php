@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace MR\FeatureFlags;
+namespace MR\FeatureFlags\Helper;
 
 /**
  * Class FeatureFlags
@@ -19,12 +19,12 @@ namespace MR\FeatureFlags;
 class Helper {
 
 	/**
-	 * Flag search helper.
+	 * Flag search helper, returns true if flag is found and enabled.
 	 *
 	 * @param array  $flags flags array.
 	 * @param string $field field to search.
 	 * @param string $flag name of the flag.
-	 * @return mixed
+	 * @return boolean
 	 * @since 1.0.0
 	 */
 	public static function search_flag( $flags, $field, $flag ) {
