@@ -12,8 +12,6 @@ Contributor link: https://github.com/m0hanraj
 
 Feature flags allows developers to configure features behind the feature flags on both Server(PHP) and Client(JS/TS) side.
 
-
-
 ## Frequently Asked Questions
 
 ### Does this plugin work with PHP 8?
