@@ -7,8 +7,7 @@
     "build": "wp-scripts build",
     "lint:js": "wp-scripts lint-js",
     "test:js": "wp-scripts test-unit-js",
-    "test:watch": "wp-scripts test-unit-js --watch",
-    "prepare": "husky install"
+    "test:watch": "wp-scripts test-unit-js --watch"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",
@@ -22,8 +21,7 @@
     "eslint-import-resolver-alias": "^1.1.2",
     "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-import": "^2.27.5",
-    "prettier": "^2.4.1",
-    "husky": "^8.0.0"
+    "prettier": "^2.4.1"
   },
   "keywords": [],
   "author": "Mohan Raj <https://mohanraj.dev>",
