@@ -11,7 +11,7 @@ declare(strict_types=1);
 namespace MR\FeatureFlags;
 
 /**
- * Class Utils
+ * Utils class for feature flags
  *
  * @package mr-feature-flags
  * @since 1.0.0
