@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace MR\FeatureFlags;
+namespace MR\FeatureFlags\Helper;
 
 /**
  * Class FeatureFlags

@@ -10,13 +10,15 @@ declare(strict_types=1);
 
 namespace MR\FeatureFlags;
 
+use MR\FeatureFlags\Helper\Helper;
+
 /**
  * Utils class for feature flags
  *
  * @package mr-feature-flags
  * @since 1.0.0
  */
-class Utils {
+class Flag {
 
 	/**
 	 * Name in options table.

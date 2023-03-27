@@ -7,7 +7,8 @@
     "build": "wp-scripts build",
     "lint:js": "wp-scripts lint-js",
     "test": "wp-scripts test-unit-js",
-    "test:watch": "wp-scripts test-unit-js --watch"
+    "test:watch": "wp-scripts test-unit-js --watch",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",
@@ -32,6 +33,7 @@
     "@wordpress/data": "^8.6.0",
     "@wordpress/i18n": "^4.29.0",
     "@wordpress/notices": "^3.29.0",
+    "husky": "^8.0.3",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-syntax-highlighter": "^15.5.0",

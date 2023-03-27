@@ -32,7 +32,7 @@ if ( ! defined( 'WPINC' ) ) {
  */
 define( 'MR_FEATURE_FLAGS_PLUGIN_PATH', __FILE__ );
 
-if ( ! file_exists( Utils::class ) ) {
+if ( ! file_exists( Flag::class ) ) {
 	include_once __DIR__ . '/vendor/autoload.php';
 }
 
@@ -103,7 +103,7 @@ function mr_feature_flags_scripts_enqueue(): void {
 	);
 
 
-	$feature_flag_meta = get_option( Utils::$option_name );
+	$feature_flag_meta = get_option( Flag::$option_name );
 	$flags_list        = [];
 
 	if ( is_array( $feature_flag_meta ) ) {
@@ -157,7 +157,7 @@ register_deactivation_hook( __FILE__, __NAMESPACE__ . '\mr_feature_flags_uninsta
  * Uninstall method for the plugin.
  */
 function mr_feature_flags_uninstall() {
-	delete_option( Utils::$option_name );
+	delete_option( Flag::$option_name );
 }
 
 

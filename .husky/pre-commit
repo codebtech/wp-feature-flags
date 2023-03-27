@@ -1,0 +1,4 @@
+yarn lint:js
+yarn test
+composer run lint:php
+composer run test:php

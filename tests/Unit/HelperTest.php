@@ -1,6 +1,6 @@
 <?php
 
-namespace MR\FeatureFlags;
+namespace MR\FeatureFlags\Helper;
 
 use \PHPUnit\Framework\TestCase;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
