@@ -24,8 +24,10 @@ export {};`;
 			<h3>{__('TypeScript support', 'mr-feature-flags')}</h3>
 			<p>
 				Create a file named{' '}
-				<span className="mr-feature-flags-slug">flags.d.ts</span> at the
-				root of the plugin / theme and add below declaration.
+				<span className="mr-feature-flags-filename">flags.d.ts</span> at
+				the entrypoint of TS code of plugin / theme ( usually{' '}
+				<span className="mr-feature-flags-slug">src</span> directory )
+				and add below declaration.
 			</p>
 			<Clipboard
 				text={tsSnippet}
