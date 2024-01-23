@@ -6,7 +6,7 @@
  * @since 1.0.0
  */
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace MR\FeatureFlags;
 
@@ -44,5 +44,4 @@ class Flag {
 
 		return false;
 	}
-
 }

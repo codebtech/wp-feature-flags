@@ -22,7 +22,7 @@ const Layout = (): JSX.Element => {
 			setIsLoading(false);
 		};
 		logFlags();
-	}, [getFlags, setFlags, setIsLoading]);
+	}, [setFlags, setIsLoading]);
 
 	const [disableSave, setDisableSave] = useState(false);
 

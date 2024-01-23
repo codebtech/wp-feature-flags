@@ -9,6 +9,10 @@
 .feature-flag-snackbar {
 	bottom: 3.5rem;
 	position: fixed;
+	.components-snackbar__icon {
+		left: 18px;
+		top: auto;
+	}
 }
 
 .feature-flag-loader {

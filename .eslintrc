@@ -14,7 +14,10 @@
 	},
 	"overrides": [
 		{
-			"files": ["*.jsx"],
+			"files": ["*.jsx", "*.js"],
+			"env": {
+				"jest": true
+			},
 			"rules": {
 				"@typescript-eslint/explicit-module-boundary-types": ["off"]
 			}

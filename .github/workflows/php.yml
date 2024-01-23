@@ -30,11 +30,14 @@ jobs:
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
           restore-keys: ${{ runner.os }}-composer-
 
+      - name: Validate Composer
+        run: composer validate --strict
+
       - name: Install Composer dependencies
         run: composer update
 
       - name: PHP Lint
-        run: composer run lint:php
+        run: composer run lint
 
       - name: PHP test
-        run: composer run test:php
+        run: composer run test

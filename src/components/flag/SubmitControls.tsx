@@ -49,6 +49,7 @@ const SubmitControls = ({
 
 		setIsSaving(false);
 
+		//@ts-ignore
 		dispatch('core/notices').createSuccessNotice('Saved successfully!', {
 			type: 'snackbar',
 			id: 'mr-feature-flags-snackbar',

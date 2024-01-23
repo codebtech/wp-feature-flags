@@ -6,7 +6,7 @@
  * @since 1.0.0
  */
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace MR\FeatureFlags;
 
@@ -53,4 +53,3 @@ class Settings {
 		echo '<div id="mr_feature_flags_settings_screen"></div>';
 	}
 }
-
