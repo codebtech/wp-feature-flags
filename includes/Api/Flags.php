@@ -6,9 +6,11 @@
  * @since 1.0.0
  */
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace MR\FeatureFlags\Api;
+
+use WP_REST_Server;
 
 /**
  * Class Settings
@@ -40,14 +42,14 @@ class Flags {
 					'flags',
 					[
 						[
-							'methods'             => \WP_REST_SERVER::READABLE,
+							'methods'             => WP_REST_Server::READABLE,
 							'callback'            => [ $this, 'get_all_flags' ],
 							'permission_callback' => function () {
 								return current_user_can( 'manage_options' );
 							},
 						],
 						[
-							'methods'             => \WP_REST_SERVER::EDITABLE,
+							'methods'             => WP_REST_Server::EDITABLE,
 							'callback'            => [ $this, 'post_flags' ],
 							'permission_callback' => function () {
 								return current_user_can( 'manage_options' );

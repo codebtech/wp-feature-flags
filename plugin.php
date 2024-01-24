@@ -39,7 +39,7 @@ if ( ! file_exists( Flag::class ) ) {
 // Enqueure scripts, styles in settings page.
 add_action(
 	'admin_enqueue_scripts',
-	function( string $page ): void {
+	function ( string $page ): void {
 		if ( 'toplevel_page_mr-feature-flags' === $page ) {
 			mr_feature_flags_load_settings_scripts();
 		}
@@ -72,7 +72,6 @@ function mr_feature_flags_load_settings_scripts(): void {
 		[],
 		$settings_asset_file['version']
 	);
-
 }
 
 // Enqueue scripts and styles for front end.
@@ -117,7 +116,6 @@ function mr_feature_flags_scripts_enqueue(): void {
 			'flags' => $flags_list,
 		]
 	);
-
 }
 
 // Registers feature flags admin setting page.
@@ -159,5 +157,3 @@ register_deactivation_hook( __FILE__, __NAMESPACE__ . '\mr_feature_flags_uninsta
 function mr_feature_flags_uninstall() {
 	delete_option( Flag::$option_name );
 }
-
-

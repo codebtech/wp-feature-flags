@@ -1,11 +1,7 @@
 <?php
 
-namespace MR\FeatureFlags\Api;
-use \PHPUnit\Framework\TestCase;
-use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
+use MR\FeatureFlags\Api\Flags;
 use \Brain\Monkey;
-use \Brain\Monkey\Functions;
-
 
 class FlagsTest extends \PHPUnit\Framework\TestCase
 {

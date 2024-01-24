@@ -6,11 +6,9 @@
  * @since 1.0.0
  */
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace MR\FeatureFlags;
-
-use MR\FeatureFlags\Helper\Helper;
 
 /**
  * Utils class for feature flags
@@ -44,5 +42,4 @@ class Flag {
 
 		return false;
 	}
-
 }

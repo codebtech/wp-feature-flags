@@ -6,9 +6,9 @@
  * @since 1.0.0
  */
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
-namespace MR\FeatureFlags\Helper;
+namespace MR\FeatureFlags;
 
 /**
  * Class FeatureFlags

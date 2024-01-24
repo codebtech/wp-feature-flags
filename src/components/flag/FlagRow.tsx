@@ -124,6 +124,7 @@ const FlagRow = ({
 						<ToggleControl
 							checked={item.enabled}
 							onChange={() => handleFlagToggle(item.id)}
+							label="Toggle flag"
 						/>
 					</FlexItem>
 
@@ -157,7 +158,7 @@ const FlagRow = ({
 						help={__('Flag name already exists.')}
 						id={`${item.id}`}
 					>
-						{}
+						<></>
 					</BaseControl>
 				)}
 
@@ -171,7 +172,7 @@ const FlagRow = ({
 							)}
 							id={`${item.id}`}
 						>
-							{}
+							<></>
 						</BaseControl>
 						<BaseControl
 							help={__(
@@ -180,7 +181,7 @@ const FlagRow = ({
 							)}
 							id={`${item.id}`}
 						>
-							{}
+							<></>
 						</BaseControl>
 					</>
 				)}
