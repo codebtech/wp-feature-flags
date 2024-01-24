@@ -1,6 +1,6 @@
 <?php
 
-use MR\FeatureFlags\Helper\Helper;
+use MR\FeatureFlags\Helper;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use Brain\Monkey;
 
