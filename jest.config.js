@@ -3,5 +3,5 @@ module.exports = {
 	moduleNameMapper: {
 		'@wordpress/(.*)$': '<rootDir>/node_modules/@wordpress/$1',
 	},
-	testEnvironment: "jsdom"
+	testEnvironment: 'jsdom'
 };
