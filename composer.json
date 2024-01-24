@@ -10,7 +10,7 @@
         },
     "autoload": {
         "psr-4": {
-            "MR\\FeatureFlags\\": ["includes/", "helper/"]
+            "MR\\FeatureFlags\\": ["includes/"]
         }
     },
     "autoload-dev": {
