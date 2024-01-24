@@ -23,13 +23,13 @@ jobs:
       - name: Setup PHP
         uses: php-actions/composer@v6
         with:
-          php-version: ${{ matrix.php-versions }}
+          php_version: ${{ matrix.php-versions }}
 
       - name: Validate Composer
         run: composer validate --strict
 
-      - name: Install Composer dependencies
-        run: composer install
+      # - name: Install Composer dependencies
+      #   run: composer install
 
       - name: PHP Lint
         run: composer run lint
