@@ -1,12 +1,8 @@
 <?php
 
-namespace MR\FeatureFlags\Helper;
-
-use \PHPUnit\Framework\TestCase;
+use MR\FeatureFlags\Helper\Helper;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use Brain\Monkey;
-
-
 
 class HelperTest extends \PHPUnit\Framework\TestCase
 {
