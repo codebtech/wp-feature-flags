@@ -1,0 +1,36 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Method MR\\\\FeatureFlags\\\\Api\\\\Flags\\:\\:post_flags\\(\\) has parameter \\$request with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: includes/Api/Flags.php
+
+		-
+			message: "#^Method MR\\\\FeatureFlags\\\\Api\\\\Flags\\:\\:validate_flag_input\\(\\) has parameter \\$param with generic class WP_REST_Request but does not specify its types\\: T$#"
+			count: 1
+			path: includes/Api/Flags.php
+
+		-
+			message: "#^Parameter \\#1 \\$flags of static method MR\\\\FeatureFlags\\\\Helper\\:\\:search_flag\\(\\) expects array, mixed given\\.$#"
+			count: 1
+			path: includes/Flag.php
+
+		-
+			message: "#^Call to function is_array\\(\\) with array will always evaluate to true\\.$#"
+			count: 1
+			path: includes/Helper.php
+
+		-
+			message: "#^Method MR\\\\FeatureFlags\\\\Helper\\:\\:search_flag\\(\\) has parameter \\$flags with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: includes/Helper.php
+
+		-
+			message: "#^Method MR\\\\FeatureFlags\\\\Settings\\:\\:render_page\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: includes/Settings.php
+
+		-
+			message: "#^Function MR\\\\FeatureFlags\\\\mr_feature_flags_uninstall\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: plugin.php

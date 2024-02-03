@@ -10,7 +10,9 @@ declare(strict_types = 1);
 
 namespace MR\FeatureFlags\Api;
 
+use WP_Error;
 use WP_REST_Server;
+use WP_REST_Request;
 
 /**
  * Class Settings
@@ -68,11 +70,7 @@ class Flags {
 	 * @return mixed List of flags.
 	 */
 	public function get_all_flags() {
-		$flags = get_option( self::$option_name );
-
-		if ( empty( $flags ) ) {
-			return rest_ensure_response( [] );
-		}
+		$flags = get_option( self::$option_name, [] );
 
 		return rest_ensure_response( $flags );
 	}
@@ -80,14 +78,15 @@ class Flags {
 	/**
 	 * Insert / Update flags in options table.
 	 *
-	 * @param WP_Request $request API request.
-	 *
+	 * @param WP_REST_Request $request API request.
 	 * @return mixed List of flags.
+	 * 
+	 * @phpstan-param WP_REST_Request<array{flags?: array}> $request
 	 */
-	public function post_flags( $request ) {
+	public function post_flags( WP_REST_Request $request ) {
 		$flags = $request->get_json_params();
 
-		if ( is_array( $flags ) ) {
+		if ( count( $flags ) > 0 ) {
 			$result = update_option( self::$option_name, $flags );
 			return rest_ensure_response(
 				array(
@@ -95,26 +94,21 @@ class Flags {
 					'success' => true,
 				),
 			);
-
-		} else {
-			return new \WP_Error( 'invalid_input', 'Cannot update flags', array( 'status' => 400 ) );
 		}
+
+		return new WP_Error( 'invalid_input', 'Cannot update flags', array( 'status' => 400 ) );
 	}
 
 	/**
 	 * Validates flag input from POST method.
 	 *
-	 * @param \WP_REST_Request $param Request object.
+	 * @param WP_REST_Request $param Request object.
 	 *
 	 * @return bool
 	 */
 	public function validate_flag_input( $param ) {
 		$input_data = $param->get_json_params();
 		$valid_keys = [ 'id', 'name', 'enabled' ];
-
-		if ( ! isset( $input_data ) || ! is_array( $input_data ) ) {
-			return false;
-		}
 
 		if ( 0 === count( $input_data ) ) {
 			return true;
