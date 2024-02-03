@@ -27,9 +27,9 @@ class Helper {
 	 * @return boolean
 	 * @since 1.0.0
 	 */
-	public static function search_flag( $flags, $field, $flag ) {
+	public function search_flag( $flags, $field, $flag ) {
 		if ( is_array( $flags ) ) {
-			foreach ( $flags as $key => $value ) {
+			foreach ( $flags as $value ) {
 				if ( $value[ $field ] === $flag && true === $value['enabled'] ) {
 					return true;
 				}

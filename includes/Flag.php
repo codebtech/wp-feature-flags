@@ -36,7 +36,8 @@ class Flag {
 	public static function is_enabled( string $flag ): bool {
 		$flags = get_option( self::$option_name );
 
-		if ( Helper::search_flag( $flags, 'name', $flag ) ) {
+		$helper = new Helper();
+		if ( $helper->search_flag( $flags, 'name', $flag ) ) {
 			return true;
 		}
 

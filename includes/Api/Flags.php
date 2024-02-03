@@ -87,7 +87,7 @@ class Flags {
 		$flags = $request->get_json_params();
 
 		if ( count( $flags ) > 0 ) {
-			$result = update_option( self::$option_name, $flags );
+			update_option( self::$option_name, $flags );
 			return rest_ensure_response(
 				array(
 					'status'  => 200,
@@ -114,8 +114,8 @@ class Flags {
 			return true;
 		}
 
-		foreach ( $input_data as $flag_key => $flag ) {
-			foreach ( $valid_keys as $key => $value ) {
+		foreach ( $input_data as $flag ) {
+			foreach ( $valid_keys as $value ) {
 				if ( ! array_key_exists( $value, $flag ) ) {
 					return false;
 				}
