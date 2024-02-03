@@ -6,7 +6,8 @@
     "require-dev": {
         "phpunit/phpunit": "^9.4",
         "brain/monkey": "^2.6",
-        "newsuk/nuk-wp-phpcs-config": "^0.1.0"
+        "newsuk/nuk-wp-phpcs-config": "^0.1.0",
+        "newsuk/nuk-wp-phpstan-config": "^0.1.0"
         },
     "autoload": {
         "psr-4": {
@@ -20,12 +21,15 @@
     },
 	"config": {
         "allow-plugins": {
-            "dealerdirect/phpcodesniffer-composer-installer": true
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "phpstan/extension-installer": true
         }
     },
     "scripts": {
         "lint": "phpcs .",
         "lint:fix": "phpcbf .",
-        "test": "phpunit --dont-report-useless-tests --configuration ./phpunit.xml --testdox"
+        "test": "phpunit --dont-report-useless-tests --configuration ./phpunit.xml --testdox",
+        "phpstan": "phpstan analyse --memory-limit=2048M",
+        "phpstan-baseline": "phpstan analyse -b --allow-empty-baseline --memory-limit=2048M"
     }
 }
