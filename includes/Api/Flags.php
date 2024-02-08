@@ -71,7 +71,6 @@ class Flags {
 	 */
 	public function get_all_flags() {
 		$flags = get_option( self::$option_name, [] );
-
 		return rest_ensure_response( $flags );
 	}
 
@@ -102,12 +101,12 @@ class Flags {
 	/**
 	 * Validates flag input from POST method.
 	 *
-	 * @param WP_REST_Request $param Request object.
+	 * @param WP_REST_Request $request Request object.
 	 *
 	 * @return bool
 	 */
-	public function validate_flag_input( $param ) {
-		$input_data = $param->get_json_params();
+	public function validate_flag_input( $request ) {
+		$input_data = $request->get_json_params();
 		$valid_keys = [ 'id', 'name', 'enabled' ];
 
 		if ( 0 === count( $input_data ) ) {

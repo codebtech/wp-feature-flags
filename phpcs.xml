@@ -8,4 +8,5 @@
 			</property>
 		</properties>
 	</rule>
+	<exclude-pattern type="relative">/vendor</exclude-pattern>
 </ruleset>
