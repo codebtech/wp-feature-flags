@@ -26,7 +26,7 @@ RUN set -ex; \
     \
     wp --allow-root --version
 
-ENV WP_TESTS_DIR /usr/src/vendor/wordpress/wordpress/tests
+ENV WP_TESTS_DIR /usr/src/vendor/wordpress/wordpress/tests/phpunit
 ENV WP_TESTS_CONFIG_FILE_PATH /usr/src/tests/functional
 
 VOLUME /usr/src
