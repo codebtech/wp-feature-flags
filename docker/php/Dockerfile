@@ -1,9 +1,12 @@
 FROM php:8.3
 
 # Container + PHP Setup
-RUN pecl install xdebug
-RUN docker-php-ext-install mysqli
-RUN docker-php-ext-enable xdebug
+ARG XDEBUG_INI="/usr/local/etc/php/conf.d/xdebug.ini"
+# Install, enable and configure xdebug
+RUN pecl install xdebug \
+    && docker-php-ext-enable xdebug \
+    && echo "[xdebug]" > $XDEBUG_INI \
+    && echo "xdebug.mode = coverage" >> $XDEBUG_INI
 
 # Install Composer
 RUN curl -s https://getcomposer.org/installer | php && \

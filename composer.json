@@ -39,7 +39,7 @@
 	"scripts": {
 		"lint": "phpcs .",
 		"lint:fix": "phpcbf .",
-		"test:unit": "phpunit --dont-report-useless-tests --configuration ./phpunit.xml --testsuite unit --testdox",
+		"test:unit": "phpunit --dont-report-useless-tests --configuration ./phpunit.xml --testsuite unit --testdox --coverage-text",
 		"test:integration": "phpunit --dont-report-useless-tests --configuration ./phpunit-integration.xml --testsuite integration --testdox",
 		"test:multisite": "phpunit --dont-report-useless-tests --configuration ./phpunit-integration-multisite.xml --testsuite integration --testdox",
 		"phpstan": "phpstan analyse --memory-limit=2048M",
