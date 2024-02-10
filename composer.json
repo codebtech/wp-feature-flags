@@ -6,7 +6,7 @@
 	"repositories": [
 		{
 			"type": "vcs",
-			"url": "ssh://git@github.com/WordPress/wordpress-develop.git"
+			"url": "https://git@github.com/WordPress/wordpress-develop"
 		}
 	],
 	"require-dev": {

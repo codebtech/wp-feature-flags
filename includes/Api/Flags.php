@@ -89,10 +89,10 @@ class Flags {
 	 * @phpstan-param WP_REST_Request<array{flags?: array}> $request
 	 */
 	public function post_flags( WP_REST_Request $request ) {
-		$flags = $request->get_json_params();
+		$input_data = $request->get_json_params();
 
-		if ( count( $flags ) > 0 ) {
-			update_option( self::$option_name, $flags );
+		if ( is_array( $input_data['flags'] ) ) {
+			update_option( self::$option_name, $input_data['flags'] );
 			return rest_ensure_response(
 				array(
 					'status'  => 200,
@@ -113,13 +113,17 @@ class Flags {
 	 */
 	public function validate_flag_input( $request ) {
 		$input_data = $request->get_json_params();
+
+		if ( ! isset( $input_data['flags'] ) || gettype( $input_data['flags'] ) !== 'array' ) {
+			return false;
+		}
 		$valid_keys = [ 'id', 'name', 'enabled' ];
 
-		if ( 0 === count( $input_data ) ) {
+		if ( 0 === count( $input_data['flags'] ) ) {
 			return true;
 		}
 
-		foreach ( $input_data as $flag ) {
+		foreach ( $input_data['flags'] as $flag ) {
 			foreach ( $valid_keys as $value ) {
 				if ( ! array_key_exists( $value, $flag ) ) {
 					return false;

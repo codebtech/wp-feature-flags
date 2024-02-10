@@ -34,7 +34,8 @@ class FlagsApiTest extends WP_Test_REST_Controller_Testcase {
 	}
 
 	public static function wpTearDownAfterClass() {
-		self::delete_user( self::$editor );
+		wp_delete_user( self::$editor );
+		delete_option( Flags::$option_name );
 	}
 
 	public function set_up() {
@@ -84,10 +85,61 @@ class FlagsApiTest extends WP_Test_REST_Controller_Testcase {
 		$this->assertSame($flags, $response->get_data());
 	}
 
-	/**
-	 * @doesNotPerformAssertions
-	 */
-	public function test_create_item() {}
+	public function test_create_item() {
+		wp_set_current_user( self::$admin );
+		$flags = [['id'=>1, 'name'=>'test', 'enabled'=>true], ['id'=>2, 'name'=>'test2', 'enabled'=>false]];
+
+		$request  = new WP_REST_Request( 'POST', self::$api_endpoint );
+		$request->add_header( 'Content-Type', 'application/json' );
+		$request->set_body( wp_json_encode( ['flags' => $flags] ) );
+		$response = rest_get_server()->dispatch( $request );
+		
+		$this->assertSame( 200, $response->get_status() );
+		$this->assertTrue( $response->get_data()['success'] );
+
+		$options = get_option(Flags::$option_name);
+		$this->assertSame($options, $flags);
+	}
+
+	public function test_create_item_with_empty_array() {
+		wp_set_current_user( self::$admin );
+		$flags = [];
+
+		$request  = new WP_REST_Request( 'POST', self::$api_endpoint );
+		$request->add_header( 'Content-Type', 'application/json' );
+		$request->set_body( wp_json_encode( ['flags' => $flags] ) );
+		$response = rest_get_server()->dispatch( $request );
+		
+		$this->assertSame( 200, $response->get_status() );
+		$this->assertTrue( $response->get_data()['success'] );
+
+		$options = get_option(Flags::$option_name);
+		$this->assertSame($options, $flags);
+	}
+
+	public function test_create_item_with_invalid_input_array() {
+		wp_set_current_user( self::$admin );
+		$flags = [['id'=>1, 'name'=>'test', 'enabled'=>true]];
+
+		$request  = new WP_REST_Request( 'POST', self::$api_endpoint );
+		$request->add_header( 'Content-Type', 'application/json' );
+		$request->set_body( wp_json_encode( ['invalid' => $flags] ) );
+		$response = rest_get_server()->dispatch( $request );
+		
+		$this->assertErrorResponse( 'rest_invalid_params', $response, 400 );
+
+	}
+
+	public function test_create_item_without_input() {
+		wp_set_current_user( self::$admin );
+
+		$request  = new WP_REST_Request( 'POST', self::$api_endpoint );
+		$request->add_header( 'Content-Type', 'application/json' );
+		$response = rest_get_server()->dispatch( $request );
+		
+		$this->assertErrorResponse( 'rest_invalid_params', $response, 400 );
+
+	}
 
 	/**
 	 * @doesNotPerformAssertions
