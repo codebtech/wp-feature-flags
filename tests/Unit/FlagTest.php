@@ -5,13 +5,6 @@ use Yoast\WPTestUtils\BrainMonkey\TestCase;
 
 class FlagTest extends TestCase
 {
-	protected function set_up() {
-		parent::set_up();
-	}
-
-	protected function tear_down() {
-		parent::tear_down();
-	}
 
 	public function test_is_enabled_method_should_return_true_if_flag_name_present_and_enabled() {
 		$mock_option_value = [['id'=>1, 'name'=>'Test','enabled'=>true]];

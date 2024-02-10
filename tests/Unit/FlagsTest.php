@@ -6,14 +6,6 @@ use Yoast\WPTestUtils\BrainMonkey\TestCase;
 class FlagsTest extends TestCase
 {
 
-	protected function set_up() {
-		parent::set_up();
-	}
-
-	protected function tear_down() {
-		parent::tear_down();
-	}
-
 	public function test_get_all_flags_method_should_return_all_flags_from_options_table() {
 		$mock_option_value = [['id'=>1, 'name'=>'Test','enabled'=>true]];
 

@@ -4,13 +4,6 @@ use MR\FeatureFlags\Helper;
 use Yoast\WPTestUtils\BrainMonkey\TestCase;
 class HelperTest extends TestCase
 {
-	protected function set_up() {
-		parent::set_up();
-	}
-
-	protected function tear_down() {
-		parent::tear_down();
-	}
 
 	public function test_search_flag_method_should_return_true_if_flag_name_present_and_enabled() {
 		$helper = new Helper();
