@@ -6,3 +6,5 @@ parameters:
     paths:
         - plugin.php
         - includes/
+    excludePaths:
+        - tests/*

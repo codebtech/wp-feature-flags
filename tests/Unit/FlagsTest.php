@@ -1,21 +1,18 @@
 <?php
 
 use MR\FeatureFlags\Api\Flags;
-use \Brain\Monkey;
+use Yoast\WPTestUtils\BrainMonkey\TestCase;
 
-class FlagsTest extends \PHPUnit\Framework\TestCase
+class FlagsTest extends TestCase
 {
 
-    public function setUp() : void {
-		parent::setUp();
-		Monkey\setUp();
+	protected function set_up() {
+		parent::set_up();
 	}
 
-	protected function tearDown():void
-    {
-        Monkey\tearDown();
-        parent::tearDown();
-    }
+	protected function tear_down() {
+		parent::tear_down();
+	}
 
 	public function test_get_all_flags_method_should_return_all_flags_from_options_table() {
 		$mock_option_value = [['id'=>1, 'name'=>'Test','enabled'=>true]];
@@ -29,12 +26,8 @@ class FlagsTest extends \PHPUnit\Framework\TestCase
 	}
 
 	public function test_get_all_flags_method_should_return_empty_array_if_value_is_not_set() {
-		$this->markTestIncomplete(
-			'This test has not been implemented yet.'
-		  );
-		$mock_option_value = '';
-
-		\Brain\Monkey\Functions\when('get_option')->justReturn($mock_option_value);
+		
+		\Brain\Monkey\Functions\when('get_option')->justReturn([]);
 		\Brain\Monkey\Functions\when('rest_ensure_response')->returnArg();
 
 		$flags = new Flags();
@@ -54,19 +47,18 @@ class FlagsTest extends \PHPUnit\Framework\TestCase
 	}
 
 	public function test_post_flags_methods_should_return_success_if_input_is_array() {
-
-        $this->markTestIncomplete(
+		$this->markTestIncomplete(
 			'This test has not been implemented yet.'
 		  );
 		$request_mock = \Mockery::mock('WP_Request');
-        $request_mock->shouldReceive('get_json_params')->andReturn(['param1' => 'value1']);
+		$request_mock->shouldReceive('get_json_params')->andReturn(['param1' => 'value1']);
 
 		\Brain\Monkey\Functions\when('update_option')->justReturn(true);
 		\Brain\Monkey\Functions\when('rest_ensure_response')->returnArg();
 
-        global $wp;
-        $wp = new \stdClass();
-        $wp->request = $request_mock;
+		global $wp;
+		$wp = new \stdClass();
+		$wp->request = $request_mock;
 
 		$flags = new Flags();
 		$result = $flags->post_flags($request_mock);

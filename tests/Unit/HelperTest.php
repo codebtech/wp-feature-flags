@@ -1,19 +1,16 @@
 <?php
 
 use MR\FeatureFlags\Helper;
-use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
-use Brain\Monkey;
-
-class HelperTest extends \PHPUnit\Framework\TestCase
+use Yoast\WPTestUtils\BrainMonkey\TestCase;
+class HelperTest extends TestCase
 {
-    // Adds Mockery expectations to the PHPUnit assertions count.
-    use MockeryPHPUnitIntegration;
+	protected function set_up() {
+		parent::set_up();
+	}
 
-    protected function tearDown():void
-    {
-        Monkey\tearDown();
-        parent::tearDown();
-    }
+	protected function tear_down() {
+		parent::tear_down();
+	}
 
 	public function test_search_flag_method_should_return_true_if_flag_name_present_and_enabled() {
 		$helper = new Helper();

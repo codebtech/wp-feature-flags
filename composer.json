@@ -16,7 +16,7 @@
 		"newsuk/nuk-wp-phpcs-config": "^0.1.0",
 		"newsuk/nuk-wp-phpstan-config": "^0.1.0",
 		"newsuk/nuk-wp-phpmd-config": "^0.1.0",
-		"yoast/phpunit-polyfills": "^2.0"
+		"yoast/wp-test-utils": "^1.2"
 	},
 	"autoload": {
 		"psr-4": {
