@@ -32,35 +32,41 @@ class Flags {
 	/**
 	 * Register feature flag endpoints.
 	 *
-	 * @return void
 	 * @since 1.0.0
 	 */
-	public function register_flags_endpoints() {
+	public function register(): void {
 		add_action(
 			'rest_api_init',
-			function () {
-				register_rest_route(
-					'feature-flags/v1',
-					'flags',
-					[
-						[
-							'methods'             => WP_REST_Server::READABLE,
-							'callback'            => [ $this, 'get_all_flags' ],
-							'permission_callback' => function () {
-								return current_user_can( 'manage_options' );
-							},
-						],
-						[
-							'methods'             => WP_REST_Server::EDITABLE,
-							'callback'            => [ $this, 'post_flags' ],
-							'permission_callback' => function () {
-								return current_user_can( 'manage_options' );
-							},
-							'validate_callback'   => [ $this, 'validate_flag_input' ],
-						],
-					]
-				);
-			}
+			[ $this, 'register_routes' ]
+		);
+	}
+
+	/**
+	 * Register routes.
+	 * 
+	 * * @since 1.0.0
+	 */
+	public function register_routes(): void {
+		register_rest_route(
+			'feature-flags/v1',
+			'flags',
+			[
+				[
+					'methods'             => WP_REST_Server::READABLE,
+					'callback'            => [ $this, 'get_all_flags' ],
+					'permission_callback' => function () {
+						return current_user_can( 'manage_options' );
+					},
+				],
+				[
+					'methods'             => WP_REST_Server::EDITABLE,
+					'callback'            => [ $this, 'post_flags' ],
+					'permission_callback' => function () {
+						return current_user_can( 'manage_options' );
+					},
+					'validate_callback'   => [ $this, 'validate_flag_input' ],
+				],
+			]
 		);
 	}
 

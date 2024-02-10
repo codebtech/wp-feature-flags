@@ -8,6 +8,8 @@ RUN pecl install xdebug \
     && echo "[xdebug]" > $XDEBUG_INI \
     && echo "xdebug.mode = coverage" >> $XDEBUG_INI
 
+RUN docker-php-ext-install mysqli
+
 # Install Composer
 RUN curl -s https://getcomposer.org/installer | php && \
     mv composer.phar /usr/local/bin/composer
