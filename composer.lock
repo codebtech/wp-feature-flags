@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1afbaeb104a5222a664f1628b3f4668e",
+    "content-hash": "18ffe1f48b59bc950dcf57d4a504e218",
     "packages": [],
     "packages-dev": [
         {
@@ -716,16 +716,16 @@
         },
         {
             "name": "newsuk/nuk-wp-phpcs-config",
-            "version": "v0.1.0",
+            "version": "v0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newsuk/nuk-wp-phpcs-config.git",
-                "reference": "71ea2a822b75663a5698f0e5500d15fd0b17f25c"
+                "reference": "4b40381fdef843885ea71d098c753378c659a68d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newsuk/nuk-wp-phpcs-config/zipball/71ea2a822b75663a5698f0e5500d15fd0b17f25c",
-                "reference": "71ea2a822b75663a5698f0e5500d15fd0b17f25c",
+                "url": "https://api.github.com/repos/newsuk/nuk-wp-phpcs-config/zipball/4b40381fdef843885ea71d098c753378c659a68d",
+                "reference": "4b40381fdef843885ea71d098c753378c659a68d",
                 "shasum": ""
             },
             "require": {
@@ -749,9 +749,9 @@
             "description": "PHPCS configuration for WordPress VIP plugins and themes",
             "support": {
                 "issues": "https://github.com/newsuk/nuk-wp-phpcs-config/issues",
-                "source": "https://github.com/newsuk/nuk-wp-phpcs-config/tree/v0.1.0"
+                "source": "https://github.com/newsuk/nuk-wp-phpcs-config/tree/v0.2.0"
             },
-            "time": "2024-01-16T15:38:00+00:00"
+            "time": "2024-02-05T10:05:13+00:00"
         },
         {
             "name": "newsuk/nuk-wp-phpmd-config",

@@ -39,7 +39,7 @@ if ( ! file_exists( Flag::class ) ) {
 // Enqueure scripts, styles in settings page.
 add_action(
 	'admin_enqueue_scripts',
-	function ( string $page ): void {
+	static function ( string $page ): void {
 		if ( 'toplevel_page_mr-feature-flags' === $page ) {
 			mr_feature_flags_load_settings_scripts();
 		}
@@ -130,7 +130,7 @@ $mr_feature_flags_register_api->register();
 // Displays setting page link in plugin page.
 add_filter(
 	'plugin_action_links_mr-feature-flags/plugin.php',
-	function ( $links ) {
+	static function ( $links ) {
 		$url = esc_url(
 			add_query_arg(
 				'page',

@@ -34,13 +34,13 @@ class Flag {
 	 * @since 1.0.0
 	 */
 	public static function is_enabled( string $flag ): bool {
-		$flags = get_option( self::$option_name );
+		$flags = get_option( self::$option_name, [] );
 
-		$helper = new Helper();
-		if ( $helper->search_flag( $flags, 'name', $flag ) ) {
-			return true;
+		if ( ! is_array( $flags ) ) {
+			return false;
 		}
 
-		return false;
+		$helper = new Helper();
+		return $helper->search_flag( $flags, 'name', $flag );
 	}
 }
