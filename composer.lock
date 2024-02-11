@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9984fe8c649f8b4c071f5e1d9a741178",
+    "content-hash": "1afbaeb104a5222a664f1628b3f4668e",
     "packages": [],
     "packages-dev": [
         {
@@ -4380,7 +4380,7 @@
             "version": "6.4.3",
             "source": {
                 "type": "git",
-                "url": "ssh://git@github.com/WordPress/wordpress-develop.git",
+                "url": "https://git@github.com/WordPress/wordpress-develop",
                 "reference": "9e9559d6d6bd2327dee822c305b2905b65a91ef2"
             },
             "require": {
