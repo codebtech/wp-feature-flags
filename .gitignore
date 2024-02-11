@@ -4,3 +4,6 @@ vendor
 yarn-error.log
 .phpunit.result.cache
 .DS_Store
+testingdb
+.vscode
+.env

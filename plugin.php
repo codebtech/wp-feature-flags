@@ -124,7 +124,7 @@ $mr_feature_flags_admin_settings->register_feature_settings();
 
 // Registers feature flags API's.
 $mr_feature_flags_register_api = new Flags();
-$mr_feature_flags_register_api->register_flags_endpoints();
+$mr_feature_flags_register_api->register();
 
 
 // Displays setting page link in plugin page.
