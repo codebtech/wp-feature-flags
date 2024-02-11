@@ -34,3 +34,4 @@ jobs:
 
       - name: PHP test
         run: composer test:unit
+        working-directory: ${{ github.workspace }}
