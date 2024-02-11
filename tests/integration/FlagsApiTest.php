@@ -85,6 +85,29 @@ class FlagsApiTest extends WP_Test_REST_Controller_Testcase {
 		$this->assertSame($flags, $response->get_data());
 	}
 
+	public function flagsDataProvider() {
+		return [
+			'invalid input' => [['invalid' => []], false],
+			'valid empty input' => [['flags' => []], true],
+			'valid input' => [['flags' => [['id'=>1, 'name'=>'test', 'enabled'=>true], ['id'=>2, 'name'=>'test2', 'enabled'=>false]]], true],
+		];
+	}
+	
+	/**
+	 * @dataProvider flagsDataProvider
+	 */
+	public function testValidateFlags($inputData, $expectedResult) {
+		wp_set_current_user(self::$admin);
+
+		$request = new WP_REST_Request('POST', self::$api_endpoint);
+		$request->add_header('Content-Type', 'application/json');
+		$request->set_body(wp_json_encode($inputData));
+
+		$result = $this->instance->validate_flag_input($request);
+
+		$this->assertSame($expectedResult, $result);
+	}
+
 	public function test_create_item() {
 		wp_set_current_user( self::$admin );
 		$flags = [['id'=>1, 'name'=>'test', 'enabled'=>true], ['id'=>2, 'name'=>'test2', 'enabled'=>false]];

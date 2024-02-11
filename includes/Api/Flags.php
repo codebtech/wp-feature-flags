@@ -119,17 +119,29 @@ class Flags {
 		}
 		$valid_keys = [ 'id', 'name', 'enabled' ];
 
+		// handle delete all feature flags.
 		if ( 0 === count( $input_data['flags'] ) ) {
 			return true;
 		}
 
 		foreach ( $input_data['flags'] as $flag ) {
-			foreach ( $valid_keys as $value ) {
-				if ( ! array_key_exists( $value, $flag ) ) {
-					return false;
-				}
+			// validate if the input contains allowed values.
+			if ( count( array_diff( $valid_keys, array_keys( $flag ) ) ) > 0 ) {
+				return false;
+			}
+
+			foreach ( $valid_keys as $key ) {
+				$value = isset( $flag[ $key ] ) ? $flag[ $key ] : null;
+	
+				match ( $key ) {
+					'id' => is_int( $value ),
+					'name' => is_string( $value ),
+					'enabled' => is_bool( $value ),
+					default => false,
+				};
 			}
 		}
+
 		return true;
 	}
 }
