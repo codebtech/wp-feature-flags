@@ -54,14 +54,14 @@ class Flags {
 				[
 					'methods'             => WP_REST_Server::READABLE,
 					'callback'            => [ $this, 'get_all_flags' ],
-					'permission_callback' => function () {
+					'permission_callback' => static function () {
 						return current_user_can( 'manage_options' );
 					},
 				],
 				[
 					'methods'             => WP_REST_Server::EDITABLE,
 					'callback'            => [ $this, 'post_flags' ],
-					'permission_callback' => function () {
+					'permission_callback' => static function () {
 						return current_user_can( 'manage_options' );
 					},
 					'validate_callback'   => [ $this, 'validate_flag_input' ],
@@ -108,10 +108,11 @@ class Flags {
 	 * Validates flag input from POST method.
 	 *
 	 * @param WP_REST_Request $request Request object.
-	 *
 	 * @return bool
+	 * 
+	 * @phpstan-param WP_REST_Request<array{flags?: array}> $request
 	 */
-	public function validate_flag_input( $request ) {
+	public function validate_flag_input( WP_REST_Request $request ) {
 		$input_data = $request->get_json_params();
 
 		if ( ! isset( $input_data['flags'] ) || gettype( $input_data['flags'] ) !== 'array' ) {
