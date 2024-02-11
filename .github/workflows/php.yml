@@ -24,13 +24,13 @@ jobs:
         uses: php-actions/composer@v6
         with:
           php_version: ${{ matrix.php-versions }}
-          command: composer update
+          command: update
 
       - name: Validate Composer
         run: composer validate --strict
 
       - name: PHP Lint
-        run: composer run lint
+        run: composer lint
 
       - name: PHP test
-        run: composer run test:unit
+        run: composer test:unit
