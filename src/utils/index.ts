@@ -17,7 +17,7 @@ export const updateFlags = async (
 		{
 			method: 'POST',
 			path: `${FEATURE_FLAG_NAMESPACE}/${FEATURE_FLAG_ROUTE}`,
-			data: flags,
+			data: { flags },
 		}
 	);
 

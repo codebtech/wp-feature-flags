@@ -11,7 +11,6 @@ const config = {
 	},
 	output: {
 		...defaultConfig.output,
-		// publicPath: '/wp-content/plugins/tm-wp-desknet/build',
 	},
 	module: {
 		...defaultConfig.module,
