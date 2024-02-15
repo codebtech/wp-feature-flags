@@ -18,6 +18,8 @@ interface LineItemProps {
 	setFlags: (flags: Flag[]) => void;
 	item: Flag;
 	setDisableSave: (toggle: boolean) => void;
+	handleSave: () => Promise<void>;
+	handleDeleteFlag: (id: number) => Promise<void>;
 }
 
 const FlagRow = ({
@@ -25,6 +27,8 @@ const FlagRow = ({
 	setFlags,
 	item,
 	setDisableSave,
+	handleSave,
+	handleDeleteFlag,
 }: LineItemProps): JSX.Element => {
 	const [isOpen, setOpen] = useState(false);
 
@@ -42,12 +46,6 @@ const FlagRow = ({
 		}
 	}, [inputRef, item]);
 
-	const handleDeleteFlag = (flagId: number) => {
-		const updatedFlags = flags.filter((flag: Flag) => flag.id !== flagId);
-		setFlags(updatedFlags);
-		closeModal();
-	};
-
 	const handleFlagToggle = (flagId: number) => {
 		const updatedFlags = flags.map((flag: Flag) => {
 			if (flag.id === flagId) {
@@ -56,6 +54,7 @@ const FlagRow = ({
 			return flag;
 		});
 		setFlags(updatedFlags);
+		handleSave();
 	};
 
 	const handleFlagEdit = (value: string, flagId: number) => {
@@ -82,6 +81,7 @@ const FlagRow = ({
 			}
 			return flag;
 		});
+
 		setFlags(updatedFlags);
 	};
 
@@ -101,6 +101,7 @@ const FlagRow = ({
 			openModal();
 			return;
 		}
+
 		handleDeleteFlag(flag.id);
 	};
 
