@@ -120,11 +120,17 @@ const FlagRow = ({
 							onChange={(value) => handleFlagEdit(value, item.id)}
 						/>
 					</FlexItem>
-					<FlexItem style={{ marginTop: 7, marginLeft: 40 }}>
+					<FlexItem
+						style={{
+							marginTop: 7,
+							marginLeft: 40,
+							minWidth: 150,
+						}}
+					>
 						<ToggleControl
 							checked={item.enabled}
 							onChange={() => handleFlagToggle(item.id)}
-							label="Toggle flag"
+							label={`Flag ${item.enabled ? 'enabled' : 'disabled'}`}
 						/>
 					</FlexItem>
 

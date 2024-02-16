@@ -28,5 +28,5 @@
       "isolatedModules": true,
       "types": ["node"]
     },
-    "include": [ "src", "types/window.d.ts", "tests/e2e/global-setup.ts"],
+    "include": [ "src", "types/window.d.ts"],
   }
