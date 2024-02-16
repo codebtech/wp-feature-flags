@@ -12,7 +12,7 @@ const Layout = (): JSX.Element => {
 	const [flags, setFlags] = useState<Flag[]>([]);
 	const [isLoading, setIsLoading] = useState<boolean>(true);
 	const [isSaving, setIsSaving] = useState<boolean>(false);
-	// const isFirstRender = useRef(true);
+	const [disableSave, setDisableSave] = useState<boolean>(false);
 
 	useEffect(() => {
 		const logFlags = async () => {
@@ -35,8 +35,6 @@ const Layout = (): JSX.Element => {
 			icon: <>✅</>,
 		});
 	}, []);
-
-	const [disableSave, setDisableSave] = useState(false);
 
 	const lastFlag = flags?.at(-1)?.id || 0;
 

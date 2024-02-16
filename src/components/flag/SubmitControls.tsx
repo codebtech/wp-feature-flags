@@ -52,26 +52,29 @@ const SubmitControls = ({
 						{__('Add Flag', 'mr-feature-flags')}
 					</Button>
 				</FlexItem>
-
-				<FlexItem>
-					<Button
-						variant="primary"
-						onClick={handleSave}
-						disabled={disableSave || isSaving}
-					>
-						{isSaving
-							? __('Saving', 'mr-feature-flags')
-							: __('Save', 'mr-feature-flags')}
-					</Button>
-				</FlexItem>
-				<FlexItem>
-					<Button
-						variant="tertiary"
-						onClick={() => location.reload()}
-					>
-						{__('Cancel', 'mr-feature-flags')}
-					</Button>
-				</FlexItem>
+				{lastFlag > 0 && (
+					<>
+						<FlexItem>
+							<Button
+								variant="primary"
+								onClick={handleSave}
+								disabled={disableSave || isSaving}
+							>
+								{isSaving
+									? __('Saving', 'mr-feature-flags')
+									: __('Save', 'mr-feature-flags')}
+							</Button>
+						</FlexItem>
+						<FlexItem>
+							<Button
+								variant="tertiary"
+								onClick={() => location.reload()}
+							>
+								{__('Cancel', 'mr-feature-flags')}
+							</Button>
+						</FlexItem>
+					</>
+				)}
 			</Flex>
 
 			<Notices />
