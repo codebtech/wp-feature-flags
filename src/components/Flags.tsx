@@ -1,9 +1,9 @@
 import { useState, useEffect, useCallback } from '@wordpress/element';
 import { Spinner } from '@wordpress/components';
 import FlagRow from './FlagRow';
-import { Flag } from '../../../types';
+import { Flag } from '../../types';
 import SubmitControls from './SubmitControls';
-import { getFlags, updateFlags } from '../../utils';
+import { getFlags, updateFlags } from '../utils';
 import Header from './Header';
 import { __ } from '@wordpress/i18n';
 import { dispatch } from '@wordpress/data';

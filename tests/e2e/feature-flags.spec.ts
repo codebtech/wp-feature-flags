@@ -41,15 +41,17 @@ test.describe('Feature flags', () => {
 		await page.getByRole('button', { name: 'Add Flag' }).click();
 		await page.getByRole('textbox').last().fill('hello');
 		expect(page.getByText('Flag name already exists')).toBeTruthy();
-		expect(await page.getByRole('button', { name: 'Save' })).toBeDisabled();
+		expect(page.getByRole('button', { name: 'Save' })).toBeDisabled();
 
-		//update flag name
+		//update flag name to be unique
 		await page.getByRole('textbox').last().fill('hello 2');
+
 		expect(
-			page.getByText(
+			await page.getByText(
 				'Flag name should not contain spaces. Allowed special characters are - and _'
 			)
 		).toBeTruthy();
+
 		expect(await page.getByRole('button', { name: 'Save' })).toBeDisabled();
 
 		await page

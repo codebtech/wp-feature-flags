@@ -1,6 +1,6 @@
 import { Flex, FlexItem, Button } from '@wordpress/components';
-import { Flag } from '../../../types';
-import Notices from '../common/Snackbar';
+import { Flag } from '../../types';
+import Notices from './common/Snackbar';
 import { __ } from '@wordpress/i18n';
 
 interface SubmitControlsProps {

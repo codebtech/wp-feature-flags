@@ -8,11 +8,11 @@ import {
 	__experimentalText as Text,
 } from '@wordpress/components';
 import { useState, useRef, useEffect } from '@wordpress/element';
-import { Flag } from '../../../types';
-import DeleteModal from '../modals/DeleteModal';
-import SdkModal from '../modals/SdkModal';
+import { Flag } from '../../types';
+import DeleteModal from './modals/DeleteModal';
+import SdkModal from './modals/SdkModal';
 import { __ } from '@wordpress/i18n';
-import { checkIfFlagExists } from '../../utils';
+import { checkIfFlagExists } from '../utils';
 
 interface LineItemProps {
 	flags: Flag[];
@@ -57,16 +57,21 @@ const FlagRow = ({
 	};
 
 	const handleFlagEdit = (value: string, flagId: number) => {
-		//Flag alphanumeric validation
 		if (checkIfFlagExists(flags, value)) {
-			setErrorMessage('Flag name already exists.');
+			setErrorMessage(
+				__('Flag name already exists.', 'mr-feature-flags')
+			);
 			setDisableSave(true);
-		} else if (value.match(/^[a-zA-Z0-9\_-]*$/)) {
+		} //Alphanumeric,hypen and underscore validation
+		else if (value.match(/^[a-zA-Z0-9\_-]*$/)) {
 			setErrorMessage('');
 			setDisableSave(false);
 		} else {
 			setErrorMessage(
-				`Flag name should not contain spaces or special characters other than hypens(-) and underscores(_).`
+				__(
+					'Flag name should not contain spaces or special characters other than hypens(-) and underscores(_).',
+					'mr-feature-flags'
+				)
 			);
 			setDisableSave(true);
 		}
@@ -157,7 +162,11 @@ const FlagRow = ({
 					</FlexItem>
 				</Flex>
 
-				{errorMessage && <Text color="#cc1818">{errorMessage}</Text>}
+				{errorMessage && (
+					<Text color="#cc1818" data-test-id="flag-error-message">
+						{errorMessage}
+					</Text>
+				)}
 
 				<hr />
 			</div>
