@@ -8,20 +8,23 @@ test.describe('Feature flags', () => {
 	test('Navigate to feature flag settings', async ({ page, admin }) => {
 		await admin.visitAdminPage('/');
 
+		//Find the feature flags in side menu
 		await page.getByRole('link', { name: 'Feature Flags' }).click();
 
+		//Confirm the setting page header
 		await expect(
 			page.getByRole('heading', { name: 'Feature Flags settings' })
 		).toBeVisible();
 
+		//Create new flag
 		await page.getByRole('button', { name: 'Add Flag' }).click();
-
 		await expect(await page.getByRole('textbox').count()).toBe(4);
-
 		await page.getByRole('textbox').last().fill('hello');
-
 		await page.getByRole('button', { name: 'Save' }).click();
 
-		await expect(await page.getByText('Saved successfully!')).toBeVisible();
+		//Confirm save success
+		await expect(
+			await page.getByLabel('Dismiss this notice').innerText()
+		).toMatch(/Saved successfully!/);
 	});
 });
