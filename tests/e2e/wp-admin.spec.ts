@@ -16,12 +16,12 @@ test.describe('Feature flags', () => {
 
 		await page.getByRole('button', { name: 'Add Flag' }).click();
 
-		await expect(await page.getByRole('textbox').count()).toBe(3);
+		await expect(await page.getByRole('textbox').count()).toBe(4);
 
 		await page.getByRole('textbox').last().fill('hello');
 
 		await page.getByRole('button', { name: 'Save' }).click();
 
-		await expect(await page.getByText('Saved')).toBeVisible();
+		await expect(await page.getByText('Saved successfully!')).toBeVisible();
 	});
 });
