@@ -1,7 +1,7 @@
 import { test, expect } from '@wordpress/e2e-test-utils-playwright';
 
 // We have multiple tests in this file, all requiring us to be authenticated.
-// Compare this to the front-end.spec.ts.
+// eslint-disable-next-line
 test.use({ storageState: process.env.WP_AUTH_STORAGE });
 
 test.describe('Feature flags', () => {
