@@ -65,6 +65,7 @@ const SubmitControls = ({
 						onClick={handleNewFlag}
 						style={{ marginRight: 15 }}
 						icon={'plus'}
+						id="add-flag"
 					>
 						{__('Add Flag', 'mr-feature-flags')}
 					</Button>
