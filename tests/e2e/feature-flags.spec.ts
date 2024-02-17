@@ -5,7 +5,7 @@ import { ERROR_FLAG_EXISTS, ERROR_FLAG_INVALID } from '../../src/constants';
 test.use({ storageState: process.env.WP_AUTH_STORAGE });
 
 test.describe('Feature flags', () => {
-	test('Create and delete flags', async ({ page, admin }) => {
+	test('Create and delete flags e2e scenarios', async ({ page, admin }) => {
 		await admin.visitAdminPage('/');
 
 		//Find the feature flags in side menu
