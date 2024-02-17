@@ -1,4 +1,6 @@
-import { render } from '@wordpress/element';
+import { createRoot } from '@wordpress/element';
 import Flags from './components/Flags';
 import './styles/settings.scss';
-render(<Flags />, document.getElementById('mr_feature_flags_settings_screen'));
+const container = document.getElementById('mr_feature_flags_settings_screen');
+const root = container && createRoot(container);
+root?.render(<Flags />);
