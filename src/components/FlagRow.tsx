@@ -13,6 +13,7 @@ import DeleteModal from './modals/DeleteModal';
 import SdkModal from './modals/SdkModal';
 import { __ } from '@wordpress/i18n';
 import { checkIfFlagExists } from '../utils';
+import { ERROR_FLAG_EXISTS, ERROR_FLAG_INVALID } from '../constants';
 
 interface LineItemProps {
 	flags: Flag[];
@@ -58,21 +59,16 @@ const FlagRow = ({
 
 	const handleFlagEdit = (value: string, flagId: number) => {
 		if (checkIfFlagExists(flags, value)) {
-			setErrorMessage(
-				__('Flag name already exists.', 'mr-feature-flags')
-			);
+			// eslint-disable-next-line @wordpress/i18n-no-variables
+			setErrorMessage(__(ERROR_FLAG_EXISTS, 'mr-feature-flags'));
 			setDisableSave(true);
 		} //Alphanumeric,hypen and underscore validation
 		else if (value.match(/^[a-zA-Z0-9\_-]*$/)) {
 			setErrorMessage('');
 			setDisableSave(false);
 		} else {
-			setErrorMessage(
-				__(
-					'Flag name should not contain spaces or special characters other than hypens(-) and underscores(_).',
-					'mr-feature-flags'
-				)
-			);
+			// eslint-disable-next-line @wordpress/i18n-no-variables
+			setErrorMessage(__(ERROR_FLAG_INVALID, 'mr-feature-flags'));
 			setDisableSave(true);
 		}
 

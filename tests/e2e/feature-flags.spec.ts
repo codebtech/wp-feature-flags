@@ -1,18 +1,8 @@
 import { test, expect } from '@wordpress/e2e-test-utils-playwright';
+import { ERROR_FLAG_EXISTS, ERROR_FLAG_INVALID } from '../../src/constants';
 
-// We have multiple tests in this file, all requiring us to be authenticated.
 // eslint-disable-next-line
 test.use({ storageState: process.env.WP_AUTH_STORAGE });
-
-// async function deleteLastFeatureFlag(page) {
-// 	await page
-// 		.locator('id=mr-feature-flag-item')
-// 		.last()
-// 		.getByLabel('Delete Flag')
-// 		.click();
-
-// 	await page.getByRole('button', { name: 'Yes' }).click();
-// }
 
 test.describe('Feature flags', () => {
 	test('Create and delete flags', async ({ page, admin }) => {
@@ -29,30 +19,40 @@ test.describe('Feature flags', () => {
 		//Create new flag
 		await page.getByRole('button', { name: 'Add Flag' }).click();
 		// await expect(await page.getByRole('textbox').count()).toBe(4);
-		await page.getByRole('textbox').last().fill('hello');
+		await page.getByRole('textbox').last().fill('test');
 		await page.getByRole('button', { name: 'Save' }).click();
-
 		//Confirm save success
 		expect(
 			await page.getByLabel('Dismiss this notice').innerText()
 		).toMatch(/Saved successfully!/);
 
+		//Toggle flag test
+		await page
+			.locator('id=mr-feature-flag-item')
+			.last()
+			.getByLabel('Flag enabled')
+			.click();
+		expect(
+			await page.getByLabel('Dismiss this notice').innerText()
+		).toMatch(/Saved successfully!/);
+		expect(
+			page
+				.locator('id=mr-feature-flag-item')
+				.last()
+				.getByLabel('Flag disabled')
+		).toBeVisible();
+
 		//Create another flag with same name
 		await page.getByRole('button', { name: 'Add Flag' }).click();
-		await page.getByRole('textbox').last().fill('hello');
-		expect(page.getByText('Flag name already exists')).toBeTruthy();
+		await page.getByRole('textbox').last().fill('test');
+		expect(await page.getByText(ERROR_FLAG_EXISTS)).toBeVisible();
 		expect(page.getByRole('button', { name: 'Save' })).toBeDisabled();
 
-		//update flag name to be unique
-		await page.getByRole('textbox').last().fill('hello 2');
+		//update flag name to be unique and check text validation.
+		await page.getByRole('textbox').last().fill('test 2');
+		expect(await page.getByText(ERROR_FLAG_INVALID)).toBeVisible();
 
-		expect(
-			await page.getByText(
-				'Flag name should not contain spaces. Allowed special characters are - and _'
-			)
-		).toBeTruthy();
-
-		expect(await page.getByRole('button', { name: 'Save' })).toBeDisabled();
+		expect(page.getByRole('button', { name: 'Save' })).toBeDisabled();
 
 		await page
 			.locator('id=mr-feature-flag-item')
@@ -66,6 +66,13 @@ test.describe('Feature flags', () => {
 		expect(
 			await page.getByLabel('Dismiss this notice').innerText()
 		).toMatch(/Saved successfully!/);
+
+		//Check SDK modal details.
+		await page.getByLabel('Click to see SDK setting').last().click();
+		expect(
+			page.getByRole('heading', { name: 'SDK for feature flag: test' })
+		).toBeVisible();
+		await page.locator('button[aria-label="Close"]').click();
 
 		await page
 			.locator('id=mr-feature-flag-item')
