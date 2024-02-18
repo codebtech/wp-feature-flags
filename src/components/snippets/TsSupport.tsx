@@ -25,19 +25,11 @@ export {};`;
 			<p>
 				Create a file named{' '}
 				<span className="mr-feature-flags-filename">flags.d.ts</span> at
-				the entrypoint of TS code of plugin / theme ( usually{' '}
-				<span className="mr-feature-flags-slug">src</span> directory )
-				and add below declaration.
+				the entrypoint of TypeScript code for the plugin/theme ( usually
+				<span className="mr-feature-flags-slug"> src</span> directory )
+				and add the following declaration.
 			</p>
-			<Clipboard
-				text={tsSnippet}
-				style={{
-					color: 'darkgray',
-					float: 'right',
-					position: 'relative',
-					right: 40,
-				}}
-			/>
+			<Clipboard text={tsSnippet} />
 			<Snippet data={tsSnippet} language={'typescript'} />
 		</div>
 	);
