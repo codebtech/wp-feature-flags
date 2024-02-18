@@ -30,10 +30,13 @@ jobs:
               uses: php-actions/composer@v6
               with:
                   php_version: ${{ matrix.php-versions }}
-                  command: update
+                  dev: yes
 
             - name: Install packages
               run: yarn install --immutable
+
+            - name: Playwright install
+              run: yarn playwright install
 
             - name: Start wp-env
               run: yarn wp-env
