@@ -1,36 +1,36 @@
-name: PHP
+name: PHP lint & test
 on: [push]
 
 jobs:
-  lint-test:
-    name: ${{ matrix.php-versions }} Lint & Test
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        php-versions: ['8.3']
+    lint-test:
+        name: ${{ matrix.php-versions }} Lint & Test
+        runs-on: ubuntu-latest
+        strategy:
+            fail-fast: false
+            matrix:
+                php-versions: ['8.3']
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
 
-      - name: Cache Composer dependencies
-        uses: actions/cache@v3
-        with:
-          path: /tmp/composer-cache
-          key: ${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
+            - name: Cache Composer dependencies
+              uses: actions/cache@v3
+              with:
+                  path: /tmp/composer-cache
+                  key: ${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
 
-      - name: Setup PHP
-        uses: php-actions/composer@v6
-        with:
-          php_version: ${{ matrix.php-versions }}
-          command: update
+            - name: Setup PHP
+              uses: php-actions/composer@v6
+              with:
+                  php_version: ${{ matrix.php-versions }}
+                  command: update
 
-      - name: Validate Composer
-        run: composer validate --strict
+            - name: Validate Composer
+              run: composer validate --strict
 
-      - name: PHP Lint
-        run: composer lint
+            - name: PHP Lint
+              run: composer lint
 
-      - name: PHP test
-        run: composer test:unit
+            - name: PHP test
+              run: composer test:unit
