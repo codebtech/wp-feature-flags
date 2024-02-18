@@ -2,6 +2,7 @@ import { Flex, FlexItem, Button } from '@wordpress/components';
 import { Flag } from '../../types';
 import Notices from './common/Snackbar';
 import { __ } from '@wordpress/i18n';
+import { applyFilters } from '@wordpress/hooks';
 
 interface SubmitControlsProps {
 	flags: Flag[];
@@ -21,10 +22,14 @@ const SubmitControls = ({
 	handleSave,
 }: SubmitControlsProps): JSX.Element => {
 	const handleNewFlag = () => {
+		const defaultStatus = applyFilters(
+			'mrFeatureFlags.newFlag.defaultStatus',
+			true
+		) as boolean;
 		const newFlag = {
 			id: lastFlag + 1,
 			name: '',
-			enabled: true,
+			enabled: defaultStatus,
 		};
 
 		let latestFlags = [];

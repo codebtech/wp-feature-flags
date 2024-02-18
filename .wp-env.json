@@ -1,6 +1,4 @@
 {
-	"core": "latest",
-	"plugins": {
-		"feature-flag": {}
-	}
+	"core": null,
+	"plugins": ["."]
 }
