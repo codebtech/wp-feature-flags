@@ -9,7 +9,8 @@
 		"test:js": "wp-scripts test-unit-js",
 		"test:watch": "wp-scripts test-unit-js --watch",
 		"prepare": "husky install",
-		"wp-env": "wp-env start"
+		"wp-env": "wp-env start",
+		"test:e2e": "npx playwright test"
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.41.2",
