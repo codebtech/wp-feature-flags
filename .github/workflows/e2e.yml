@@ -42,9 +42,9 @@ jobs:
               run: yarn wp-env
 
             - name: Run Playwright tests
-              run: yarn test:e2e
+              run: npx playwright test --reporter=github
 
-            - uses: actions/upload-artifact@v3
+            - uses: actions/upload-artifact@v4
               if: always()
               with:
                   name: playwright-report
