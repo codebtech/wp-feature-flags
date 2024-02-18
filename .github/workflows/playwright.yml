@@ -17,10 +17,10 @@ jobs:
                   node-version: '20.11'
             - name: Install dependencies
               run: npm install -g yarn && yarn
-            - name: Install Playwright Browsers
-              run: yarn playwright install --with-deps
-            - name: WordPress playwright utils install
-              run: yarn add @wordpress/e2e-test-utils-playwright
+            - name: Install packages
+              run: yarn install
+            - name: Start wp-env
+              run: yarn wp-env
             - name: Run Playwright tests
               run: yarn test:e2e
             - uses: actions/upload-artifact@v3
