@@ -5,6 +5,10 @@ jobs:
     test:
         timeout-minutes: 60
         runs-on: ubuntu-latest
+        strategy:
+            fail-fast: false
+            matrix:
+                php-versions: ['8.3']
         env:
             WP_BASE_URL: 'http://localhost:8888'
             WP_USERNAME: 'admin'
