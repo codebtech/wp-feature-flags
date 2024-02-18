@@ -4,20 +4,22 @@ import {
 	Flex,
 	FlexItem,
 	Button,
-	BaseControl,
+	// eslint-disable-next-line @wordpress/no-unsafe-wp-apis
+	__experimentalText as Text,
 } from '@wordpress/components';
 import { useState, useRef, useEffect } from '@wordpress/element';
-import { Flag } from '../../../types';
-import DeleteModal from '../modals/DeleteModal';
-import SdkModal from '../modals/SdkModal';
+import { Flag } from '../../types';
+import DeleteModal from './modals/DeleteModal';
+import SdkModal from './modals/SdkModal';
 import { __ } from '@wordpress/i18n';
-import { checkIfFlagExists } from '../../utils';
+import { checkIfFlagExists } from '../utils';
+import { ERROR_FLAG_EXISTS, ERROR_FLAG_INVALID } from '../constants';
 
 interface LineItemProps {
 	flags: Flag[];
-	setFlags: (flags: Flag[]) => void;
+	setFlags: React.Dispatch<React.SetStateAction<Flag[]>>;
 	item: Flag;
-	setDisableSave: (toggle: boolean) => void;
+	setDisableSave: React.Dispatch<React.SetStateAction<boolean>>;
 	handleSave: () => Promise<void>;
 	handleDeleteFlag: (id: number) => Promise<void>;
 }
@@ -34,9 +36,7 @@ const FlagRow = ({
 
 	const [isSdkOpen, setIsSdkOpen] = useState(false);
 
-	const [hasError, setHasError] = useState(false);
-
-	const [flagExist, setFlagExist] = useState(false);
+	const [errorMessage, setErrorMessage] = useState('');
 
 	const inputRef = useRef<HTMLInputElement>(null);
 
@@ -58,23 +58,20 @@ const FlagRow = ({
 	};
 
 	const handleFlagEdit = (value: string, flagId: number) => {
-		//Flag alphanumeric validation
-		if (value.match(/^[a-zA-Z0-9\_-]*$/)) {
-			setHasError(false);
+		if (checkIfFlagExists(flags, value)) {
+			// eslint-disable-next-line @wordpress/i18n-no-variables
+			setErrorMessage(__(ERROR_FLAG_EXISTS, 'mr-feature-flags'));
+			setDisableSave(true);
+		} //Alphanumeric,hypen and underscore validation
+		else if (value.match(/^[a-zA-Z0-9\_-]*$/)) {
+			setErrorMessage('');
 			setDisableSave(false);
 		} else {
-			setHasError(true);
+			// eslint-disable-next-line @wordpress/i18n-no-variables
+			setErrorMessage(__(ERROR_FLAG_INVALID, 'mr-feature-flags'));
 			setDisableSave(true);
 		}
 
-		//Existing flag check
-		if (checkIfFlagExists(flags, value)) {
-			setFlagExist(true);
-			setDisableSave(true);
-		} else {
-			setFlagExist(false);
-			setDisableSave(false);
-		}
 		const updatedFlags = flags.map((flag: Flag) => {
 			if (flag.id === flagId) {
 				flag.name = value;
@@ -121,11 +118,18 @@ const FlagRow = ({
 							onChange={(value) => handleFlagEdit(value, item.id)}
 						/>
 					</FlexItem>
-					<FlexItem style={{ marginTop: 7, marginLeft: 40 }}>
+					<FlexItem
+						style={{
+							marginTop: 7,
+							marginLeft: 40,
+							minWidth: 150,
+						}}
+					>
 						<ToggleControl
 							checked={item.enabled}
+							disabled={!!errorMessage}
 							onChange={() => handleFlagToggle(item.id)}
-							label="Toggle flag"
+							label={`Flag ${item.enabled ? 'enabled' : 'disabled'}`}
 						/>
 					</FlexItem>
 
@@ -153,39 +157,13 @@ const FlagRow = ({
 						/>
 					</FlexItem>
 				</Flex>
-				{flagExist && (
-					<BaseControl
-						className="flag-name-error"
-						help={__('Flag name already exists.')}
-						id={`${item.id}`}
-					>
-						<></>
-					</BaseControl>
+
+				{errorMessage && (
+					<Text color="#cc1818" data-test-id="flag-error-message">
+						{errorMessage}
+					</Text>
 				)}
 
-				{hasError && !flagExist && (
-					<>
-						<BaseControl
-							className="flag-name-error"
-							help={__(
-								'Flag name should not contain spaces. Allowed special characters are - and _',
-								'mr-feature-flags'
-							)}
-							id={`${item.id}`}
-						>
-							<></>
-						</BaseControl>
-						<BaseControl
-							help={__(
-								'Example flag names formats: Registration, AB-testing, Auth0_Login',
-								'mr-feature-flags'
-							)}
-							id={`${item.id}`}
-						>
-							<></>
-						</BaseControl>
-					</>
-				)}
 				<hr />
 			</div>
 			{isOpen && (

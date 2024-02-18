@@ -1,27 +1,23 @@
-name: JS
+name: JS lint & test
 on: [push]
 
 jobs:
-  build:
-    name: Lint & Test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
+    build:
+        name: Lint & Test
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
 
-      - name: Set Node.js 20.x
-        uses: actions/setup-node@v3
-        with:
-          node-version: 20.x
+            - name: Setup Node
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20.11
 
-      - name: Run install
-        uses: borales/actions-yarn@v4
-        with:
-          cmd: install # will run `yarn install` command
-      - name: JS Lint
-        uses: borales/actions-yarn@v4
-        with:
-          cmd: lint:js
-      - name: Test the app
-        uses: borales/actions-yarn@v4
-        with:
-          cmd: test:js # will run `yarn test` command
+            - name: Install packages
+              run: yarn install --immutable
+
+            - name: JS lint
+              run: yarn lint:js
+
+            - name: JS test
+              run: yarn test:js

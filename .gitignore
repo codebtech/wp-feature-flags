@@ -1,5 +1,4 @@
 node_modules
-build
 vendor
 yarn-error.log
 .phpunit.result.cache
@@ -7,3 +6,10 @@ yarn-error.log
 testingdb
 .vscode
 .env
+.auth/
+artifacts/
+tests-examples/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/

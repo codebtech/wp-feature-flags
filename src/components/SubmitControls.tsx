@@ -1,7 +1,8 @@
 import { Flex, FlexItem, Button } from '@wordpress/components';
-import { Flag } from '../../../types';
-import Notices from '../common/Snackbar';
+import { Flag } from '../../types';
+import Notices from './common/Snackbar';
 import { __ } from '@wordpress/i18n';
+import { applyFilters } from '@wordpress/hooks';
 
 interface SubmitControlsProps {
 	flags: Flag[];
@@ -21,10 +22,14 @@ const SubmitControls = ({
 	handleSave,
 }: SubmitControlsProps): JSX.Element => {
 	const handleNewFlag = () => {
+		const defaultStatus = applyFilters(
+			'mrFeatureFlags.newFlag.defaultStatus',
+			true
+		) as boolean;
 		const newFlag = {
 			id: lastFlag + 1,
 			name: '',
-			enabled: true,
+			enabled: defaultStatus,
 		};
 
 		let latestFlags = [];
@@ -47,30 +52,34 @@ const SubmitControls = ({
 						onClick={handleNewFlag}
 						style={{ marginRight: 15 }}
 						icon={'plus'}
+						id="add-flag"
 					>
 						{__('Add Flag', 'mr-feature-flags')}
 					</Button>
 				</FlexItem>
-
-				<FlexItem>
-					<Button
-						variant="primary"
-						onClick={handleSave}
-						disabled={disableSave || isSaving}
-					>
-						{isSaving
-							? __('Saving', 'mr-feature-flags')
-							: __('Save', 'mr-feature-flags')}
-					</Button>
-				</FlexItem>
-				<FlexItem>
-					<Button
-						variant="tertiary"
-						onClick={() => location.reload()}
-					>
-						{__('Cancel', 'mr-feature-flags')}
-					</Button>
-				</FlexItem>
+				{lastFlag > 0 && (
+					<>
+						<FlexItem>
+							<Button
+								variant="primary"
+								onClick={handleSave}
+								disabled={disableSave || isSaving}
+							>
+								{isSaving
+									? __('Saving', 'mr-feature-flags')
+									: __('Save', 'mr-feature-flags')}
+							</Button>
+						</FlexItem>
+						<FlexItem>
+							<Button
+								variant="tertiary"
+								onClick={() => location.reload()}
+							>
+								{__('Cancel', 'mr-feature-flags')}
+							</Button>
+						</FlexItem>
+					</>
+				)}
 			</Flex>
 
 			<Notices />
