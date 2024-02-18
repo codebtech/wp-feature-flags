@@ -143,19 +143,13 @@ const FlagRow = ({
         justify: 'flex-start',
         children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.FlexItem, {
           children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextControl, {
-            style: {
-              width: 180
-            },
+            className: "mr-feature-flags-input",
             ref: inputRef,
             value: item.name,
             onChange: value => handleFlagEdit(value, item.id)
           })
         }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.FlexItem, {
-          style: {
-            marginTop: 7,
-            marginLeft: 40,
-            minWidth: 150
-          },
+          className: "mr-feature-flags-toggle",
           children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
             checked: item.enabled,
             disabled: !!errorMessage,
@@ -163,9 +157,7 @@ const FlagRow = ({
             label: `Flag ${item.enabled ? 'enabled' : 'disabled'}`
           })
         }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.FlexItem, {
-          style: {
-            marginLeft: 60
-          },
+          className: "mr-feature-flags-sdk",
           children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
             variant: "secondary",
             label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)('Click to see SDK setting', 'mr-feature-flags'),
@@ -175,10 +167,7 @@ const FlagRow = ({
             children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)('</> SDK', 'mr-feature-flags')
           })
         }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.FlexItem, {
-          style: {
-            marginBottom: 6,
-            marginLeft: 50
-          },
+          className: "mr-feature-flags-delete",
           children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
             icon: 'trash',
             isDestructive: true,
@@ -353,7 +342,7 @@ __webpack_require__.r(__webpack_exports__);
       })
     }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.FlexItem, {
       style: {
-        marginLeft: 170
+        marginLeft: 160
       },
       children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h4", {
         children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('SDK Settings', 'mr-feature-flags')
