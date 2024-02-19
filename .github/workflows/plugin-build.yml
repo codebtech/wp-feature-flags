@@ -42,6 +42,8 @@ jobs:
             - name: Create and push built branch
               run: |
                   git checkout -b main-built
+                  git reset -- .husky/  # Unstage the .husky directory
+                  git reset -- node_modules/  # Unstage the node_modules directory
                   git add -A  # Stage all changes, including untracked files
                   git ls-files --ignored --exclude-standard -o -z | xargs -0 git rm --cached  # Remove ignored files from the index
                   git commit -m "Built WordPress plugin"
