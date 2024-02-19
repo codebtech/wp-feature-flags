@@ -39,12 +39,17 @@ jobs:
             - name: JS build
               run: yarn build
 
+            - name: Apply deployignore
+              run: |
+                FILE=.deployignore
+                if [ -f "$FILE" ]; then
+                  cat .deployignore | xargs rm -rf
+                fi
+
             - name: Create and push built branch
               run: |
-                  git checkout -b main-built
+                  git checkout main-built
                   git add -A  # Stage all changes, including untracked files
-                  git rm --cached -r .husky || true
-                  git rm --cached -r node_modules || true
                   git ls-files --ignored --exclude-standard -o -z | xargs -0 git rm --cached  # Remove ignored files from the index
-                  git commit -m "Built WordPress plugin"
+                  git commit -m "Built WordPress plugin" --no-verify
                   git push origin main-built
