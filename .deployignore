@@ -1,0 +1,14 @@
+.gitignore
+composer.lock
+phpcs.xml*
+.babelrc
+.env.dist
+.editorconfig
+.eslintrc
+.prettierrc.js
+.wp-env.json
+webpack.config.js
+docker-compose.yml
+docker
+test_results
+node_modules
