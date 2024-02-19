@@ -32,5 +32,11 @@ jobs:
             - name: PHP Lint
               run: composer lint
 
-            - name: PHP test
+            - name: PHPStan
+              run: composer phpstan
+
+            - name: PHPMD
+              run: composer phpmd
+
+            - name: WordPress unit test
               run: composer test:unit
