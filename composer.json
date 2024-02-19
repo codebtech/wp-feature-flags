@@ -44,6 +44,6 @@
 		"test:multisite": "phpunit --dont-report-useless-tests --configuration ./phpunit-integration-multisite.xml --testsuite integration --testdox  --coverage-text",
 		"phpstan": "phpstan analyse --memory-limit=2048M",
 		"phpstan-baseline": "phpstan analyse -b --allow-empty-baseline --memory-limit=2048M",
-		"phpmd": "phpmd plugin.php,includes text phpmd.xml.dist --color"
+		"phpmd": "./vendor/bin/phpmd plugin.php,includes text phpmd.xml.dist --color"
 	}
 }
