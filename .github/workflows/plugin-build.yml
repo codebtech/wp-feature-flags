@@ -50,6 +50,6 @@ jobs:
               uses: Automattic/action-commit-to-branch@master
               with:
                   branch: 'main-built'
-                  commit_message: 'Built main'
+                  commit_message: 'Built plugin'
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Required
