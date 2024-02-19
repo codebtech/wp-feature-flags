@@ -10,7 +10,7 @@
 		"lint:css:fix": "npm run lint:css -- --fix",
 		"test:js": "wp-scripts test-unit-js",
 		"test:watch": "wp-scripts test-unit-js --watch",
-		"prepare": "husky install",
+		"prepare": "husky",
 		"wp-env": "wp-env start",
 		"test:e2e": "npx playwright test --reporter=list"
 	},
