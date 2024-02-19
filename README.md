@@ -1,10 +1,10 @@
-# Feature Flags
+# WordPress Feature Flags
 
 [![PHP lint & test](https://github.com/codebtech/wp-feature-flags/actions/workflows/php.yml/badge.svg)](https://github.com/codebtech/wp-feature-flags/actions/workflows/php.yml)
 [![JS lint & test](https://github.com/codebtech/wp-feature-flags/actions/workflows/js.yml/badge.svg)](https://github.com/codebtech/wp-feature-flags/actions/workflows/js.yml)
 [![E2E Tests](https://github.com/codebtech/wp-feature-flags/actions/workflows/e2e.yml/badge.svg)](https://github.com/codebtech/wp-feature-flags/actions/workflows/e2e.yml)
 
-Feature flags allow developers to configure features in plugins/themes behind the feature flags on both the server (PHP) and client (JS/TS) side.
+WordPress Feature flags plugin allow developers to configure features in plugins/themes behind the feature flags on both the server (PHP) and client (JS/TS) side.
 
 ## Hooks
 
