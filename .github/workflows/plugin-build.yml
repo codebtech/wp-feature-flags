@@ -50,6 +50,6 @@ jobs:
               run: |
                   git checkout -b main-built
                   git add -A  # Stage all changes, including untracked files
-                  git ls-files --ignored --exclude-standard -o -z . | xargs -0 git rm --cached  # Remove ignored files from the index
+                  git clean -fdX
                   git commit -m "Built WordPress plugin" --no-verify
                   git push origin main-built
