@@ -55,7 +55,7 @@ jobs:
                   echo "password=${{ secrets.GITHUB_TOKEN }}" >> .git/credentials
                   git fetch origin main-built
                   git checkout -b main-built
-                  git merge origin/main-built
+                  git merge --allow-unrelated-histories origin/main-built
                   git add -A  # Stage all changes, including untracked files
                   git clean -fdX
                   git commit -m "Built WordPress plugin" --no-verify
