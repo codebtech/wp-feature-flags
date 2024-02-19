@@ -43,8 +43,8 @@ jobs:
               run: |
                   git checkout -b main-built
                   git add -A  # Stage all changes, including untracked files
-                  git reset -- .husky/  # Unstage the .husky directory
-                  git reset -- node_modules/  # Unstage the node_modules directory
+                  git rm --cached -r .husky || true
+                  git rm --cached -r node_modules || true
                   git ls-files --ignored --exclude-standard -o -z | xargs -0 git rm --cached  # Remove ignored files from the index
                   git commit -m "Built WordPress plugin"
                   git push origin main-built
