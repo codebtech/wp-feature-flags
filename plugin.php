@@ -153,7 +153,9 @@ register_deactivation_hook( __FILE__, __NAMESPACE__ . '\mr_feature_flags_uninsta
 
 /**
  * Uninstall method for the plugin.
+ * 
+ * @return void
  */
-function mr_feature_flags_uninstall() {
+function mr_feature_flags_uninstall(): void {
 	delete_option( Flag::$option_name );
 }
