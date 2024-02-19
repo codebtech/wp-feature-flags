@@ -20,8 +20,8 @@ Feature flags allows developers to configure features behind the feature flags o
 
 ### Does this plugin work with PHP 8?
 
-Yes, it's actively tested and working up to PHP 8.2
+Yes, it's actively tested and working up to PHP 8.3
 
 ### Does this plugin work with latest WordPress?
 
-Yes, it's actively tested and working up to WordPress 6.1.1
+Yes, it's actively tested and working up to WordPress 6.4.3
