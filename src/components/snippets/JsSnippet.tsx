@@ -18,15 +18,7 @@ domReady(function () {
 	return (
 		<div className="mr-feature-flag-js-snippet-container">
 			<h3>{__('JavaScript Snippet', 'mr-feature-flags')}</h3>
-			<Clipboard
-				text={jsSnippet}
-				style={{
-					color: 'darkgray',
-					float: 'right',
-					position: 'relative',
-					right: 40,
-				}}
-			/>
+			<Clipboard text={jsSnippet} />
 			<Snippet data={jsSnippet} language={'typescript'} />
 		</div>
 	);

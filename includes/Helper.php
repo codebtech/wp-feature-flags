@@ -21,20 +21,24 @@ class Helper {
 	/**
 	 * Flag search helper, returns true if flag is found and enabled.
 	 *
-	 * @param array  $flags flags array.
-	 * @param string $field field to search.
-	 * @param string $flag name of the flag.
+	 * @param array<int, array{id: int, name: string, enabled: bool}> $flags flags array.
+	 * @param string                                                  $field field to search.
+	 * @param string                                                  $flag name of the flag.
 	 * @return boolean
 	 * @since 1.0.0
 	 */
 	public function search_flag( $flags, $field, $flag ) {
-		if ( is_array( $flags ) ) {
-			foreach ( $flags as $value ) {
-				if ( $value[ $field ] === $flag && true === $value['enabled'] ) {
-					return true;
-				}
+		
+		if ( 0 === count( $flags ) ) {
+			return false;
+		}
+		
+		foreach ( $flags as $value ) {
+			if ( $value[ $field ] === $flag && true === $value['enabled'] ) {
+				return true;
 			}
 		}
+		
 		return false;
 	}
 }

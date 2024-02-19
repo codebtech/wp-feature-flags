@@ -83,10 +83,10 @@ class Flags {
 	/**
 	 * Insert / Update flags in options table.
 	 *
-	 * @param WP_REST_Request $request API request.
+	 * @param WP_REST_Request $request Request object.
 	 * @return mixed List of flags.
 	 * 
-	 * @phpstan-param WP_REST_Request<array{flags?: array}> $request
+	 * @phpstan-param WP_REST_Request<array{flags?: array{id?: int, name?: string, enabled?: bool}[]}> $request
 	 */
 	public function post_flags( WP_REST_Request $request ) {
 		$input_data = $request->get_json_params();
@@ -109,8 +109,8 @@ class Flags {
 	 *
 	 * @param WP_REST_Request $request Request object.
 	 * @return bool
-	 * 
-	 * @phpstan-param WP_REST_Request<array{flags?: array}> $request
+	 *
+	 * @phpstan-param WP_REST_Request<array{flags?: array{id?: int, name?: string, enabled?: bool}[]}> $request
 	 */
 	public function validate_flag_input( WP_REST_Request $request ) {
 		$input_data = $request->get_json_params();
@@ -137,8 +137,7 @@ class Flags {
 				match ( $key ) {
 					'id' => is_int( $value ),
 					'name' => is_string( $value ),
-					'enabled' => is_bool( $value ),
-					default => false,
+					'enabled' => is_bool( $value )
 				};
 			}
 		}

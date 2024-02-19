@@ -1,1 +1,69 @@
-#mr-feature-flag-slug{padding-bottom:10px}.flag-name-error>p{color:#cc1818}.feature-flag-snackbar{bottom:3.5rem;position:fixed}.feature-flag-snackbar .components-snackbar__icon{left:18px;top:auto}.feature-flag-loader .components-spinner{height:20px;width:20px}#mr-feature-flag-submit-controls{margin-top:20px}.mr-feature-flags-filename{background-color:#007cba;border-radius:6px;color:#fff;padding:3px}.mr-feature-flags-slug{background-color:#d7d8d9;border-radius:6px;padding:2px}
+/*!*************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/styles/settings.scss ***!
+  \*************************************************************************************************************************************************************************************************************************************************/
+#mr-feature-flag-slug {
+  padding-bottom: 10px;
+}
+
+.flag-name-error > p {
+  color: #cc1818;
+}
+
+.feature-flag-snackbar {
+  bottom: 3.5rem;
+  position: fixed;
+}
+.feature-flag-snackbar .components-snackbar__icon {
+  left: 18px;
+  top: auto;
+}
+
+.feature-flag-loader .components-spinner {
+  width: 20px;
+  height: 20px;
+}
+
+#mr-feature-flag-submit-controls {
+  margin-top: 20px;
+}
+
+.mr-feature-flags-filename {
+  background-color: #007cba;
+  border-radius: 6px;
+  padding: 3px;
+  color: #fff;
+}
+
+.mr-feature-flags-slug {
+  background-color: #d7d8d9;
+  border-radius: 6px;
+  padding: 2px;
+}
+
+.mr-feature-flags-clipboard-base {
+  color: darkgray !important;
+  float: right;
+  position: relative;
+  right: 40px;
+}
+
+.mr-feature-flags-input {
+  width: 180px;
+}
+
+.mr-feature-flags-toggle {
+  margin-top: 7px;
+  margin-left: 40px;
+  min-width: 150px;
+}
+
+.mr-feature-flags-sdk {
+  margin-left: 80px;
+}
+
+.mr-feature-flags-delete {
+  margin-bottom: 6px;
+  margin-left: 50px;
+}
+
+/*# sourceMappingURL=settings.css.map*/

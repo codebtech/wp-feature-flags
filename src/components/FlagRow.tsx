@@ -112,19 +112,13 @@ const FlagRow = ({
 				<Flex justify={'flex-start'}>
 					<FlexItem>
 						<TextControl
-							style={{ width: 180 }}
+							className="mr-feature-flags-input"
 							ref={inputRef}
 							value={item.name}
 							onChange={(value) => handleFlagEdit(value, item.id)}
 						/>
 					</FlexItem>
-					<FlexItem
-						style={{
-							marginTop: 7,
-							marginLeft: 40,
-							minWidth: 150,
-						}}
-					>
+					<FlexItem className="mr-feature-flags-toggle">
 						<ToggleControl
 							checked={item.enabled}
 							disabled={!!errorMessage}
@@ -133,7 +127,7 @@ const FlagRow = ({
 						/>
 					</FlexItem>
 
-					<FlexItem style={{ marginLeft: 60 }}>
+					<FlexItem className="mr-feature-flags-sdk">
 						<Button
 							variant="secondary"
 							label={__(
@@ -147,7 +141,7 @@ const FlagRow = ({
 							{__('</> SDK', 'mr-feature-flags')}
 						</Button>
 					</FlexItem>
-					<FlexItem style={{ marginBottom: 6, marginLeft: 50 }}>
+					<FlexItem className="mr-feature-flags-delete">
 						<Button
 							icon={'trash'}
 							isDestructive

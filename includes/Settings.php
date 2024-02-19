@@ -48,8 +48,10 @@ class Settings {
 
 	/**
 	 * Render page
+	 * 
+	 * @return void
 	 */
-	public function render_page() {
+	public function render_page(): void {
 		echo '<div id="mr_feature_flags_settings_screen"></div>';
 	}
 }

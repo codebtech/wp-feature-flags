@@ -2,15 +2,7 @@ import { useCopyToClipboard } from '@wordpress/compose';
 import { useState, useEffect } from '@wordpress/element';
 import { Button } from '@wordpress/components';
 
-type CSSStyle = Record<string, string | number>;
-
-const Clipboard = ({
-	text,
-	style,
-}: {
-	text: string;
-	style: CSSStyle;
-}): JSX.Element => {
+const Clipboard = ({ text }: { text: string }): JSX.Element => {
 	const [hasCopied, setHasCopied] = useState(false);
 
 	useEffect(() => {
@@ -37,10 +29,11 @@ const Clipboard = ({
 		<>
 			<Button
 				icon={hasCopied ? 'yes-alt' : 'clipboard'}
-				style={style}
+				className="mr-feature-flags-clipboard-base"
 				isPressed={false}
 				variant={'tertiary'}
 				ref={clipRef}
+				label="Copy to clipboard"
 			/>
 		</>
 	);
