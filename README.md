@@ -49,7 +49,7 @@ JS
 
 -   `yarn lint:js`
 
-💡 [VSCode extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) to auto format JS / TS files based on `.prettierrc` configuration
+💡 [VSCode extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) to auto format JS / TS files based on `.prettierrc.js` configuration
 
 CSS
 
