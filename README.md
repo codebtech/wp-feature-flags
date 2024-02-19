@@ -4,7 +4,7 @@
 [![JS lint & test](https://github.com/codebtech/wp-feature-flags/actions/workflows/js.yml/badge.svg)](https://github.com/codebtech/wp-feature-flags/actions/workflows/js.yml)
 [![E2E Tests](https://github.com/codebtech/wp-feature-flags/actions/workflows/e2e.yml/badge.svg)](https://github.com/codebtech/wp-feature-flags/actions/workflows/e2e.yml)
 
-Feature flags allows developers to configure features in plugins/themes behind the feature flags on both Server(PHP) and Client(JS/TS) side.Feature flags allow developers to configure features in plugins/themes behind the feature flags on both the server (PHP) and client (JS/TS) side.
+Feature flags allow developers to configure features in plugins/themes behind the feature flags on both the server (PHP) and client (JS/TS) side.
 
 ## Hooks
 
