@@ -2,5 +2,6 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 yarn lint:js && yarn test:js
+yarn lint:css
 composer lint
 composer test:unit

@@ -9,6 +9,7 @@
 .feature-flag-snackbar {
 	bottom: 3.5rem;
 	position: fixed;
+
 	.components-snackbar__icon {
 		left: 18px;
 		top: auto;
@@ -16,6 +17,7 @@
 }
 
 .feature-flag-loader {
+
 	.components-spinner {
 		width: 20px;
 		height: 20px;
@@ -40,7 +42,7 @@
 }
 
 .mr-feature-flags-clipboard-base {
-	color: darkgray !important;
+	color: #a9a9a9 !important;
 	float: right;
 	position: relative;
 	right: 40px;

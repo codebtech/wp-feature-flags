@@ -3,7 +3,7 @@
  * This is the init file for the plugin
  *
  * @package mr-feature-flags
- * @since 1.0.0
+ * @since 0.1.0
  */
 
 declare(strict_types = 1);
@@ -14,7 +14,7 @@ namespace MR\FeatureFlags;
  * Class FeatureFlags
  *
  * @package mr-feature-flags
- * @since 1.0.0
+ * @since 0.1.0
  */
 class Helper {
 
@@ -25,7 +25,7 @@ class Helper {
 	 * @param string                                                  $field field to search.
 	 * @param string                                                  $flag name of the flag.
 	 * @return boolean
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 */
 	public function search_flag( $flags, $field, $flag ) {
 		
