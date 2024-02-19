@@ -7,8 +7,6 @@ jobs:
         runs-on: ubuntu-latest
         strategy:
             fail-fast: false
-            matrix:
-                php-versions: ['8.3']
         env:
             WP_BASE_URL: 'http://localhost:8888'
             WP_USERNAME: 'admin'
@@ -29,14 +27,17 @@ jobs:
             - name: Setup composer
               uses: php-actions/composer@v6
               with:
-                  php_version: ${{ matrix.php-versions }}
+                  php_version: '8.3'
                   dev: no
 
             - name: Install packages
               run: yarn install --immutable
 
+            - name: Build packages
+              run: yarn build
+
             - name: Playwright install
-              run: yarn playwright install
+              run: yarn playwright install chromium
 
             - name: Start wp-env
               run: yarn wp-env
