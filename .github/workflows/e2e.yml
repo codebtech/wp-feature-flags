@@ -37,7 +37,7 @@ jobs:
               run: yarn build
 
             - name: Playwright install
-              run: yarn playwright install-deps chromium
+              run: yarn playwright install chromium
 
             - name: Start wp-env
               run: yarn wp-env
