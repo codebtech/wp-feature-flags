@@ -1,11 +1,13 @@
 {
 	"name": "mr-feature-flags",
-	"version": "1.0.0",
+	"version": "0.1.0",
 	"description": "Allows developers to enable / disable features based on flags.",
 	"scripts": {
 		"start": "wp-scripts start",
 		"build": "wp-scripts build",
 		"lint:js": "wp-scripts lint-js",
+		"lint:css": "wp-scripts lint-style",
+		"lint:css:fix": "npm run lint:css -- --fix",
 		"test:js": "wp-scripts test-unit-js",
 		"test:watch": "wp-scripts test-unit-js --watch",
 		"prepare": "husky install",

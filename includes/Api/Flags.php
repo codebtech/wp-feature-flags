@@ -3,7 +3,7 @@
  * API class for feature flags options
  *
  * @package mr-feature-flags
- * @since 1.0.0
+ * @since 0.1.0
  */
 
 declare(strict_types = 1);
@@ -18,7 +18,7 @@ use WP_REST_Request;
  * Class Settings
  *
  * @package mr-feature-flags
- * @since 1.0.0
+ * @since 0.1.0
  */
 class Flags {
 
@@ -32,7 +32,7 @@ class Flags {
 	/**
 	 * Register feature flag endpoints.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 */
 	public function register(): void {
 		add_action(
@@ -44,7 +44,7 @@ class Flags {
 	/**
 	 * Register routes.
 	 * 
-	 * * @since 1.0.0
+	 * * @since 0.1.0
 	 */
 	public function register_routes(): void {
 		register_rest_route(

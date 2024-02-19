@@ -2,13 +2,13 @@
 /**
  * The plugin bootstrap file
  *
- * @since 1.0.0
+ * @since 0.1.0
  * @package mr-feature-flags
  *
  * @wordpress-plugin
  * Plugin Name:       Feature Flags
  * Description:       Allows developers to enable / disable features based on flags.
- * Version:           1.0.0
+ * Version:           0.1.0
  * Author:            Mohan Raj
  * Author URI:        https://mohanraj.dev
  * License:           GPL-2.0+

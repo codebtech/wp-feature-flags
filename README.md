@@ -4,24 +4,74 @@
 [![JS lint & test](https://github.com/codebtech/wp-feature-flags/actions/workflows/js.yml/badge.svg)](https://github.com/codebtech/wp-feature-flags/actions/workflows/js.yml)
 [![E2E Tests](https://github.com/codebtech/wp-feature-flags/actions/workflows/e2e.yml/badge.svg)](https://github.com/codebtech/wp-feature-flags/actions/workflows/e2e.yml)
 
-Contributors: Mohan Raj Pachaiyappan
-Tags: feature-flags, feature-flag, wp-feature-flags
-Requires at least: 6.2
-Tested up to: 6.4
-Stable tag: 1.0.0
-Requires PHP: 7.4
-Contributor link: https://github.com/m0hanraj
+Feature flags allows developers to configure features in plugins/themes behind the feature flags on both Server(PHP) and Client(JS/TS) side.Feature flags allow developers to configure features in plugins/themes behind the feature flags on both the server (PHP) and client (JS/TS) side.
 
-## Description
+## Hooks
 
-Feature flags allows developers to configure features behind the feature flags on both Server(PHP) and Client(JS/TS) side.
+### JS Filters
 
-## Frequently Asked Questions
+##### mrFeatureFlags.newFlag.defaultStatus
 
-### Does this plugin work with PHP 8?
+The filter controls whether the new flag is enabled by default or not. Default `true`
 
-Yes, it's actively tested and working up to PHP 8.3
+Example usage:
 
-### Does this plugin work with latest WordPress?
+```js
+addFilter('mrFeatureFlags.newFlag.defaultStatus', 'mr-feature-flags', () => {
+	return false;
+});
+```
 
-Yes, it's actively tested and working up to WordPress 6.4.3
+## Development setup
+
+To build the plugin
+
+PHP setup
+
+-   `composer install`
+
+JS setup
+
+-   `yarn install`
+-   `yarn build` to create the build
+-   `yarn start` to start the development watch mode
+
+## Linting and formatting
+
+PHP
+
+-   `composer lint`
+-   To auto fix the linting errors `composer lint:fix`
+
+💡 [VSCode extension](https://marketplace.visualstudio.com/items?itemName=shevaua.phpcs) to auto format PHP files based on `phpcs.xml.dist` configuration
+
+JS
+
+-   `yarn lint:js`
+
+💡 [VSCode extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) to auto format JS / TS files based on `.prettierrc` configuration
+
+CSS
+
+-   `yarn lint:css`
+-   To auto fix the css linting errors `yarn lint:css:fix`
+
+## Testing
+
+### PHP
+
+-   Run `./local` from your preferred CLI. Ensure you have Docker installed and running.
+-   The setup will automatically ssh into the container.
+-   To run unit tests `composer run test:unit`
+-   To run integrations tests `composer run test:integration`
+-   To run integrations tests as multisite `composer run test:multisite`
+
+### JS
+
+-   Run `yarn test:js` which will run all jest and React Testing Library tests
+
+### E2E
+
+The E2E tests depends on `wp-env` setup. Ensure you run `wp-env start` before running the tests.
+
+-   Run `yarn test:e2e` which will run all Playwright e2e tests.
