@@ -48,7 +48,7 @@ jobs:
 
             - name: Create and push built branch
               run: |
-                  git checkout main-built
+                  git checkout -b main-built
                   git add -A  # Stage all changes, including untracked files
                   git ls-files --ignored --exclude-standard -o -z | xargs -0 git rm --cached  # Remove ignored files from the index
                   git commit -m "Built WordPress plugin" --no-verify
