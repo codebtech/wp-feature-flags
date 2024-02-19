@@ -28,5 +28,21 @@ jobs:
             - name: Install dependencies
               run: composer install --no-dev -o
 
-            - name: Deploy to main-built branch
-              run: bash <(curl -s "https://raw.githubusercontent.com/Automattic/vip-go-build/master/deploy.sh")
+            - name: Setup Node
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20.11
+
+            - name: Install packages
+              run: yarn install --immutable
+
+            - name: JS build
+              run: yarn build
+
+            - name: Create and push built branch
+              run: |
+                  git checkout -b main-built
+                  git add -A  # Stage all changes, including untracked files
+                  git ls-files --ignored --exclude-standard -o -z | xargs -0 git rm --cached  # Remove ignored files from the index
+                  git commit -m "Built WordPress plugin"
+                  git push origin main-built
