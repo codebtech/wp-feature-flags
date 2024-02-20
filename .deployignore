@@ -29,3 +29,4 @@ types
 tests
 src
 bin
+build-script.sh
