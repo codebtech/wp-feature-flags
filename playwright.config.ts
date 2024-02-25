@@ -17,6 +17,7 @@ export default defineConfig({
 	use: {
 		baseURL: process.env.WP_BASE_URL,
 		trace: 'on-first-retry',
+		permissions: ['clipboard-read'],
 	},
 
 	projects: [
