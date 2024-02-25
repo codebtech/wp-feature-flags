@@ -10,9 +10,14 @@
 	bottom: 3.5rem;
 	position: fixed;
 
+	div {
+		float: right;
+		right: 250px;
+	}
+
 	.components-snackbar__icon {
-		left: 18px;
 		top: auto;
+		left: 18px;
 	}
 }
 
@@ -55,7 +60,7 @@
 .mr-feature-flags-toggle {
 	margin-top: 7px;
 	margin-left: 40px;
-	min-width: 150px;
+	min-width: 130px !important;
 }
 
 .mr-feature-flags-sdk {

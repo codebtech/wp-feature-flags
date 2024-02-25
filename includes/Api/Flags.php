@@ -30,6 +30,13 @@ class Flags {
 	public static $option_name = 'mr_feature_flags';
 
 	/**
+	 * Maximum allowed flags.
+	 *
+	 * @var int $max_flags
+	 */
+	private static $max_flags = 20;
+
+	/**
 	 * Register feature flag endpoints.
 	 *
 	 * @since 0.1.0
@@ -92,6 +99,16 @@ class Flags {
 		$input_data = $request->get_json_params();
 
 		if ( is_array( $input_data['flags'] ) ) {
+			/**
+			 * Filter to update max allowed feature flags.
+			 */
+			$max_allowed_flags = apply_filters( 'mr_feature_flags_max_allowed', self::$max_flags );
+			if ( count( $input_data['flags'] ) > $max_allowed_flags ) {
+				// translators: %d is a placeholder for the maximum allowed flags.
+				$error_message = sprintf( __( 'Cannot add more than %d flags', 'mr-feature-flags' ), $max_allowed_flags );
+				return new WP_Error( 'flag_limit_exceeded', $error_message, array( 'status' => 400 ) );
+			}
+
 			update_option( self::$option_name, $input_data['flags'] );
 			return rest_ensure_response(
 				array(
@@ -101,7 +118,7 @@ class Flags {
 			);
 		}
 
-		return new WP_Error( 'invalid_input', 'Cannot update flags', array( 'status' => 400 ) );
+		return new WP_Error( 'invalid_input', __( 'Cannot update flags', 'mr-feature-flags' ), array( 'status' => 400 ) );
 	}
 
 	/**
