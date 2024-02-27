@@ -2981,10 +2981,10 @@
     globals "^13.12.0"
     requireindex "^1.2.0"
 
-"@wordpress/hooks@^3.51.0":
-  version "3.51.0"
-  resolved "https://registry.yarnpkg.com/@wordpress/hooks/-/hooks-3.51.0.tgz#97ca3c7a6cf769fdb83338c3b232e32f594fdaef"
-  integrity sha512-u//qLJCfgmGBLEdAtZx5C1KzmhcCYDIk46feYGBR9DHB1/fqdvMpxc20un62i8QgYvJyF7GChmerkPbssa6a8w==
+"@wordpress/hooks@^3.51.0", "@wordpress/hooks@^3.52.0":
+  version "3.52.0"
+  resolved "https://registry.yarnpkg.com/@wordpress/hooks/-/hooks-3.52.0.tgz#cc8173c6976d57cc1a4ce58ea703e0d3a2aee18f"
+  integrity sha512-acEF5B6GkFOjImqPpLvl1lP0sbpS6h35BV6RbXZFlaawCj8GYs6/tvCkHXzfwvjGwP2aR9jdpSx9DpXWKyJSQQ==
   dependencies:
     "@babel/runtime" "^7.16.0"
 
