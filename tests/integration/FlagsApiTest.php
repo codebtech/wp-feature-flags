@@ -153,6 +153,63 @@ class FlagsApiTest extends WP_Test_REST_Controller_Testcase {
 
 	}
 
+	public function test_create_item_with_default_max_allowed_filter() {
+		wp_set_current_user( self::$admin );
+		$flags = [['id'=>1, 'name'=>'test', 'enabled'=>true],
+		['id'=>2, 'name'=>'test2', 'enabled'=>false],
+		['id'=>3, 'name'=>'test3', 'enabled'=>false],
+		['id'=>4, 'name'=>'test4', 'enabled'=>false],
+		['id'=>5, 'name'=>'test5', 'enabled'=>false],
+		['id'=>6, 'name'=>'test6', 'enabled'=>false],
+		['id' => 7, 'name' => 'test7', 'enabled' => true],
+		['id' => 8, 'name' => 'test8', 'enabled' => false],
+		['id' => 9, 'name' => 'test9', 'enabled' => false],
+		['id' => 10, 'name' => 'test10', 'enabled' => false],
+		['id' => 11, 'name' => 'test11', 'enabled' => false],
+		['id' => 12, 'name' => 'test12', 'enabled' => false],
+		['id' => 13, 'name' => 'test13', 'enabled' => false],
+		['id' => 14, 'name' => 'test14', 'enabled' => false],
+		['id' => 15, 'name' => 'test15', 'enabled' => false],
+		['id' => 16, 'name' => 'test16', 'enabled' => false],
+		['id' => 17, 'name' => 'test17', 'enabled' => false],
+		['id' => 18, 'name' => 'test18', 'enabled' => false],
+		['id' => 19, 'name' => 'test19', 'enabled' => false],
+		['id' => 20, 'name' => 'test20', 'enabled' => false],
+		['id' => 21, 'name' => 'test21', 'enabled' => false],];
+
+		$request  = new WP_REST_Request( 'POST', self::$api_endpoint );
+		$request->add_header( 'Content-Type', 'application/json' );
+		$request->set_body( wp_json_encode( ['flags' => $flags] ) );
+		$response = rest_get_server()->dispatch( $request );
+		$response_message = $response->get_data()['message'];
+
+		$this->assertErrorResponse( 'flag_limit_exceeded', $response, 400 );
+		$this->assertEquals('Maximum allowed flags are 20', $response_message);
+
+	}
+
+	public function test_create_item_with_custom_max_allowed_filter() {
+		wp_set_current_user( self::$admin );
+
+		// Mock the filter hook
+		$mocked_max_flags = 3;
+		add_filter('mr_feature_flags_max_allowed', function () use ($mocked_max_flags) {
+			return $mocked_max_flags;
+		});
+
+		$flags = [['id'=>1, 'name'=>'test', 'enabled'=>true], ['id'=>2, 'name'=>'test2', 'enabled'=>false], ['id'=>3, 'name'=>'test2', 'enabled'=>false], ['id'=>4, 'name'=>'test2', 'enabled'=>false]];
+
+		$request  = new WP_REST_Request( 'POST', self::$api_endpoint );
+		$request->add_header( 'Content-Type', 'application/json' );
+		$request->set_body( wp_json_encode( ['flags' => $flags] ) );
+		$response = rest_get_server()->dispatch( $request );
+		$response_message = $response->get_data()['message'];
+		
+		$this->assertErrorResponse( 'flag_limit_exceeded', $response, 400 );
+		$this->assertEquals('Maximum allowed flags are 3', $response_message);
+
+	}
+
 	public function test_create_item_without_input() {
 		wp_set_current_user( self::$admin );
 

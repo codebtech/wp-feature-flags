@@ -8,9 +8,26 @@ WordPress Feature flags plugin allow developers to configure features in plugins
 
 ## Hooks
 
-### JS Filters
+### PHP filters
 
-##### mrFeatureFlags.newFlag.defaultStatus
+#### `mr_feature_flags_max_allowed`
+
+Filter to define the maximum number of allowed flags. It is recommended to keep this to default value, which is 20.
+
+Example usage:
+
+```php
+add_filter(
+	'mr_feature_flags_max_allowed',
+	static function () {
+		return 10;
+	}
+);
+```
+
+### JS filters
+
+##### `mrFeatureFlags.newFlag.defaultStatus`
 
 The filter controls whether the new flag is enabled by default or not. Default `true`
 

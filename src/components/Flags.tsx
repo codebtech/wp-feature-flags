@@ -6,13 +6,16 @@ import SubmitControls from './SubmitControls';
 import { getFlags, updateFlags } from '../utils';
 import Header from './Header';
 import { __ } from '@wordpress/i18n';
-import { dispatch } from '@wordpress/data';
+import { useDispatch } from '@wordpress/data';
 
 const Layout = (): JSX.Element => {
 	const [flags, setFlags] = useState<Flag[]>([]);
 	const [isLoading, setIsLoading] = useState<boolean>(true);
 	const [isSaving, setIsSaving] = useState<boolean>(false);
 	const [disableSave, setDisableSave] = useState<boolean>(false);
+
+	const { createErrorNotice, createSuccessNotice } =
+		useDispatch('core/notices');
 
 	useEffect(() => {
 		const logFlags = async () => {
@@ -26,15 +29,31 @@ const Layout = (): JSX.Element => {
 		logFlags();
 	}, [setFlags, setIsLoading]);
 
-	const remoteApi = useCallback(async (input: Flag[]) => {
-		await updateFlags({ ...input });
-		//@ts-ignore
-		dispatch('core/notices').createSuccessNotice('Saved successfully!', {
-			type: 'snackbar',
-			id: 'mr-feature-flags-snackbar',
-			icon: <>✅</>,
-		});
-	}, []);
+	const remoteApi = useCallback(
+		async (input: Flag[]) => {
+			try {
+				const response = await updateFlags({ ...input });
+				if ('status' in response && response.status === 200) {
+					createSuccessNotice(
+						__('Saved successfully!', 'mr-feature-flags'),
+						{
+							type: 'snackbar',
+							id: 'mr-feature-flags-snackbar',
+							icon: <>✅</>,
+						}
+					);
+				}
+			} catch (error: unknown) {
+				//@ts-ignore
+				createErrorNotice(error?.message, {
+					type: 'snackbar',
+					id: 'mr-feature-flags-snackbar',
+					icon: <>❌</>,
+				});
+			}
+		},
+		[createErrorNotice, createSuccessNotice]
+	);
 
 	const lastFlag = flags?.at(-1)?.id || 0;
 
