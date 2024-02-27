@@ -41,5 +41,4 @@ class FlagTest extends TestCase
 		$this->assertFalse($result);
 	}
 
-
 }
