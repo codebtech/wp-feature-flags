@@ -41,10 +41,13 @@ jobs:
 
             - name: Apply deployignore
               run: |
-                FILE=.deployignore
-                if [ -f "$FILE" ]; then
-                  cat .deployignore | xargs rm -rf
-                fi
+                  FILE=.deployignore
+                  if [ -f "$FILE" ]; then
+                    cat .deployignore | xargs rm -rf
+                  fi
+
+            - name: Delete main-built branch
+              run: git push origin --delete main-built
 
             - name: Push to built branch
               uses: Automattic/action-commit-to-branch@master
