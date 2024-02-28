@@ -1,5 +1,8 @@
 name: JS lint & test
-on: [push]
+on:
+    push:
+        branches-ignore:
+            - 'main-built'
 
 jobs:
     build:

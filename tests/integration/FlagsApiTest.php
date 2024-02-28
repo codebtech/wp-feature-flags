@@ -184,7 +184,7 @@ class FlagsApiTest extends WP_Test_REST_Controller_Testcase {
 		$response_message = $response->get_data()['message'];
 
 		$this->assertErrorResponse( 'flag_limit_exceeded', $response, 400 );
-		$this->assertEquals('Maximum allowed flags are 20', $response_message);
+		$this->assertEquals('Cannot add more than 20 flags', $response_message);
 
 	}
 
@@ -206,8 +206,7 @@ class FlagsApiTest extends WP_Test_REST_Controller_Testcase {
 		$response_message = $response->get_data()['message'];
 		
 		$this->assertErrorResponse( 'flag_limit_exceeded', $response, 400 );
-		$this->assertEquals('Maximum allowed flags are 3', $response_message);
-
+		$this->assertEquals('Cannot add more than 3 flags', $response_message);
 	}
 
 	public function test_create_item_without_input() {
