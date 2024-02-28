@@ -1,5 +1,9 @@
 name: PHP lint & test
-on: [push]
+on:
+    push:
+        branches:
+            - '*'
+            - '!main-built'
 
 jobs:
     lint-test:
