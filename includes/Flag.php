@@ -8,7 +8,7 @@
 
 declare(strict_types = 1);
 
-namespace MR\FeatureFlags;
+namespace CodeB\FeatureFlags;
 
 /**
  * Utils class for feature flags

@@ -8,7 +8,7 @@
 
 declare(strict_types = 1);
 
-namespace MR\FeatureFlags\Api;
+namespace CodeB\FeatureFlags\Api;
 
 use WP_Error;
 use WP_REST_Server;

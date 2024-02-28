@@ -19,9 +19,9 @@
 
 declare( strict_types = 1 );
 
-namespace MR\FeatureFlags;
+namespace CodeB\FeatureFlags;
 
-use MR\FeatureFlags\Api\Flags;
+use CodeB\FeatureFlags\Api\Flags;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {

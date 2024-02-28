@@ -1,5 +1,5 @@
 <?php
-use MR\FeatureFlags\Flag;
+use CodeB\FeatureFlags\Flag;
 use Yoast\WPTestUtils\WPIntegration\TestCase;
 
 class FlagTest extends TestCase{

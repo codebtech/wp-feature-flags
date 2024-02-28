@@ -3,7 +3,7 @@
  * @package nuk-wp-block-plugin
  * @since 0.1.0
  */
-namespace MR\FeatureFlags\Api;
+namespace CodeB\FeatureFlags\Api;
 
 use WP_REST_Request;
 use WP_UnitTest_Factory;

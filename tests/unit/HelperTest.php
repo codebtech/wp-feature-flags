@@ -1,6 +1,6 @@
 <?php
 
-use MR\FeatureFlags\Helper;
+use CodeB\FeatureFlags\Helper;
 use Yoast\WPTestUtils\BrainMonkey\TestCase;
 class HelperTest extends TestCase
 {
