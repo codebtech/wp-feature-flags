@@ -20,14 +20,14 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"MR\\FeatureFlags\\": [
+			"CodeB\\FeatureFlags\\": [
 				"includes/"
 			]
 		}
 	},
 	"autoload-dev": {
 		"psr-4": {
-			"MR\\FeatureFlags\\Tests\\": "tests/unit/"
+			"CodeB\\FeatureFlags\\Tests\\": "tests/unit/"
 		}
 	},
 	"config": {

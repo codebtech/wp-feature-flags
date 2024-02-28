@@ -1,6 +1,6 @@
 <?php
 
-use MR\FeatureFlags\Flag;
+use CodeB\FeatureFlags\Flag;
 use Yoast\WPTestUtils\BrainMonkey\TestCase;
 
 class FlagTest extends TestCase

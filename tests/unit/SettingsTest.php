@@ -1,6 +1,6 @@
 <?php
 use Yoast\WPTestUtils\BrainMonkey\TestCase;
-use MR\FeatureFlags\Settings;
+use CodeB\FeatureFlags\Settings;
 
 class SettingsTest extends TestCase {
 
