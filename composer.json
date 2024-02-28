@@ -1,5 +1,5 @@
 {
-	"name": "mr/feature-flags",
+	"name": "codeb/wp-feature-flags",
 	"description": "Allows developers to enable / disable features based on flags.",
 	"type": "wordpress-plugin",
 	"license": "MIT",
