@@ -2,9 +2,9 @@
     "compilerOptions": {
       "outDir": "./build",
       "jsx": "react-jsx",
-      "module": "ESNext",
+      "module": "NodeNext",
       "target": "es2022",
-      "moduleResolution": "node",
+      "moduleResolution": "NodeNext",
       "resolveJsonModule": true,
       "sourceMap": true,
       "noImplicitAny": true,
