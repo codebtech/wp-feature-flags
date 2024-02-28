@@ -46,7 +46,7 @@ jobs:
               run: yarn wp-env
 
             - name: Run Playwright tests
-              run: npx playwright test --reporter=list
+              run: npx playwright test
 
             - uses: actions/upload-artifact@v4
               with:
