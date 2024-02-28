@@ -2,7 +2,7 @@
 /**
  * API class for feature flags options
  *
- * @package mr-feature-flags
+ * @package codeb-feature-flags
  * @since 0.1.0
  */
 
@@ -17,7 +17,7 @@ use WP_REST_Request;
 /**
  * Class Settings
  *
- * @package mr-feature-flags
+ * @package codeb-feature-flags
  * @since 0.1.0
  */
 class Flags {
@@ -105,7 +105,7 @@ class Flags {
 			$max_allowed_flags = apply_filters( 'mr_feature_flags_max_allowed', self::$max_flags );
 			if ( count( $input_data['flags'] ) > $max_allowed_flags ) {
 				// translators: %d is a placeholder for the maximum allowed flags.
-				$error_message = sprintf( __( 'Cannot add more than %d flags', 'mr-feature-flags' ), $max_allowed_flags );
+				$error_message = sprintf( __( 'Cannot add more than %d flags', 'codeb-feature-flags' ), $max_allowed_flags );
 				return new WP_Error( 'flag_limit_exceeded', $error_message, array( 'status' => 400 ) );
 			}
 
@@ -118,7 +118,7 @@ class Flags {
 			);
 		}
 
-		return new WP_Error( 'invalid_input', __( 'Cannot update flags', 'mr-feature-flags' ), array( 'status' => 400 ) );
+		return new WP_Error( 'invalid_input', __( 'Cannot update flags', 'codeb-feature-flags' ), array( 'status' => 400 ) );
 	}
 
 	/**

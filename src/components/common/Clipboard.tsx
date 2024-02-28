@@ -29,7 +29,7 @@ const Clipboard = ({ text }: { text: string }): JSX.Element => {
 		<>
 			<Button
 				icon={hasCopied ? 'yes-alt' : 'clipboard'}
-				className="mr-feature-flags-clipboard-base"
+				className="codeb-feature-flags-clipboard-base"
 				isPressed={false}
 				variant={'tertiary'}
 				ref={clipRef}

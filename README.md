@@ -34,7 +34,7 @@ The filter controls whether the new flag is enabled by default or not. Default `
 Example usage:
 
 ```js
-addFilter('mrFeatureFlags.newFlag.defaultStatus', 'mr-feature-flags', () => {
+addFilter('mrFeatureFlags.newFlag.defaultStatus', 'codeb-feature-flags', () => {
 	return false;
 });
 ```

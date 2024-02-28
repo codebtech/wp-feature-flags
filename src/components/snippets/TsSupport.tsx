@@ -20,13 +20,13 @@ export {};`;
 	}, []);
 
 	return (
-		<div className="mr-feature-flags-ts-snippet-container">
-			<h3>{__('TypeScript support', 'mr-feature-flags')}</h3>
+		<div className="codeb-feature-flags-ts-snippet-container">
+			<h3>{__('TypeScript support', 'codeb-feature-flags')}</h3>
 			<p>
 				Create a file named{' '}
-				<span className="mr-feature-flags-filename">flags.d.ts</span> at
+				<span className="codeb-feature-flags-filename">flags.d.ts</span> at
 				the entrypoint of TypeScript code for the plugin/theme ( usually
-				<span className="mr-feature-flags-slug"> src</span> directory )
+				<span className="codeb-feature-flags-slug"> src</span> directory )
 				and add the following declaration.
 			</p>
 			<Clipboard text={tsSnippet} />

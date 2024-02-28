@@ -60,7 +60,7 @@ const FlagRow = ({
 	const handleFlagEdit = (value: string, flagId: number) => {
 		if (checkIfFlagExists(flags, value)) {
 			// eslint-disable-next-line @wordpress/i18n-no-variables
-			setErrorMessage(__(ERROR_FLAG_EXISTS, 'mr-feature-flags'));
+			setErrorMessage(__(ERROR_FLAG_EXISTS, 'codeb-feature-flags'));
 			setDisableSave(true);
 		} //Alphanumeric,hypen and underscore validation
 		else if (value.match(/^[a-zA-Z0-9\_-]*$/)) {
@@ -68,7 +68,7 @@ const FlagRow = ({
 			setDisableSave(false);
 		} else {
 			// eslint-disable-next-line @wordpress/i18n-no-variables
-			setErrorMessage(__(ERROR_FLAG_INVALID, 'mr-feature-flags'));
+			setErrorMessage(__(ERROR_FLAG_INVALID, 'codeb-feature-flags'));
 			setDisableSave(true);
 		}
 
@@ -112,13 +112,13 @@ const FlagRow = ({
 				<Flex justify={'flex-start'}>
 					<FlexItem>
 						<TextControl
-							className="mr-feature-flags-input"
+							className="codeb-feature-flags-input"
 							ref={inputRef}
 							value={item.name}
 							onChange={(value) => handleFlagEdit(value, item.id)}
 						/>
 					</FlexItem>
-					<FlexItem className="mr-feature-flags-toggle">
+					<FlexItem className="codeb-feature-flags-toggle">
 						<ToggleControl
 							checked={item.enabled}
 							disabled={!!errorMessage}
@@ -127,26 +127,26 @@ const FlagRow = ({
 						/>
 					</FlexItem>
 
-					<FlexItem className="mr-feature-flags-sdk">
+					<FlexItem className="codeb-feature-flags-sdk">
 						<Button
 							variant="secondary"
 							label={__(
 								'Click to see SDK setting',
-								'mr-feature-flags'
+								'codeb-feature-flags'
 							)}
 							showTooltip
 							tooltipPosition="top right"
 							onClick={handleSdkModal}
 						>
-							{__('</> SDK', 'mr-feature-flags')}
+							{__('</> SDK', 'codeb-feature-flags')}
 						</Button>
 					</FlexItem>
-					<FlexItem className="mr-feature-flags-delete">
+					<FlexItem className="codeb-feature-flags-delete">
 						<Button
 							icon={'trash'}
 							isDestructive
 							variant="tertiary"
-							label={__('Delete Flag', 'mr-feature-flags')}
+							label={__('Delete Flag', 'codeb-feature-flags')}
 							onClick={() => handleDeleteModal(item)}
 						/>
 					</FlexItem>
