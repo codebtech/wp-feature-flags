@@ -1,5 +1,6 @@
 import { test, expect } from '@wordpress/e2e-test-utils-playwright';
 import { ERROR_FLAG_EXISTS, ERROR_FLAG_INVALID } from '../../src/constants';
+import { AddNewFlag, AddNewFlagAndFill, DisableFlag, SaveFlags, deleteLastFlag } from './helper';
 
 // eslint-disable-next-line
 test.use({ storageState: process.env.WP_AUTH_STORAGE });
@@ -19,20 +20,16 @@ test.describe('Feature flags', () => {
 
 	test('Create and delete flags e2e scenarios', async ({ page }) => {
 		//Create new flag
-		await page.getByRole('button', { name: 'Add Flag' }).click();
-		await page.getByRole('textbox').last().fill('test');
-		await page.getByRole('button', { name: 'Save' }).click();
+		await AddNewFlagAndFill(page, 'test');
+		await SaveFlags(page);
+
 		//Confirm save success
 		expect(
 			await page.getByLabel('Dismiss this notice').innerText()
 		).toMatch(/Saved successfully!/);
 
-		//Toggle feature flag
-		await page
-			.locator('id=mr-feature-flag-item')
-			.last()
-			.getByLabel('Flag enabled')
-			.click();
+		await DisableFlag(page, true);
+
 		expect(
 			await page.getByLabel('Dismiss this notice').innerText()
 		).toMatch(/Saved successfully!/);
@@ -44,13 +41,12 @@ test.describe('Feature flags', () => {
 		).toBeVisible();
 
 		//Create another flag with same name
-		await page.getByRole('button', { name: 'Add Flag' }).click();
-		await page.getByRole('textbox').last().fill('test');
+		await AddNewFlagAndFill(page, 'test');
 		expect(page.getByText(ERROR_FLAG_EXISTS)).toBeVisible();
 		expect(page.getByRole('button', { name: 'Save' })).toBeDisabled();
 
 		//update flag name to be unique and check text validation.
-		await page.getByRole('textbox').last().fill('test 2');
+		await AddNewFlag(page, 'test 2');
 		expect(page.getByText(ERROR_FLAG_INVALID)).toBeVisible();
 		expect(page.getByRole('button', { name: 'Save' })).toBeDisabled();
 
@@ -60,6 +56,7 @@ test.describe('Feature flags', () => {
 			.last()
 			.getByLabel('Delete Flag')
 			.click();
+		// await deleteLastFlag(page);
 		await page.getByRole('button', { name: 'Yes' }).click();
 		//Confirm delete success
 		expect(
@@ -91,11 +88,6 @@ test.describe('Feature flags', () => {
 		await page.locator('button[aria-label="Close"]').click();
 
 		//Delete the created flag
-		await page
-			.locator('id=mr-feature-flag-item')
-			.last()
-			.getByLabel('Delete Flag')
-			.click();
-		await page.getByRole('button', { name: 'Yes' }).click();
+		await deleteLastFlag(page);
 	});
 });
