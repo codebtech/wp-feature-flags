@@ -7,6 +7,7 @@
  *
  * @wordpress-plugin
  * Plugin Name:       Feature Flags
+ * Plugin URI:        https://github.com/codebtech/wp-feature-flags
  * Description:       Allows developers to enable / disable features based on flags.
  * Version:           0.1.0
  * Author:            Mohan Raj
