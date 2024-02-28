@@ -1,6 +1,12 @@
 import { test, expect } from '@wordpress/e2e-test-utils-playwright';
 import { ERROR_FLAG_EXISTS, ERROR_FLAG_INVALID } from '../../src/constants';
-import { AddNewFlag, AddNewFlagAndFill, DisableFlag, SaveFlags, deleteLastFlag } from './helper';
+import {
+	AddNewFlag,
+	AddNewFlagAndFill,
+	DisableFlag,
+	SaveFlags,
+	deleteLastFlag,
+} from './helper';
 
 // eslint-disable-next-line
 test.use({ storageState: process.env.WP_AUTH_STORAGE });
