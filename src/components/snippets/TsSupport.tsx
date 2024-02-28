@@ -24,10 +24,11 @@ export {};`;
 			<h3>{__('TypeScript support', 'codeb-feature-flags')}</h3>
 			<p>
 				Create a file named{' '}
-				<span className="codeb-feature-flags-filename">flags.d.ts</span> at
-				the entrypoint of TypeScript code for the plugin/theme ( usually
-				<span className="codeb-feature-flags-slug"> src</span> directory )
-				and add the following declaration.
+				<span className="codeb-feature-flags-filename">flags.d.ts</span>{' '}
+				at the entrypoint of TypeScript code for the plugin/theme (
+				usually
+				<span className="codeb-feature-flags-slug"> src</span> directory
+				) and add the following declaration.
 			</p>
 			<Clipboard text={tsSnippet} />
 			<Snippet data={tsSnippet} language={'typescript'} />
