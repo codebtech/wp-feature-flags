@@ -61,3 +61,23 @@ export async function DisableFlag(page: Page, isEnabled: boolean) {
 		{ box: true }
 	);
 }
+
+export async function OpenSdkModal(page: Page) {
+	await test.step(
+		'Open sdk modal',
+		async () => {
+			await page.getByLabel('Click to see SDK setting').last().click();
+		},
+		{ box: true }
+	);
+}
+
+export async function CloseSdkModal(page: Page) {
+	await test.step(
+		'Close sdk modal',
+		async () => {
+			await page.locator('button[aria-label="Close"]').click();
+		},
+		{ box: true }
+	);
+}
