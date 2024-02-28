@@ -2,7 +2,7 @@
 /**
  * Utility class to expose flag methods.
  *
- * @package mr-feature-flags
+ * @package codeb-feature-flags
  * @since 0.1.0
  */
 
@@ -13,7 +13,7 @@ namespace CodeB\FeatureFlags;
 /**
  * Utils class for feature flags
  *
- * @package mr-feature-flags
+ * @package codeb-feature-flags
  * @since 0.1.0
  */
 class Flag {

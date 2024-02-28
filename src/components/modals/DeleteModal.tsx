@@ -14,7 +14,7 @@ const DeleteModal = ({
 }: DeleteModalProps): JSX.Element => {
 	return (
 		<Modal
-			title={__(`Delete Feature Flag`, 'mr-feature-flags')}
+			title={__(`Delete Feature Flag`, 'codeb-feature-flags')}
 			onRequestClose={closeModal}
 		>
 			<p>
@@ -22,7 +22,7 @@ const DeleteModal = ({
 					// eslint-disable-next-line @wordpress/i18n-no-variables
 					__(
 						`Are you sure want to delete flag "${item.name}" ?`,
-						'mr-feature-flags'
+						'codeb-feature-flags'
 					)
 				}
 			</p>
@@ -32,10 +32,10 @@ const DeleteModal = ({
 				onClick={() => handleDeleteFlag(item.id)}
 				style={{ marginRight: 10 }}
 			>
-				{__('Yes', 'mr-feature-flags')}
+				{__('Yes', 'codeb-feature-flags')}
 			</Button>
 			<Button variant="tertiary" onClick={closeModal}>
-				{__('Cancel', 'mr-feature-flags')}
+				{__('Cancel', 'codeb-feature-flags')}
 			</Button>
 		</Modal>
 	);

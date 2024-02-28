@@ -35,10 +35,10 @@ const Layout = (): JSX.Element => {
 				const response = await updateFlags({ ...input });
 				if ('status' in response && response.status === 200) {
 					createSuccessNotice(
-						__('Saved successfully!', 'mr-feature-flags'),
+						__('Saved successfully!', 'codeb-feature-flags'),
 						{
 							type: 'snackbar',
-							id: 'mr-feature-flags-snackbar',
+							id: 'codeb-feature-flags-snackbar',
 							icon: <>✅</>,
 						}
 					);
@@ -47,7 +47,7 @@ const Layout = (): JSX.Element => {
 				//@ts-ignore
 				createErrorNotice(error?.message, {
 					type: 'snackbar',
-					id: 'mr-feature-flags-snackbar',
+					id: 'codeb-feature-flags-snackbar',
 					icon: <>❌</>,
 				});
 			}
@@ -81,7 +81,7 @@ const Layout = (): JSX.Element => {
 	return (
 		<>
 			<div id="mr-feature-flag-layout">
-				<h1>{__('Feature Flags settings', 'mr-feature-flags')}</h1>
+				<h1>{__('Feature Flags settings', 'codeb-feature-flags')}</h1>
 				<div id="mr-feature-flag-content">
 					{lastFlag ? <Header /> : ''}
 					{isLoading ? (

@@ -1,23 +1,26 @@
 {
 	"name": "codeb/wp-feature-flags",
 	"description": "Allows developers to enable / disable features based on flags.",
-	"type": "wordpress-plugin",
 	"license": "MIT",
+	"type": "wordpress-plugin",
+	"require": {
+		"php": ">=8.1"
+	},
+	"require-dev": {
+		"brain/monkey": "^2.6",
+		"newsuk/nuk-wp-phpcs-config": "^0.2.0",
+		"newsuk/nuk-wp-phpmd-config": "^0.1.0",
+		"newsuk/nuk-wp-phpstan-config": "^0.1.0",
+		"phpunit/phpunit": "^9.4",
+		"wordpress/wordpress": "^6.4",
+		"yoast/wp-test-utils": "^1.2"
+	},
 	"repositories": [
 		{
 			"type": "vcs",
 			"url": "https://git@github.com/WordPress/wordpress-develop"
 		}
 	],
-	"require-dev": {
-		"wordpress/wordpress": "^6.4",
-		"phpunit/phpunit": "^9.4",
-		"brain/monkey": "^2.6",
-		"newsuk/nuk-wp-phpcs-config": "^0.2.0",
-		"newsuk/nuk-wp-phpstan-config": "^0.1.0",
-		"newsuk/nuk-wp-phpmd-config": "^0.1.0",
-		"yoast/wp-test-utils": "^1.2"
-	},
 	"autoload": {
 		"psr-4": {
 			"CodeB\\FeatureFlags\\": [
@@ -34,16 +37,19 @@
 		"allow-plugins": {
 			"dealerdirect/phpcodesniffer-composer-installer": true,
 			"phpstan/extension-installer": true
+		},
+		"platform": {
+			"php": "8.1"
 		}
 	},
 	"scripts": {
 		"lint": "phpcs .",
 		"lint:fix": "phpcbf .",
-		"test:unit": "phpunit --dont-report-useless-tests --configuration ./phpunit.xml --testsuite unit --testdox --coverage-text",
-		"test:integration": "phpunit --dont-report-useless-tests --configuration ./phpunit-integration.xml --testsuite integration --testdox --coverage-text",
-		"test:multisite": "phpunit --dont-report-useless-tests --configuration ./phpunit-integration-multisite.xml --testsuite integration --testdox  --coverage-text",
+		"phpmd": "phpmd plugin.php,includes text phpmd.xml.dist --color",
 		"phpstan": "phpstan analyse --memory-limit=2048M",
 		"phpstan-baseline": "phpstan analyse -b --allow-empty-baseline --memory-limit=2048M",
-		"phpmd": "phpmd plugin.php,includes text phpmd.xml.dist --color"
+		"test:integration": "phpunit --dont-report-useless-tests --configuration ./phpunit-integration.xml --testsuite integration --testdox --coverage-text",
+		"test:multisite": "phpunit --dont-report-useless-tests --configuration ./phpunit-integration-multisite.xml --testsuite integration --testdox  --coverage-text",
+		"test:unit": "phpunit --dont-report-useless-tests --configuration ./phpunit.xml --testsuite unit --testdox --coverage-text"
 	}
 }

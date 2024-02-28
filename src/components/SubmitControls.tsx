@@ -54,7 +54,7 @@ const SubmitControls = ({
 						icon={'plus'}
 						id="add-flag"
 					>
-						{__('Add Flag', 'mr-feature-flags')}
+						{__('Add Flag', 'codeb-feature-flags')}
 					</Button>
 				</FlexItem>
 				{lastFlag > 0 && (
@@ -66,8 +66,8 @@ const SubmitControls = ({
 								disabled={disableSave || isSaving}
 							>
 								{isSaving
-									? __('Saving', 'mr-feature-flags')
-									: __('Save', 'mr-feature-flags')}
+									? __('Saving', 'codeb-feature-flags')
+									: __('Save', 'codeb-feature-flags')}
 							</Button>
 						</FlexItem>
 						<FlexItem>
@@ -75,7 +75,7 @@ const SubmitControls = ({
 								variant="tertiary"
 								onClick={() => location.reload()}
 							>
-								{__('Cancel', 'mr-feature-flags')}
+								{__('Cancel', 'codeb-feature-flags')}
 							</Button>
 						</FlexItem>
 					</>

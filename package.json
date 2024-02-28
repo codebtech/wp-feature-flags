@@ -1,5 +1,5 @@
 {
-	"name": "mr-feature-flags",
+	"name": "codeb-feature-flags",
 	"version": "0.1.0",
 	"description": "Allows developers to enable / disable features based on flags.",
 	"scripts": {

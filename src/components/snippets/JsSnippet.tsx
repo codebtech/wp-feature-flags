@@ -17,7 +17,7 @@ domReady(function () {
 	}, [flag]);
 	return (
 		<div className="mr-feature-flag-js-snippet-container">
-			<h3>{__('JavaScript Snippet', 'mr-feature-flags')}</h3>
+			<h3>{__('JavaScript Snippet', 'codeb-feature-flags')}</h3>
 			<Clipboard text={jsSnippet} />
 			<Snippet data={jsSnippet} language={'typescript'} />
 		</div>

@@ -2,7 +2,7 @@
 /**
  * This is the init file for the plugin
  *
- * @package mr-feature-flags
+ * @package codeb-feature-flags
  * @since 0.1.0
  */
 
@@ -13,7 +13,7 @@ namespace CodeB\FeatureFlags;
 /**
  * Class FeatureFlags
  *
- * @package mr-feature-flags
+ * @package codeb-feature-flags
  * @since 0.1.0
  */
 class Helper {

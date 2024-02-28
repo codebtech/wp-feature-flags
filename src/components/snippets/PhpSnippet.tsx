@@ -12,7 +12,7 @@ if ( class_exists( '\\CodeB\\FeatureFlags\\Flag' ) && Flag::is_enabled( '${flag}
 	}, [flag]);
 	return (
 		<div className="mr-feature-flag-php-snippet-container">
-			<h3>{__('PHP Snippet', 'mr-feature-flags')}</h3>
+			<h3>{__('PHP Snippet', 'codeb-feature-flags')}</h3>
 			<Clipboard text={phpSnippet} />
 			<Snippet data={phpSnippet} language={'php'} />
 		</div>

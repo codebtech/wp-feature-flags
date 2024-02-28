@@ -3,18 +3,20 @@
  * The plugin bootstrap file
  *
  * @since 0.1.0
- * @package mr-feature-flags
+ * @package codeb-feature-flags
  *
  * @wordpress-plugin
  * Plugin Name:       Feature Flags
  * Plugin URI:        https://github.com/codebtech/wp-feature-flags
  * Description:       Allows developers to enable / disable features based on flags.
  * Version:           0.1.0
+ * Requires at least: 6.4
+ * Requires PHP:      8.1
  * Author:            Mohan Raj
  * Author URI:        https://mohanraj.dev
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain:       mr-feature-flags
+ * Text Domain:       codeb-feature-flags
  */
 
 declare( strict_types = 1 );
@@ -41,7 +43,7 @@ if ( ! file_exists( Flag::class ) ) {
 add_action(
 	'admin_enqueue_scripts',
 	static function ( string $page ): void {
-		if ( 'toplevel_page_mr-feature-flags' === $page ) {
+		if ( 'toplevel_page_codeb-feature-flags' === $page ) {
 			mr_feature_flags_load_settings_scripts();
 		}
 	}
@@ -58,7 +60,7 @@ function mr_feature_flags_load_settings_scripts(): void {
 	$settings_asset_file = require_once plugin_dir_path( MR_FEATURE_FLAGS_PLUGIN_PATH ) . 'build/settings.asset.php'; // @phpcs:ignore
 
 	wp_enqueue_script(
-		'mr-feature-flags',
+		'codeb-feature-flags',
 		$plugin_url . 'build/settings.js',
 		$settings_asset_file['dependencies'],
 		$settings_asset_file['version'],
@@ -68,7 +70,7 @@ function mr_feature_flags_load_settings_scripts(): void {
 	wp_enqueue_style( 'wp-edit-blocks' );
 
 	wp_enqueue_style(
-		'mr-feature-flags',
+		'codeb-feature-flags',
 		$plugin_url . 'build/settings.css',
 		[],
 		$settings_asset_file['version']
@@ -95,7 +97,7 @@ function mr_feature_flags_scripts_enqueue(): void {
 	$script_asset_file = include_once plugin_dir_path( MR_FEATURE_FLAGS_PLUGIN_PATH ) . 'build/index.asset.php';
 
 	wp_enqueue_script(
-		'mr-feature-flags-script',
+		'codeb-feature-flags-script',
 		$plugin_url . 'build/index.js',
 		$script_asset_file['dependencies'],
 		$script_asset_file['version'],
@@ -111,7 +113,7 @@ function mr_feature_flags_scripts_enqueue(): void {
 	}
 
 	wp_localize_script(
-		'mr-feature-flags-script',
+		'codeb-feature-flags-script',
 		'mrFeatureFlags',
 		[
 			'flags' => $flags_list,
@@ -130,17 +132,17 @@ $mr_feature_flags_register_api->register();
 
 // Displays setting page link in plugin page.
 add_filter(
-	'plugin_action_links_mr-feature-flags/plugin.php',
+	'plugin_action_links_codeb-feature-flags/plugin.php',
 	static function ( $links ) {
 		$url = esc_url(
 			add_query_arg(
 				'page',
-				'mr-feature-flags',
+				'codeb-feature-flags',
 				get_admin_url() . 'admin.php'
 			)
 		);
 
-		$settings_link = "<a href='$url'>" . __( 'Settings', 'mr-feature-flags' ) . '</a>';
+		$settings_link = "<a href='$url'>" . __( 'Settings', 'codeb-feature-flags' ) . '</a>';
 
 		array_push(
 			$links,

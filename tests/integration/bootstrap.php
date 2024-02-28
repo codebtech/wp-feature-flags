@@ -5,7 +5,7 @@ declare(strict_types = 1);
 /**
  * Bootstap file for PHPUnit integration tests.
  *
- * @package mr-feature-flags
+ * @package codeb-feature-flags
  */
 
 use function Yoast\WPTestUtils\WPIntegration\bootstrap_it;
