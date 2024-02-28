@@ -3,6 +3,9 @@
 	"description": "Allows developers to enable / disable features based on flags.",
 	"license": "MIT",
 	"type": "wordpress-plugin",
+	"require": {
+		"php": ">=8.1"
+	},
 	"require-dev": {
 		"brain/monkey": "^2.6",
 		"newsuk/nuk-wp-phpcs-config": "^0.2.0",
@@ -34,6 +37,9 @@
 		"allow-plugins": {
 			"dealerdirect/phpcodesniffer-composer-installer": true,
 			"phpstan/extension-installer": true
+		},
+		"platform": {
+			"php": "8.1"
 		}
 	},
 	"scripts": {
