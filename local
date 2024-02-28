@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-if [ ! -f ".env" ]; then
-    cp .env.dist .env
-fi
-
-docker-compose -p plugin-testing up -d mysql
-docker-compose -p plugin-testing run --entrypoint bash php
