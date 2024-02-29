@@ -51,9 +51,7 @@ const getNewVersion = () => {
 		2
 	);
 
-	const [php, css] = await Promise.all([
-		fs.promises.readFile(phpPath, fsOpts),
-	]);
+	const [php] = await Promise.all([fs.promises.readFile(phpPath, fsOpts)]);
 
 	const newPHP = php.replace(new RegExp(previousVersion, 'g'), newVersion);
 
