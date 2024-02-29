@@ -6,14 +6,14 @@ import Snippet from './Snippet';
 
 const TsSupport = (): JSX.Element => {
 	const tsSnippet = useMemo(() => {
-		return `declare namespace mrFeatureFlags {
+		return `declare namespace codebFeatureFlags {
 	export interface FeatureFlagProps {
         isEnabled: (flag: string) => boolean;
     }
 }
 declare global {
     interface Window {
-        mrFeatureFlags: mrFeatureFlags.FeatureFlagProps;
+        codebFeatureFlags: codebFeatureFlags.FeatureFlagProps;
     }
 }
 export {};`;

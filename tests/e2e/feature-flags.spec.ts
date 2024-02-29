@@ -22,7 +22,7 @@ test.describe('Feature flags', () => {
 
 		//Confirm the setting page header
 		await expect(
-			page.getByRole('heading', { name: 'Feature Flags settings' })
+			page.getByRole('heading', { name: 'Feature Flags' })
 		).toBeVisible();
 	});
 
@@ -118,7 +118,7 @@ test.describe('Feature flags', () => {
 			'navigator.clipboard.readText()'
 		);
 		expect(jsClipboardText).toContain(
-			`window.mrFeatureFlags.isEnabled('${flagName}')`
+			`window.codebFeatureFlags.isEnabled('${flagName}')`
 		);
 
 		//Close SDK modal

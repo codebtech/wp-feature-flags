@@ -23,7 +23,7 @@ const SubmitControls = ({
 }: SubmitControlsProps): JSX.Element => {
 	const handleNewFlag = () => {
 		const defaultStatus = applyFilters(
-			'mrFeatureFlags.newFlag.defaultStatus',
+			'codebFeatureFlags.newFlag.defaultStatus',
 			true
 		) as boolean;
 		const newFlag = {

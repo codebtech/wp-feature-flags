@@ -10,7 +10,7 @@ WordPress Feature flags plugin allow developers to configure features in plugins
 
 ### PHP filters
 
-#### `mr_feature_flags_max_allowed`
+#### `codeb_feature_flags_max_allowed`
 
 Filter to define the maximum number of allowed flags. It is recommended to keep this to default value, which is 20.
 
@@ -18,7 +18,7 @@ Example usage:
 
 ```php
 add_filter(
-	'mr_feature_flags_max_allowed',
+	'codeb_feature_flags_max_allowed',
 	static function () {
 		return 10;
 	}
@@ -27,16 +27,20 @@ add_filter(
 
 ### JS filters
 
-##### `mrFeatureFlags.newFlag.defaultStatus`
+##### `codebFeatureFlags.newFlag.defaultStatus`
 
 The filter controls whether the new flag is enabled by default or not. Default `true`
 
 Example usage:
 
 ```js
-addFilter('mrFeatureFlags.newFlag.defaultStatus', 'codeb-feature-flags', () => {
-	return false;
-});
+addFilter(
+	'codebFeatureFlags.newFlag.defaultStatus',
+	'codeb-feature-flags',
+	() => {
+		return false;
+	}
+);
 ```
 
 ## Development setup
@@ -51,27 +55,33 @@ JS setup
 
 -   `yarn install`
 -   `yarn build` to create the build
--   `yarn start` to start the development watch mode
+-   `yarn start` to start the watch mode
+
+### wp-env
+
+This plugin uses `wp-env` setup to for local environment.
+
+-   `wp-env start` to start the containers
+-   `wp-env stop` to stop the containers
+
+More details on how to access local environment can be found [here](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-env/#quick-tldr-instructions).
 
 ## Linting and formatting
 
 PHP
 
 -   `composer lint`
--   To auto fix the linting errors `composer lint:fix`
-
-💡 [VSCode extension](https://marketplace.visualstudio.com/items?itemName=shevaua.phpcs) to auto format PHP files based on `phpcs.xml.dist` configuration
+-   `composer lint:fix` to auto fix PHP linting errors.
 
 JS
 
 -   `yarn lint:js`
-
-💡 [VSCode extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) to auto format JS / TS files based on `.prettierrc.js` configuration
+-   `yarn lint:js:fix` to auto fix JS linting errors.
 
 CSS
 
 -   `yarn lint:css`
--   To auto fix the css linting errors `yarn lint:css:fix`
+-   `yarn lint:css:fix` to auto fix CSS linting errors.
 
 ## Testing
 
@@ -85,10 +95,10 @@ CSS
 
 ### JS
 
--   Run `yarn test:js` which will run all jest and React Testing Library tests
+-   Run `yarn test:js` to run all Jest and React Testing Library tests
 
 ### E2E
 
 The E2E tests depends on `wp-env` setup. Ensure you run `wp-env start` before running the tests.
 
--   Run `yarn test:e2e` which will run all Playwright e2e tests.
+-   Run `yarn test:e2e` to run all Playwright e2e tests.

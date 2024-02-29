@@ -193,7 +193,7 @@ class FlagsApiTest extends WP_Test_REST_Controller_Testcase {
 
 		// Mock the filter hook
 		$mocked_max_flags = 3;
-		add_filter('mr_feature_flags_max_allowed', function () use ($mocked_max_flags) {
+		add_filter('codeb_feature_flags_max_allowed', function () use ($mocked_max_flags) {
 			return $mocked_max_flags;
 		});
 

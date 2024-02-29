@@ -81,7 +81,7 @@ const Layout = (): JSX.Element => {
 	return (
 		<>
 			<div id="mr-feature-flag-layout">
-				<h1>{__('Feature Flags settings', 'codeb-feature-flags')}</h1>
+				<h1>{__('Feature Flags', 'codeb-feature-flags')}</h1>
 				<div id="mr-feature-flag-content">
 					{lastFlag ? <Header /> : ''}
 					{isLoading ? (

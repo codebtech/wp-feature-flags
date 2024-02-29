@@ -12,7 +12,7 @@ declare namespace mrFeatureFlag {
 
 declare global {
 	interface Window {
-		mrFeatureFlags: mrFeatureFlag.FeatureFlagProps;
+		codebFeatureFlags: mrFeatureFlag.FeatureFlagProps;
 	}
 }
 

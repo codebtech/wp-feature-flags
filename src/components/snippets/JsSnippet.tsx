@@ -8,8 +8,8 @@ export default function ({ flag }: { flag: string }): JSX.Element {
 		return `import domReady from '@wordpress/dom-ready';
 domReady(function () {
 	if (
-		typeof window?.mrFeatureFlags !== 'undefined' &&
-		window.mrFeatureFlags.isEnabled('${flag}')
+		typeof window?.codebFeatureFlags !== 'undefined' &&
+		window.codebFeatureFlags.isEnabled('${flag}')
 	) {
 		// js code goes here...
 	}

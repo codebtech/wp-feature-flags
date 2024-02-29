@@ -57,6 +57,6 @@ class SettingsTest extends TestCase {
 
 		$output = ob_get_clean();
 
-		$this->assertStringContainsString('<div id="mr_feature_flags_settings_screen"></div>', $output);
+		$this->assertStringContainsString('<div id="codeb_feature_flags_settings_screen"></div>', $output);
 	}
 }

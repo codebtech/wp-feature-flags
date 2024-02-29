@@ -52,6 +52,6 @@ class Settings {
 	 * @return void
 	 */
 	public function render_page(): void {
-		echo '<div id="mr_feature_flags_settings_screen"></div>';
+		echo '<div id="codeb_feature_flags_settings_screen"></div>';
 	}
 }
