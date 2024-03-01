@@ -16,6 +16,7 @@ jobs:
             - uses: actions/setup-node@v4
               with:
                   node-version: '20.11'
+                  cache: 'yarn'
 
             - name: Cache Composer dependencies
               uses: actions/cache@v4
@@ -48,6 +49,12 @@ jobs:
 
             - name: WordPress unit test
               run: yarn php:unit
+
+            - name: Debug Shell
+              if: always()
+              run: |
+                  echo "Entering interactive shell for debugging"
+                  bash
 
             - name: WordPress integration test
               run: yarn php:integration
