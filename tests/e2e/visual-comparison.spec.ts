@@ -8,6 +8,8 @@ import {
 	deleteAllFlags,
 } from './helper';
 
+test.describe.configure({ mode: 'serial' });
+
 test.describe('Visual tests', () => {
 	test.use({ storageState: process.env.WP_AUTH_STORAGE });
 
