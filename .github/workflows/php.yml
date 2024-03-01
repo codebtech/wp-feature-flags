@@ -57,6 +57,7 @@ jobs:
                   bash
                   pwd
                   ls -la
+                  wp-env run tests-wordpress composer test:unit
 
             - name: WordPress integration test
               run: yarn php:integration
