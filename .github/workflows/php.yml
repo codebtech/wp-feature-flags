@@ -48,16 +48,7 @@ jobs:
               run: yarn wp-env
 
             - name: WordPress unit test
-              run: yarn php:unit
-
-            - name: Debug Shell
-              if: always()
-              run: |
-                  echo "Entering interactive shell for debugging"
-                  bash
-                  pwd
-                  ls -la
-                  wp-env run tests-wordpress composer test:unit
+              run: wp-env run tests-wordpress composer test:unit
 
             - name: WordPress integration test
               run: yarn php:integration
