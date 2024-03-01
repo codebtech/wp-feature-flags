@@ -1,9 +1,9 @@
-const { mrFeatureFlags } = window;
+const { codebFeatureFlags } = window;
 import { Flag } from '../types';
 
 //Appends isEnabled method to global window object.
-mrFeatureFlags.isEnabled = (flag: string) => {
-	const isFlagExist: Flag | undefined = mrFeatureFlags.flags.find(
+codebFeatureFlags.isEnabled = (flag: string) => {
+	const isFlagExist: Flag | undefined = codebFeatureFlags.flags.find(
 		(item: Flag) => {
 			return item.name === flag && item.enabled === true;
 		}

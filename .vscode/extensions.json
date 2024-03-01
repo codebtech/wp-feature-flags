@@ -1,0 +1,6 @@
+{
+	"recommendations": [
+		"shevaua.phpcs",
+		"sbenp.prettier-vscode"
+	],
+}

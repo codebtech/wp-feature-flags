@@ -10,7 +10,25 @@ export async function deleteLastFlag(page: Page) {
 				.last()
 				.getByLabel('Delete Flag')
 				.click();
+
 			await page.getByRole('button', { name: 'Yes' }).click();
+		},
+		{ box: true }
+	);
+}
+
+export async function deleteAllFlags(page: Page) {
+	await test.step(
+		'Delete all flag',
+		async () => {
+			const count = await page
+				.locator('id=mr-feature-flag-item')
+				.getByLabel('Delete Flag')
+				.count();
+
+			if (count > 0) {
+				for (let i = 0; i < count; ++i) await deleteLastFlag(page);
+			}
 		},
 		{ box: true }
 	);

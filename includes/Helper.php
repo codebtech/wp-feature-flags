@@ -1,6 +1,6 @@
 <?php
 /**
- * This is the init file for the plugin
+ * Helper class
  *
  * @package codeb-feature-flags
  * @since 0.1.0
@@ -11,7 +11,7 @@ declare(strict_types = 1);
 namespace CodeB\FeatureFlags;
 
 /**
- * Class FeatureFlags
+ * Class Helper
  *
  * @package codeb-feature-flags
  * @since 0.1.0

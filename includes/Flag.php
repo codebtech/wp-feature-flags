@@ -23,7 +23,7 @@ class Flag {
 	 *
 	 * @var string $option_name
 	 */
-	public static $option_name = 'mr_feature_flags';
+	public static $option_name = 'codeb_feature_flags';
 
 
 	/**

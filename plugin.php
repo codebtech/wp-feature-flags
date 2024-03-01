@@ -9,7 +9,7 @@
  * Plugin Name:       Feature Flags
  * Plugin URI:        https://github.com/codebtech/wp-feature-flags
  * Description:       Allows developers to enable / disable features based on flags.
- * Version:           0.2.1
+ * Version:           0.3.0
  * Requires at least: 6.4
  * Requires PHP:      8.1
  * Author:            Mohan Raj
@@ -33,7 +33,7 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * API and Plugin version constants.
  */
-define( 'MR_FEATURE_FLAGS_PLUGIN_PATH', __FILE__ );
+define( 'CODEB_FEATURE_FLAGS_PLUGIN_PATH', __FILE__ );
 
 if ( ! file_exists( Flag::class ) ) {
 	include_once __DIR__ . '/vendor/autoload.php';
@@ -44,7 +44,7 @@ add_action(
 	'admin_enqueue_scripts',
 	static function ( string $page ): void {
 		if ( 'toplevel_page_codeb-feature-flags' === $page ) {
-			mr_feature_flags_load_settings_scripts();
+			codeb_feature_flags_load_settings_scripts();
 		}
 	}
 );
@@ -54,10 +54,10 @@ add_action(
  *
  * @return void
  */
-function mr_feature_flags_load_settings_scripts(): void {
+function codeb_feature_flags_load_settings_scripts(): void {
 
-	$plugin_url          = plugin_dir_url( MR_FEATURE_FLAGS_PLUGIN_PATH );
-	$settings_asset_file = require_once plugin_dir_path( MR_FEATURE_FLAGS_PLUGIN_PATH ) . 'build/settings.asset.php'; // @phpcs:ignore
+	$plugin_url          = plugin_dir_url( CODEB_FEATURE_FLAGS_PLUGIN_PATH );
+	$settings_asset_file = require_once plugin_dir_path( CODEB_FEATURE_FLAGS_PLUGIN_PATH ) . 'build/settings.asset.php'; // @phpcs:ignore
 
 	wp_enqueue_script(
 		'codeb-feature-flags',
@@ -80,21 +80,21 @@ function mr_feature_flags_load_settings_scripts(): void {
 // Enqueue scripts and styles for front end.
 add_action(
 	'wp_enqueue_scripts',
-	__NAMESPACE__ . '\mr_feature_flags_scripts_enqueue'
+	__NAMESPACE__ . '\codeb_feature_flags_scripts_enqueue'
 );
 
 // Enqueue scripts and styles for wp-admin.
 add_action(
 	'admin_enqueue_scripts',
-	__NAMESPACE__ . '\mr_feature_flags_scripts_enqueue'
+	__NAMESPACE__ . '\codeb_feature_flags_scripts_enqueue'
 );
 
 /**
  * Enqueue scripts and assets for admin and front end
  */
-function mr_feature_flags_scripts_enqueue(): void {
-	$plugin_url        = plugin_dir_url( MR_FEATURE_FLAGS_PLUGIN_PATH );
-	$script_asset_file = include_once plugin_dir_path( MR_FEATURE_FLAGS_PLUGIN_PATH ) . 'build/index.asset.php';
+function codeb_feature_flags_scripts_enqueue(): void {
+	$plugin_url        = plugin_dir_url( CODEB_FEATURE_FLAGS_PLUGIN_PATH );
+	$script_asset_file = include_once plugin_dir_path( CODEB_FEATURE_FLAGS_PLUGIN_PATH ) . 'build/index.asset.php';
 
 	wp_enqueue_script(
 		'codeb-feature-flags-script',
@@ -114,7 +114,7 @@ function mr_feature_flags_scripts_enqueue(): void {
 
 	wp_localize_script(
 		'codeb-feature-flags-script',
-		'mrFeatureFlags',
+		'codebFeatureFlags',
 		[
 			'flags' => $flags_list,
 		]
@@ -122,12 +122,12 @@ function mr_feature_flags_scripts_enqueue(): void {
 }
 
 // Registers feature flags admin setting page.
-$mr_feature_flags_admin_settings = new Settings();
-$mr_feature_flags_admin_settings->register_feature_settings();
+$codeb_feature_flags_admin_settings = new Settings();
+$codeb_feature_flags_admin_settings->register_feature_settings();
 
 // Registers feature flags API's.
-$mr_feature_flags_register_api = new Flags();
-$mr_feature_flags_register_api->register();
+$codeb_feature_flags_register_api = new Flags();
+$codeb_feature_flags_register_api->register();
 
 
 // Displays setting page link in plugin page.
@@ -152,13 +152,13 @@ add_filter(
 	}
 );
 
-register_deactivation_hook( __FILE__, __NAMESPACE__ . '\mr_feature_flags_uninstall' );
+register_deactivation_hook( __FILE__, __NAMESPACE__ . '\codeb_feature_flags_uninstall' );
 
 /**
  * Uninstall method for the plugin.
  * 
  * @return void
  */
-function mr_feature_flags_uninstall(): void {
+function codeb_feature_flags_uninstall(): void {
 	delete_option( Flag::$option_name );
 }

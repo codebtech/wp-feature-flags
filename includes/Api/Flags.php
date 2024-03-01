@@ -13,6 +13,7 @@ namespace CodeB\FeatureFlags\Api;
 use WP_Error;
 use WP_REST_Server;
 use WP_REST_Request;
+use CodeB\FeatureFlags\Flag;
 
 /**
  * Class Settings
@@ -21,13 +22,6 @@ use WP_REST_Request;
  * @since 0.1.0
  */
 class Flags {
-
-	/**
-	 * Name in options table.
-	 *
-	 * @var string $option_name
-	 */
-	public static $option_name = 'mr_feature_flags';
 
 	/**
 	 * Maximum allowed flags.
@@ -83,7 +77,7 @@ class Flags {
 	 * @return mixed List of flags.
 	 */
 	public function get_all_flags() {
-		$flags = get_option( self::$option_name, [] );
+		$flags = get_option( Flag::$option_name, [] );
 		return rest_ensure_response( $flags );
 	}
 
@@ -102,14 +96,14 @@ class Flags {
 			/**
 			 * Filter to update max allowed feature flags.
 			 */
-			$max_allowed_flags = apply_filters( 'mr_feature_flags_max_allowed', self::$max_flags );
+			$max_allowed_flags = apply_filters( 'codeb_feature_flags_max_allowed', self::$max_flags );
 			if ( count( $input_data['flags'] ) > $max_allowed_flags ) {
 				// translators: %d is a placeholder for the maximum allowed flags.
 				$error_message = sprintf( __( 'Cannot add more than %d flags', 'codeb-feature-flags' ), $max_allowed_flags );
 				return new WP_Error( 'flag_limit_exceeded', $error_message, array( 'status' => 400 ) );
 			}
 
-			update_option( self::$option_name, $input_data['flags'] );
+			update_option( Flag::$option_name, $input_data['flags'] );
 			return rest_ensure_response(
 				array(
 					'status'  => 200,
