@@ -28,11 +28,8 @@ jobs:
               with:
                   php_version: '8.3'
 
-            - name: Install packages
-              run: yarn install --immutable
-
-            - name: Build packages
-              run: yarn build
+            - name: Install wp-env
+              run: yarn add @wordpress/env
 
             - name: Validate Composer
               run: composer validate --strict
@@ -50,13 +47,13 @@ jobs:
               run: yarn wp-env
 
             - name: WordPress unit test
-              run: yarn test:unit
+              run: yarn php:unit
 
             - name: WordPress integration test
-              run: yarn test:integration
+              run: yarn php:integration
 
             - name: WordPress integration test as multisite
-              run: yarn test:multisite
+              run: yarn php:multisite
 
             - name: Upload artifacts
               uses: actions/upload-artifact@v4
