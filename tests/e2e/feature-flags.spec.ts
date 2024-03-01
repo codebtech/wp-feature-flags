@@ -7,7 +7,7 @@ import {
 	DisableFlag,
 	OpenSdkModal,
 	SaveFlags,
-	deleteLastFlag,
+	deleteAllFlags,
 } from './helper';
 
 // eslint-disable-next-line
@@ -16,18 +16,14 @@ test.use({ storageState: process.env.WP_AUTH_STORAGE });
 test.describe('Feature flags', () => {
 	test.beforeEach(async ({ page, admin }) => {
 		await admin.visitAdminPage('/');
-
-		//Find the feature flags in side menu
 		await page.getByRole('link', { name: 'Feature Flags' }).click();
-
-		//Confirm the setting page header
 		await expect(
 			page.getByRole('heading', { name: 'Feature Flags' })
 		).toBeVisible();
 	});
 
 	test.afterEach(async ({ page }) => {
-		await deleteLastFlag(page);
+		await deleteAllFlags(page);
 	});
 
 	test('Create and save new flag successfully', async ({ page }) => {
@@ -61,11 +57,9 @@ test.describe('Feature flags', () => {
 	});
 
 	test('Check duplicate and invalid flag', async ({ page }) => {
-		//Create new flag
 		await AddNewFlagAndFill(page, 'testDuplicate');
 		await SaveFlags(page);
 
-		//Confirm save success
 		expect(
 			await page.getByLabel('Dismiss this notice').innerText()
 		).toMatch(/Saved successfully!/);
@@ -79,9 +73,6 @@ test.describe('Feature flags', () => {
 		await AddNewFlag(page, 'test duplicate');
 		expect(page.getByText(ERROR_FLAG_INVALID)).toBeVisible();
 		expect(page.getByRole('button', { name: 'Save' })).toBeDisabled();
-
-		//Delete the flag
-		await deleteLastFlag(page);
 
 		expect(
 			await page.getByLabel('Dismiss this notice').innerText()
@@ -121,7 +112,6 @@ test.describe('Feature flags', () => {
 			`window.codebFeatureFlags.isEnabled('${flagName}')`
 		);
 
-		//Close SDK modal
 		await CloseSdkModal(page);
 	});
 });
