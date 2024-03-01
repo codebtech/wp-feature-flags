@@ -55,6 +55,8 @@ jobs:
               run: |
                   echo "Entering interactive shell for debugging"
                   bash
+                  pwd
+                  ls -la
 
             - name: WordPress integration test
               run: yarn php:integration
