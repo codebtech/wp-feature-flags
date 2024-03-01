@@ -29,9 +29,6 @@ jobs:
               with:
                   php_version: '8.3'
 
-            - name: Install wp-env
-              run: yarn add @wordpress/env
-
             - name: Validate Composer
               run: composer validate --strict
 
@@ -44,11 +41,27 @@ jobs:
             - name: PHPMD
               run: composer phpmd
 
+            - name: Install packages
+              run: yarn install --immutable
+
+            - name: Build packages
+              run: yarn build
+
             - name: Start wp-env
-              run: yarn wp-env
+              run: wp-env start
+
+            - name: Log running Docker containers
+              run: docker ps -a
+
+            - name: Docker container debug information
+              run: |
+                  npx wp-env run tests-mysql mysql -- --version
+                  npx wp-env run tests-wordpress php -- --version
+                  npx wp-env run tests-wordpress php -m
+                  npx wp-env run tests-wordpress php -i
 
             - name: WordPress unit test
-              run: wp-env run tests-wordpress composer test:unit
+              run: yarn php:unit
 
             - name: WordPress integration test
               run: yarn php:integration
