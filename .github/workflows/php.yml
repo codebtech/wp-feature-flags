@@ -6,20 +6,16 @@ on:
 
 jobs:
     lint-test:
-        name: ${{ matrix.php-versions }} Lint & Test
+        timeout-minutes: 60
         runs-on: ubuntu-latest
         strategy:
             fail-fast: false
-            matrix:
-                php-versions: ['8.3']
 
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v4
-
-            - name: Get composer cache directory
-              id: composer-cache
-              run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+          steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: '20.11'
 
             - name: Cache Composer dependencies
               uses: actions/cache@v4
@@ -27,17 +23,20 @@ jobs:
                   path: /tmp/composer-cache
                   key: ${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
 
-            - name: Setup PHP with tools
-              uses: shivammathur/setup-php@v2
+            - name: Setup composer
+              uses: php-actions/composer@v6
               with:
-                  php-version: '8.3'
-                  tools: composer:v2
+                  php_version: '8.3'
+                  dev: no
+
+            - name: Install packages
+              run: yarn install --immutable
+
+            - name: Build packages
+              run: yarn build
 
             - name: Validate Composer
               run: composer validate --strict
-
-            - name: Install dependencies
-              run: composer install --prefer-dist
 
             - name: PHP Lint
               run: composer lint
@@ -48,5 +47,22 @@ jobs:
             - name: PHPMD
               run: composer phpmd
 
+            - name: Start wp-env
+              run: yarn wp-env
+
             - name: WordPress unit test
-              run: composer test:unit
+              run: yarn test:unit
+
+            - name: WordPress integration test
+              run: yarn test:integration
+
+            - name: WordPress integration test as multisite
+              run: yarn test:multisite
+
+            - name: Upload artifacts
+              uses: actions/upload-artifact@v4
+              if: always()
+              with:
+                  name: php-report
+                  path: php-report/
+                  retention-days: 30

@@ -5,8 +5,7 @@ on:
             - 'main-built'
 
 jobs:
-    build:
-        name: Lint & Test
+    lint-test:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
@@ -24,3 +23,11 @@ jobs:
 
             - name: JS test
               run: yarn test:js
+
+            - name: Upload artifacts
+              uses: actions/upload-artifact@v4
+              if: always()
+              with:
+                  name: js-report
+                  path: js-report/
+                  retention-days: 30
