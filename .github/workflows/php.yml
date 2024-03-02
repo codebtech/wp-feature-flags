@@ -24,13 +24,13 @@ jobs:
                   path: /tmp/composer-cache
                   key: ${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
 
+            - name: Validate Composer
+              run: composer validate --strict
+
             - name: Setup composer
               uses: php-actions/composer@v6
               with:
                   php_version: '8.3'
-
-            - name: Validate Composer
-              run: composer validate --strict
 
             - name: PHP Lint
               run: composer lint
