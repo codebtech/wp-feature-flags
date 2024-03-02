@@ -60,5 +60,9 @@
 		"jest-environment-jsdom": "^29.7.0",
 		"prettier": "^3.2.5"
 	},
-	"keywords": []
+	"keywords": [
+		"feature flags",
+		"wordpress",
+		"plugin"
+	]
 }
