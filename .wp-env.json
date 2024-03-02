@@ -1,5 +1,12 @@
 {
 	"core": null,
 	"plugins": ["."],
-	"phpVersion": "8.3"
+	"phpVersion": "8.3",
+	"env": {
+		"tests": {
+			"mappings": {
+				"wp-content/plugins/feature-flags": "."
+			}
+		}
+	}
 }

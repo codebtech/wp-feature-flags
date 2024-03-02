@@ -48,17 +48,7 @@ jobs:
               run: yarn build
 
             - name: Start wp-env
-              run: npx wp-env start
-
-            - name: Log running Docker containers
-              run: docker ps -a
-
-            - name: Docker container debug information
-              run: |
-                  npx wp-env run tests-mysql mysql -- --version
-                  npx wp-env run tests-wordpress php -- --version
-                  npx wp-env run tests-wordpress php -m
-                  npx wp-env run tests-wordpress php -i
+              run: yarn wp-env
 
             - name: WordPress unit test
               run: yarn php:unit
