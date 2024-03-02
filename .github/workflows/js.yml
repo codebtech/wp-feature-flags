@@ -5,7 +5,7 @@ on:
             - 'main-built'
 
 jobs:
-    lint-test:
+    js-lint-test:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
