@@ -109,3 +109,7 @@ The WordPress unit and integration tests depends on `wp-env` setup. Ensure you r
 The E2E tests depends on `wp-env` setup. Ensure you run `wp-env start` before running the tests.
 
 -   Run `yarn test:e2e` to run all Playwright e2e tests.
+
+## Contributing
+
+Code contributions, feedback, issue reporting and feature suggestions are welcome. See CONTRIBUTING.md for more details.
