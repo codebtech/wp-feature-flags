@@ -41,11 +41,8 @@ jobs:
             - name: PHPMD
               run: composer phpmd
 
-            - name: Install packages
-              run: yarn install --immutable
-
-            - name: Build packages
-              run: yarn build
+            - name: Install wp-env
+              run: yarn add @wordpress/env -D
 
             - name: Start wp-env
               run: yarn wp-env
