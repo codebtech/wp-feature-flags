@@ -112,4 +112,4 @@ The E2E tests depends on `wp-env` setup. Ensure you run `wp-env start` before ru
 
 ## Contributing
 
-Code contributions, feedback, issue reporting and feature suggestions are welcome. See CONTRIBUTING.md for more details.
+Code contributions, feedback, issue reporting and feature suggestions are welcome. See [CONTRIBUTING.md](https://github.com/codebtech/wp-feature-flags/blob/main/CONTRIBUTING.md) for more details.

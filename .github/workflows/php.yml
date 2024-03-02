@@ -5,7 +5,7 @@ on:
             - 'main-built'
 
 jobs:
-    lint-test:
+    php-lint-test:
         timeout-minutes: 60
         runs-on: ubuntu-latest
         strategy:
