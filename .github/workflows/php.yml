@@ -50,6 +50,12 @@ jobs:
             - name: WordPress unit test
               run: yarn php:unit
 
+            - shell: bash
+              env:
+                  CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+              run: |
+                  echo $CODECOV_TOKEN
+
             - name: Unit test coverage report
               uses: codecov/codecov-action@v4
               with:
