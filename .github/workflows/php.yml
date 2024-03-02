@@ -50,17 +50,13 @@ jobs:
             - name: WordPress unit test
               run: yarn php:unit
 
-            - shell: bash
-              env:
-                  CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-              run: |
-                  echo $CODECOV_TOKEN
-
             - name: Unit test coverage report
               uses: codecov/codecov-action@v4
               with:
                   files: ./unit-coverage.xml
                   flags: unittests
+                  name: codecov-unit
+                  verbose: true
                   token: ${{ secrets.CODECOV_TOKEN }}
 
             - name: WordPress integration test
@@ -71,6 +67,8 @@ jobs:
               with:
                   files: ./integration-coverage.xml
                   flags: integrationtests
+                  name: codecov-integration
+                  verbose: true
                   token: ${{ secrets.CODECOV_TOKEN }}
 
             - name: WordPress integration test as multisite
