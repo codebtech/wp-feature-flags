@@ -7,6 +7,12 @@
 
 WordPress Feature flags plugin allow developers to configure features in plugins/themes behind the feature flags on both the server (PHP) and client (JS/TS) side.
 
+## Installation
+
+`composer require codeb/wp-feature-flags`
+
+Packagist: https://packagist.org/packages/codeb/wp-feature-flags
+
 ## Hooks
 
 ### PHP filters
@@ -88,11 +94,11 @@ CSS
 
 ### PHP
 
--   Run `./local` from your preferred CLI. Ensure you have Docker installed and running.
--   The setup will automatically ssh into the container.
--   To run unit tests `composer run test:unit`
--   To run integrations tests `composer run test:integration`
--   To run integrations tests as multisite `composer run test:multisite`
+The WordPress unit and integration tests depends on `wp-env` setup. Ensure you run `yarn wp-env:coverage` before running the tests.
+
+-   To run unit tests `yarn php:unit`
+-   To run integrations tests `yarn php:integration`
+-   To run integrations tests as multisite `yarn php:multisite`
 
 ### JS
 

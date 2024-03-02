@@ -1,6 +1,6 @@
 {
 	"name": "codeb-feature-flags",
-	"version": "0.3.1",
+	"version": "0.3.2",
 	"description": "Allows developers to enable / disable features based on flags.",
 	"license": "ISC",
 	"author": "Mohan Raj <https://mohanraj.dev>",
@@ -60,5 +60,9 @@
 		"jest-environment-jsdom": "^29.7.0",
 		"prettier": "^3.2.5"
 	},
-	"keywords": []
+	"keywords": [
+		"feature flags",
+		"wordpress",
+		"plugin"
+	]
 }
