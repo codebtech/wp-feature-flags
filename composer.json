@@ -41,8 +41,8 @@
 		"phpmd": "phpmd plugin.php,includes text phpmd.xml.dist --color",
 		"phpstan": "phpstan analyse --memory-limit=2048M",
 		"phpstan-baseline": "phpstan analyse -b --allow-empty-baseline --memory-limit=2048M",
-		"test:integration": "phpunit --dont-report-useless-tests --configuration ./phpunit-integration.xml --testsuite integration --testdox --coverage-text",
-		"test:multisite": "phpunit --dont-report-useless-tests --configuration ./phpunit-integration-multisite.xml --testsuite integration --testdox  --coverage-text",
-		"test:unit": "phpunit --dont-report-useless-tests --configuration ./phpunit.xml --testsuite unit --testdox --coverage-text"
+		"test:integration": "phpunit --dont-report-useless-tests --configuration ./phpunit-integration.xml --testsuite integration --testdox",
+		"test:multisite": "phpunit --dont-report-useless-tests --configuration ./phpunit-integration-multisite.xml --testsuite integration --testdox ",
+		"test:unit": "phpunit --dont-report-useless-tests --configuration ./phpunit.xml --testsuite unit --testdox"
 	}
 }

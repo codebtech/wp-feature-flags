@@ -50,8 +50,22 @@ jobs:
             - name: WordPress unit test
               run: yarn php:unit
 
+            - name: Unit test coverage report
+              uses: codecov/codecov-action@v4
+              with:
+                  files: ./unit-coverage.xml
+                  flags: unittests
+                  token: ${{ secrets.CODECOV_TOKEN }}
+
             - name: WordPress integration test
               run: yarn php:integration
+
+            - name: Integration test coverage report
+              uses: codecov/codecov-action@v4
+              with:
+                  files: ./integration-coverage.xml
+                  flags: integrationtests
+                  token: ${{ secrets.CODECOV_TOKEN }}
 
             - name: WordPress integration test as multisite
               run: yarn php:multisite
