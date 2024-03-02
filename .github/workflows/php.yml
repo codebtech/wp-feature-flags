@@ -6,20 +6,17 @@ on:
 
 jobs:
     lint-test:
-        name: ${{ matrix.php-versions }} Lint & Test
+        timeout-minutes: 60
         runs-on: ubuntu-latest
         strategy:
             fail-fast: false
-            matrix:
-                php-versions: ['8.3']
 
         steps:
-            - name: Checkout
-              uses: actions/checkout@v4
-
-            - name: Get composer cache directory
-              id: composer-cache
-              run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: '20.11'
+                  cache: 'yarn'
 
             - name: Cache Composer dependencies
               uses: actions/cache@v4
@@ -27,17 +24,13 @@ jobs:
                   path: /tmp/composer-cache
                   key: ${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
 
-            - name: Setup PHP with tools
-              uses: shivammathur/setup-php@v2
-              with:
-                  php-version: '8.3'
-                  tools: composer:v2
-
             - name: Validate Composer
               run: composer validate --strict
 
-            - name: Install dependencies
-              run: composer install --prefer-dist
+            - name: Setup composer
+              uses: php-actions/composer@v6
+              with:
+                  php_version: '8.3'
 
             - name: PHP Lint
               run: composer lint
@@ -48,5 +41,43 @@ jobs:
             - name: PHPMD
               run: composer phpmd
 
+            - name: Install wp-env
+              run: yarn add @wordpress/env -D
+
+            - name: Start wp-env
+              run: yarn wp-env:coverage
+
             - name: WordPress unit test
-              run: composer test:unit
+              run: yarn php:unit
+
+            - name: Unit test coverage report
+              uses: codecov/codecov-action@v4
+              with:
+                  files: ./unit-coverage.xml
+                  flags: unittests
+                  name: codecov-unit
+                  verbose: true
+                  token: ${{ secrets.CODECOV_TOKEN }}
+
+            - name: WordPress integration test
+              run: yarn php:integration
+
+            - name: Integration test coverage report
+              uses: codecov/codecov-action@v4
+              with:
+                  files: ./integration-coverage.xml
+                  flags: integrationtests
+                  name: codecov-integration
+                  verbose: true
+                  token: ${{ secrets.CODECOV_TOKEN }}
+
+            - name: WordPress integration test as multisite
+              run: yarn php:multisite
+
+            - name: Upload artifacts
+              uses: actions/upload-artifact@v4
+              if: always()
+              with:
+                  name: php-report
+                  path: php-report/
+                  retention-days: 30

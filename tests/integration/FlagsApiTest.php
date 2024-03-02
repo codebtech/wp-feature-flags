@@ -8,6 +8,7 @@ namespace CodeB\FeatureFlags\Api;
 use WP_REST_Request;
 use WP_UnitTest_Factory;
 use WP_Test_REST_Controller_Testcase;
+use CodeB\FeatureFlags\Flag;
 
 
 class FlagsApiTest extends WP_Test_REST_Controller_Testcase {
@@ -35,7 +36,7 @@ class FlagsApiTest extends WP_Test_REST_Controller_Testcase {
 
 	public static function wpTearDownAfterClass() {
 		wp_delete_user( self::$editor );
-		delete_option( Flags::$option_name );
+		delete_option( Flag::$option_name );
 	}
 
 	public function set_up() {
@@ -77,7 +78,7 @@ class FlagsApiTest extends WP_Test_REST_Controller_Testcase {
 	public function test_get_items() {
 		wp_set_current_user( self::$admin );
 		$flags = [['id'=>1, 'name'=>'test', 'enabled'=>true], ['id'=>2, 'name'=>'test2', 'enabled'=>false]];
-		update_option( Flags::$option_name, $flags );
+		update_option( Flag::$option_name, $flags );
 
 		$request  = new WP_REST_Request( 'GET', self::$api_endpoint );
 		$response = rest_get_server()->dispatch( $request );
@@ -120,7 +121,7 @@ class FlagsApiTest extends WP_Test_REST_Controller_Testcase {
 		$this->assertSame( 200, $response->get_status() );
 		$this->assertTrue( $response->get_data()['success'] );
 
-		$options = get_option(Flags::$option_name);
+		$options = get_option(Flag::$option_name);
 		$this->assertSame($options, $flags);
 	}
 
@@ -136,7 +137,7 @@ class FlagsApiTest extends WP_Test_REST_Controller_Testcase {
 		$this->assertSame( 200, $response->get_status() );
 		$this->assertTrue( $response->get_data()['success'] );
 
-		$options = get_option(Flags::$option_name);
+		$options = get_option(Flag::$option_name);
 		$this->assertSame($options, $flags);
 	}
 

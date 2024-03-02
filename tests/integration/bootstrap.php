@@ -29,6 +29,4 @@ function _manually_load_plugin(): void {
 
 tests_add_filter( 'muplugins_loaded', '_manually_load_plugin' );
 
-define( 'WP_TESTS_CONFIG_FILE_PATH', __DIR__ . '/wp-tests-config.php' );
-
 bootstrap_it();

@@ -5,7 +5,7 @@ on:
             - 'main-built'
 
 jobs:
-    test:
+    e2e:
         timeout-minutes: 60
         runs-on: ubuntu-latest
         strategy:
@@ -20,6 +20,7 @@ jobs:
             - uses: actions/setup-node@v4
               with:
                   node-version: '20.11'
+                  cache: 'yarn'
 
             - name: Cache Composer dependencies
               uses: actions/cache@v4
