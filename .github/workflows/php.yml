@@ -48,7 +48,7 @@ jobs:
               run: yarn build
 
             - name: Start wp-env
-              run: wp-env start
+              run: npx wp-env start
 
             - name: Log running Docker containers
               run: docker ps -a
