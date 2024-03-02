@@ -16,9 +16,9 @@ You can clone this repo and activate it like a normal WordPress plugin, but you'
 ### Setup
 
 1. [PHP and JS install and build](https://github.com/codebtech/wp-feature-flags?tab=readme-ov-file#development-setup)
-2. `wp-env` is used for [local development](https://github.com/codebtech/wp-feature-flags?tab=readme-ov-file#development-setup)
-3. [Linting and formatting](https://github.com/codebtech/wp-feature-flags?tab=readme-ov-file#development-setup)
-4. [Automated testing guidelines](https://github.com/codebtech/wp-feature-flags?tab=readme-ov-file#development-setup)
+2. `wp-env` is used for [local development](https://github.com/codebtech/wp-feature-flags?tab=readme-ov-file#wp-env)
+3. [Linting and formatting](https://github.com/codebtech/wp-feature-flags?tab=readme-ov-file#linting-and-formatting)
+4. [Automated testing guidelines](https://github.com/codebtech/wp-feature-flags?tab=readme-ov-file#testing)
 
 ### Ahead of raising PR
 
