@@ -94,8 +94,7 @@ CSS
 
 ### PHP
 
--   Run `./local` from your preferred CLI. Ensure you have Docker installed and running.
-    The WordPress unit and integration tests depends on `wp-env` setup. Ensure you run `yarn wp-env:coverage` before running the tests.
+The WordPress unit and integration tests depends on `wp-env` setup. Ensure you run `yarn wp-env:coverage` before running the tests.
 
 -   To run unit tests `yarn php:unit`
 -   To run integrations tests `yarn php:integration`
