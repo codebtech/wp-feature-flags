@@ -45,7 +45,7 @@ jobs:
               run: yarn add @wordpress/env -D
 
             - name: Start wp-env
-              run: yarn wp-env
+              run: yarn wp-env:coverage
 
             - name: WordPress unit test
               run: yarn php:unit

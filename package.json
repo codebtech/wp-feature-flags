@@ -19,6 +19,7 @@
 		"version:minor": "node ./scripts/version minor",
 		"version:patch": "node ./scripts/version patch",
 		"wp-env": "wp-env start",
+		"wp-env:coverage": "wp-env start --xdebug=coverage",
 		"php:unit": "wp-env run --env-cwd='wp-content/plugins/feature-flags' tests-wordpress composer test:unit",
 		"php:integration": "wp-env run tests-wordpress --env-cwd=wp-content/plugins/feature-flags composer test:integration",
 		"php:multisite": "wp-env run tests-wordpress --env-cwd=wp-content/plugins/feature-flags composer test:multisite"
