@@ -5,6 +5,7 @@ const package = require('../package.json');
 
 const packagePath = path.join(process.cwd(), 'package.json');
 const phpPath = path.join(process.cwd(), 'plugin.php');
+const readmePath = path.join(process.cwd(), 'README.md');
 
 const bumpTypes = ['patch', 'minor', 'major'];
 
@@ -51,13 +52,21 @@ const getNewVersion = () => {
 		2
 	);
 
-	const [php] = await Promise.all([fs.promises.readFile(phpPath, fsOpts)]);
+	const [php, readme] = await Promise.all([
+		fs.promises.readFile(phpPath, fsOpts),
+		fs.promises.readFile(readmePath, fsOpts),
+	]);
 
 	const newPHP = php.replace(new RegExp(previousVersion, 'g'), newVersion);
+	const newReadme = readme.replace(
+		new RegExp(previousVersion, 'g'),
+		newVersion
+	);
 
 	await Promise.all([
 		fs.promises.writeFile(packagePath, newPackage, fsOpts),
 		fs.promises.writeFile(phpPath, newPHP, fsOpts),
+		fs.promises.writeFile(readmePath, newReadme, fsOpts),
 	]);
 
 	// eslint-disable-next-line no-console
