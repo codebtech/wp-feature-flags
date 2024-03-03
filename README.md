@@ -5,6 +5,11 @@
 [![E2E Tests](https://github.com/codebtech/wp-feature-flags/actions/workflows/e2e.yml/badge.svg)](https://github.com/codebtech/wp-feature-flags/actions/workflows/e2e.yml)
 [![codecov](https://codecov.io/github/codebtech/wp-feature-flags/graph/badge.svg?token=QNUWGCRJGR)](https://codecov.io/github/codebtech/wp-feature-flags)
 
+Stable tag: 0.3.2
+Requires at least: 6.2
+Tested up to: 6.4
+Requires PHP: 8.1
+
 WordPress Feature flags plugin allow developers to configure features in plugins/themes behind the feature flags on both the server (PHP) and client (JS/TS) side.
 
 ## Installation
