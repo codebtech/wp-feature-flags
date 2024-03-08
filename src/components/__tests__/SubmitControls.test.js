@@ -11,16 +11,20 @@ describe('SubmitControls component', () => {
 	});
 
 	it('renders component with all header fields', () => {
-		render(<SubmitControls  flags={[]}
-								setFlags={mockSetFlags}
-								lastFlag={0}
-								disableSave={false}
-								isSaving={false}
-								handleSave={mockHandleSave}/>);
+		render(
+			<SubmitControls
+				flags={[]}
+				setFlags={mockSetFlags}
+				lastFlag={0}
+				disableSave={false}
+				isSaving={false}
+				handleSave={mockHandleSave}
+			/>
+		);
 
-		const addFlagButton = screen.getByText("Add Flag");
-		const saveButton = screen.queryByText("Save");
-		const cancelButton = screen.queryByText("Cancel");
+		const addFlagButton = screen.getByText('Add Flag');
+		const saveButton = screen.queryByText('Save');
+		const cancelButton = screen.queryByText('Cancel');
 
 		// Click on Add Flag button
 		fireEvent.click(addFlagButton);
@@ -34,16 +38,18 @@ describe('SubmitControls component', () => {
 	});
 
 	test('save button interaction', () => {
-		render(<SubmitControls
-			flags={[]}
-			setFlags={mockSetFlags}
-			lastFlag={1}
-			disableSave={false}
-			isSaving={false}
-			handleSave={mockHandleSave}
-		/>);
+		render(
+			<SubmitControls
+				flags={[]}
+				setFlags={mockSetFlags}
+				lastFlag={1}
+				disableSave={false}
+				isSaving={false}
+				handleSave={mockHandleSave}
+			/>
+		);
 
-		const saveButton = screen.getByText("Save");
+		const saveButton = screen.getByText('Save');
 
 		// Click on Save button
 		fireEvent.click(saveButton);
@@ -53,16 +59,18 @@ describe('SubmitControls component', () => {
 	});
 
 	test('display saving text', () => {
-		render(<SubmitControls
-			flags={[]}
-			setFlags={mockSetFlags}
-			lastFlag={1}
-			disableSave={false}
-			isSaving={true}
-			handleSave={mockHandleSave}
-		/>);
+		render(
+			<SubmitControls
+				flags={[]}
+				setFlags={mockSetFlags}
+				lastFlag={1}
+				disableSave={false}
+				isSaving={true}
+				handleSave={mockHandleSave}
+			/>
+		);
 
-		const savingButton = screen.getByText("Saving");
+		const savingButton = screen.getByText('Saving');
 
 		// Assert Save button is now displaying "Saving"
 		expect(savingButton).toBeTruthy();
