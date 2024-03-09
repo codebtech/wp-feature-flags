@@ -3,7 +3,7 @@ import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import Clipboard from '../common/Clipboard';
 
-export default function ({ flag }: { flag: string }): JSX.Element {
+const JsSnippet = ({ flag }: { flag: string }) => {
 	const jsSnippet = useMemo(() => {
 		return `import domReady from '@wordpress/dom-ready';
 domReady(function () {
@@ -22,4 +22,6 @@ domReady(function () {
 			<Snippet data={jsSnippet} language={'typescript'} />
 		</div>
 	);
-}
+};
+
+export default JsSnippet;
