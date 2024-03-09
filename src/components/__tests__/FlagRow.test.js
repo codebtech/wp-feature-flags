@@ -1,4 +1,4 @@
-import { render, fireEvent, screen } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import FlagRow from '../FlagRow';
 
 test('FlagRow Function Test', async () => {
