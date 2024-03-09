@@ -8,7 +8,7 @@ import Header from './Header';
 import { __ } from '@wordpress/i18n';
 import { useDispatch } from '@wordpress/data';
 
-const Layout = (): JSX.Element => {
+const Flags = () => {
 	const [flags, setFlags] = useState<Flag[]>([]);
 	const [isLoading, setIsLoading] = useState<boolean>(true);
 	const [isSaving, setIsSaving] = useState<boolean>(false);
@@ -64,7 +64,7 @@ const Layout = (): JSX.Element => {
 			return prevFlags.filter((f) => f.name !== '');
 		});
 
-		remoteApi(flags);
+		await remoteApi(flags);
 		setIsSaving(false);
 	};
 
@@ -74,7 +74,7 @@ const Layout = (): JSX.Element => {
 		const latestFlags = flags.filter((f) => f.id !== flagId);
 		setFlags(latestFlags);
 
-		remoteApi(latestFlags);
+		await remoteApi(latestFlags);
 		setIsSaving(false);
 	};
 
@@ -120,4 +120,4 @@ const Layout = (): JSX.Element => {
 	);
 };
 
-export default Layout;
+export default Flags;

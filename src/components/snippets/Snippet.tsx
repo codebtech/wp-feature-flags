@@ -1,5 +1,4 @@
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import { a11yDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
 const Snippet = ({
 	data,
@@ -8,11 +7,7 @@ const Snippet = ({
 	data: string;
 	language: string;
 }): JSX.Element => {
-	return (
-		<SyntaxHighlighter language={language} style={a11yDark}>
-			{data}
-		</SyntaxHighlighter>
-	);
+	return <SyntaxHighlighter language={language}>{data}</SyntaxHighlighter>;
 };
 
 export default Snippet;

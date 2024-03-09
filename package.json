@@ -25,6 +25,7 @@
 		"php:multisite": "wp-env run tests-wordpress --env-cwd=wp-content/plugins/feature-flags composer test:multisite"
 	},
 	"dependencies": {
+		"@testing-library/user-event": "^14.5.2",
 		"@wordpress/api-fetch": "^6.48.0",
 		"@wordpress/components": "^27.0.0",
 		"@wordpress/data": "^9.22.0",
