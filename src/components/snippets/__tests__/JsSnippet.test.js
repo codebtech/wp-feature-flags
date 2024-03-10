@@ -16,13 +16,17 @@ describe('JsSnippet component', () => {
 	});
 
 	test('should update the JavaScript snippet when the flag prop changes', async () => {
-		const { rerender } = render(<JsSnippet flag="testFlag1" />);
+		const { rerender, asFragment } = render(<JsSnippet flag="testFlag1" />);
 		let snip = screen.getByText(/testFlag1'/i);
 		expect(snip).toBeInTheDocument();
+		expect(asFragment()).toMatchSnapshot();
+
 		rerender(<JsSnippet flag="testFlag2" />);
 		snip = screen.queryByText(/'testFlag1'/i);
 		expect(snip).toBeNull();
+
 		snip = screen.getByText(/'testFlag2'/i);
 		expect(snip).toBeInTheDocument();
+		expect(asFragment()).toMatchSnapshot();
 	});
 });

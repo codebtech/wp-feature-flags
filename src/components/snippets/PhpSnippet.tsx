@@ -3,7 +3,7 @@ import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import Clipboard from '../common/Clipboard';
 
-export default function ({ flag }: { flag: string }): JSX.Element {
+const PhpSnippet = ({ flag }: { flag: string }) => {
 	const phpSnippet = useMemo(() => {
 		return `use CodeB\\FeatureFlags\\Flag;
 if ( class_exists( '\\CodeB\\FeatureFlags\\Flag' ) && Flag::is_enabled( '${flag}' ) ) {
@@ -17,4 +17,6 @@ if ( class_exists( '\\CodeB\\FeatureFlags\\Flag' ) && Flag::is_enabled( '${flag}
 			<Snippet data={phpSnippet} language={'php'} />
 		</div>
 	);
-}
+};
+
+export default PhpSnippet;
