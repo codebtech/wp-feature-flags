@@ -39,7 +39,7 @@ if ( ! file_exists( Flag::class ) ) {
 	include_once __DIR__ . '/vendor/autoload.php';
 }
 
-// Enqueure scripts, styles in settings page.
+// Enqueue scripts, styles in settings page.
 add_action(
 	'admin_enqueue_scripts',
 	static function ( string $page ): void {
@@ -156,7 +156,7 @@ register_deactivation_hook( __FILE__, __NAMESPACE__ . '\codeb_feature_flags_unin
 
 /**
  * Uninstall method for the plugin.
- * 
+ *
  * @return void
  */
 function codeb_feature_flags_uninstall(): void {
