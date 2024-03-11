@@ -49,7 +49,7 @@
 		"@types/node": "^20.11.24",
 		"@types/react-syntax-highlighter": "^15.5.11",
 		"@types/wordpress__components": "^23.0.11",
-		"@wordpress/e2e-test-utils-playwright": "^0.20.0",
+		"@wordpress/e2e-test-utils-playwright": "^0.21.0",
 		"@wordpress/env": "^9.4.0",
 		"@wordpress/eslint-plugin": "^17.10.0",
 		"@wordpress/scripts": "^27.3.0",
