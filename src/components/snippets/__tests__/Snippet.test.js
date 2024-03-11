@@ -3,7 +3,7 @@ import Snippet from '../Snippet';
 
 describe('Snippet component', () => {
 	it('renders without crashing', () => {
-		const data = 'console.log(\'Hello, World!\')';
+		const data = "console.log('Hello, World!')";
 		const language = 'javascript';
 
 		render(<Snippet data={data} language={language} />);

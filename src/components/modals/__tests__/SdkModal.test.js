@@ -9,7 +9,7 @@ describe('SdkModal component', () => {
 		render(<SdkModal item={item} closeSdkModal={closeSdkModal} />);
 
 		expect(
-			screen.getByText(`SDK for feature flag: ${item.name}`),
+			screen.getByText(`SDK for feature flag: ${item.name}`)
 		).toBeInTheDocument();
 
 		await userEvent.click(screen.getByLabelText('Close'));
