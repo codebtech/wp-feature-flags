@@ -39,7 +39,7 @@
 		"react-syntax-highlighter": "^15.5.0",
 		"react-test-renderer": "^18.2.0",
 		"ts-loader": "^9.5.1",
-		"typescript": "^5.3.3"
+		"typescript": "^5.4.2"
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.42.1",
@@ -49,10 +49,10 @@
 		"@types/node": "^20.11.24",
 		"@types/react-syntax-highlighter": "^15.5.11",
 		"@types/wordpress__components": "^23.0.11",
-		"@wordpress/e2e-test-utils-playwright": "^0.20.0",
+		"@wordpress/e2e-test-utils-playwright": "^0.21.0",
 		"@wordpress/env": "^9.4.0",
-		"@wordpress/eslint-plugin": "^17.9.0",
-		"@wordpress/scripts": "^27.3.0",
+		"@wordpress/eslint-plugin": "^17.10.0",
+		"@wordpress/scripts": "^27.4.0",
 		"eslint": "^8.57.0",
 		"eslint-import-resolver-alias": "^1.1.2",
 		"eslint-plugin-cypress": "^2.15.1",
