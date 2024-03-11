@@ -6,4 +6,6 @@ module.exports = {
 	modulePathIgnorePatterns: ['<rootDir>/vendor/'],
 	testEnvironment: 'jsdom',
 	testPathIgnorePatterns: ['<rootDir>/tests/e2e/'],
+	collectCoverage: true,
+	coverageReporters: ['text', 'cobertura'],
 };
