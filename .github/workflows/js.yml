@@ -1,34 +1,42 @@
 name: JS lint & test
 on:
-    push:
-        branches-ignore:
-            - 'main-built'
+  push:
+    branches-ignore:
+      - 'main-built'
 
 jobs:
-    js-lint-test:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v4
+  js-lint-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
 
-            - name: Setup Node
-              uses: actions/setup-node@v4
-              with:
-                  node-version: 20.11
-                  cache: 'yarn'
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.11
+          cache: 'yarn'
 
-            - name: Install packages
-              run: yarn install --immutable
+      - name: Install packages
+        run: yarn install --immutable
 
-            - name: JS lint
-              run: yarn lint:js
+      - name: JS lint
+        run: yarn lint:js
 
-            - name: JS test
-              run: yarn test:js
+      - name: JS test
+        run: yarn test:js
 
-            - name: Upload artifacts
-              uses: actions/upload-artifact@v4
-              if: always()
-              with:
-                  name: js-report
-                  path: js-report/
-                  retention-days: 30
+      - name: JS unit test coverage report
+        uses: codecov/codecov-action@v4
+        with:
+          flags: jstests
+          name: codecov-jsunit
+          verbose: true
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: js-report
+          path: js-report/
+          retention-days: 30

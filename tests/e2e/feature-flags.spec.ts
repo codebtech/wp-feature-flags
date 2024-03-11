@@ -48,7 +48,7 @@ test.describe('Feature flags', () => {
 		expect(
 			await page.getByLabel('Dismiss this notice').innerText()
 		).toMatch(/Saved successfully!/);
-		expect(
+		await expect(
 			page
 				.locator('id=mr-feature-flag-item')
 				.last()
@@ -66,13 +66,13 @@ test.describe('Feature flags', () => {
 
 		//Create another flag with same name should show error
 		await AddNewFlagAndFill(page, 'testDuplicate');
-		expect(page.getByText(ERROR_FLAG_EXISTS)).toBeVisible();
-		expect(page.getByRole('button', { name: 'Save' })).toBeDisabled();
+		await expect(page.getByText(ERROR_FLAG_EXISTS)).toBeVisible();
+		await expect(page.getByRole('button', { name: 'Save' })).toBeDisabled();
 
 		//update flag name to be unique but still invalid
 		await AddNewFlag(page, 'test duplicate');
-		expect(page.getByText(ERROR_FLAG_INVALID)).toBeVisible();
-		expect(page.getByRole('button', { name: 'Save' })).toBeDisabled();
+		await expect(page.getByText(ERROR_FLAG_INVALID)).toBeVisible();
+		await expect(page.getByRole('button', { name: 'Save' })).toBeDisabled();
 
 		expect(
 			await page.getByLabel('Dismiss this notice').innerText()
@@ -90,7 +90,7 @@ test.describe('Feature flags', () => {
 
 		await OpenSdkModal(page);
 
-		expect(
+		await expect(
 			page.getByRole('heading', {
 				name: `SDK for feature flag: ${flagName}`,
 			})

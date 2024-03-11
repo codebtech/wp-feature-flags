@@ -18,3 +18,4 @@ build-script.sh
 integration-coverage.xml
 unit-coverage.xml
 .idea/
+/coverage/
