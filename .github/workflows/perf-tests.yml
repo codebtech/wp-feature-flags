@@ -3,6 +3,7 @@ on:
   push:
     branches-ignore:
       - 'main-built'
+  pull_request:
 
 jobs:
   performance-tests:
