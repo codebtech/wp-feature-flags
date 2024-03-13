@@ -82,9 +82,9 @@ jobs:
       - name: Compare results with base
         run: |
           if [ -f "${{ runner.temp }}/results_before.json" ]; then
-            npm run test:performance:results ${{ runner.temp }}/results_after.json ${{ runner.temp }}/results_before.json
+            yarn test:performance:results ${{ runner.temp }}/results_after.json ${{ runner.temp }}/results_before.json
           else
-            npm run test:performance:results ${{ runner.temp }}/results_after.json
+            yarn test:performance:results ${{ runner.temp }}/results_after.json
           fi;
 
       - name: Add workflow summary
