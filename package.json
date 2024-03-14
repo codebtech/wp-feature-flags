@@ -15,7 +15,7 @@
 	"test:e2e": "wp-scripts test-playwright",
 	"test:js": "wp-scripts test-unit-js",
 	"test:performance": "wp-scripts test-playwright --config tests/performance/playwright.config.ts",
-	"test:performance:merge-reports": "playwright merge-reports --reporter tests/performance/config/performance-reporter.ts ./blob-report",
+	"test:performance:merge-reports": "playwright merge-reports --reporter tests/performance/config/performance-reporter.ts ./all-blob-reports",
 	"test:performance:results": "node tests/performance/cli/results.js",
 	"test:watch": "wp-scripts test-unit-js --watch",
 	"version:major": "node ./scripts/version major",
