@@ -4,7 +4,7 @@ import SdkModal from '../SdkModal';
 
 describe('SdkModal component', () => {
 	test('should render modal correctly', async () => {
-		const item = { name: 'Test Flag' };
+		const item = { id: 1, name: 'Test Flag', enabled: false };
 		const closeSdkModal = jest.fn();
 		render(<SdkModal item={item} closeSdkModal={closeSdkModal} />);
 

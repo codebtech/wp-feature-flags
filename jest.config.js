@@ -5,7 +5,10 @@ module.exports = {
 	},
 	modulePathIgnorePatterns: ['<rootDir>/vendor/'],
 	testEnvironment: 'jsdom',
-	testPathIgnorePatterns: ['<rootDir>/tests/e2e/'],
+	testPathIgnorePatterns: [
+		'<rootDir>/tests/e2e/',
+		'<rootDir>/tests/performance/',
+	],
 	collectCoverage: true,
 	coverageReporters: ['text', 'cobertura'],
 };
