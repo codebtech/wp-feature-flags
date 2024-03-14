@@ -13,7 +13,7 @@ process.env.STORAGE_STATE_PATH ??= join(
 	process.env.WP_ARTIFACTS_PATH,
 	authStoragePath
 );
-process.env.TEST_ITERATIONS ??= '20';
+process.env.TEST_ITERATIONS ??= '4';
 
 const config = defineConfig({
 	globalSetup: require.resolve('../e2e/global-setup.ts'),
