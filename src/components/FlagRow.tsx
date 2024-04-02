@@ -7,7 +7,7 @@ import {
 	// eslint-disable-next-line @wordpress/no-unsafe-wp-apis
 	__experimentalText as Text,
 } from '@wordpress/components';
-import { useState, useRef, useEffect, useCallback } from '@wordpress/element';
+import { useState, useRef, useEffect } from '@wordpress/element';
 import { Flag } from '../../types';
 import DeleteModal from './modals/DeleteModal';
 import SdkModal from './modals/SdkModal';
@@ -24,14 +24,6 @@ interface LineItemProps {
 	handleDeleteFlag: (id: number) => Promise<void>;
 }
 
-const updateToggleHandler = (flags: Flag[], id: number): Flag[] =>
-	flags.map((flag) =>
-		flag.id === id ? { ...flag, enabled: !flag.enabled } : flag
-	);
-
-const updateFlagHandler = (flags: Flag[], value: string, id: number): Flag[] =>
-	flags.map((flag) => (flag.id === id ? { ...flag, name: value } : flag));
-
 const FlagRow = ({
 	flags,
 	setFlags,
@@ -40,7 +32,7 @@ const FlagRow = ({
 	handleSave,
 	handleDeleteFlag,
 }: LineItemProps): JSX.Element => {
-	const [isOpen, setIsOpen] = useState(false);
+	const [isOpen, setOpen] = useState(false);
 
 	const [isSdkOpen, setIsSdkOpen] = useState(false);
 
@@ -54,42 +46,46 @@ const FlagRow = ({
 		}
 	}, [inputRef, item]);
 
-	const handleFlagToggle = useCallback(
-		async (flagId: number) => {
-			const updatedFlags = updateToggleHandler(flags, flagId);
-			setFlags(updatedFlags);
-			await handleSave();
-		},
-		[flags, handleSave, setFlags]
-	);
-
-	const handleFlagEdit = useCallback(
-		(value: string, flagId: number) => {
-			if (checkIfFlagExists(flags, value)) {
-				// eslint-disable-next-line @wordpress/i18n-no-variables
-				setErrorMessage(__(ERROR_FLAG_EXISTS, 'codeb-feature-flags'));
-				setDisableSave(true);
-			} //Alphanumeric,hyphen and underscore validation
-			else if (value.match(/^[a-zA-Z0-9_-]*$/)) {
-				setErrorMessage('');
-				setDisableSave(false);
-			} else {
-				// eslint-disable-next-line @wordpress/i18n-no-variables
-				setErrorMessage(__(ERROR_FLAG_INVALID, 'codeb-feature-flags'));
-				setDisableSave(true);
+	const handleFlagToggle = (flagId: number) => {
+		const updatedFlags = flags.map((flag: Flag) => {
+			if (flag.id === flagId) {
+				flag.enabled = !flag.enabled;
 			}
+			return flag;
+		});
+		setFlags(updatedFlags);
+		handleSave();
+	};
 
-			const updatedFlags = updateFlagHandler(flags, value, flagId);
+	const handleFlagEdit = (value: string, flagId: number) => {
+		if (checkIfFlagExists(flags, value)) {
+			// eslint-disable-next-line @wordpress/i18n-no-variables
+			setErrorMessage(__(ERROR_FLAG_EXISTS, 'codeb-feature-flags'));
+			setDisableSave(true);
+		} //Alphanumeric,hypen and underscore validation
+		else if (value.match(/^[a-zA-Z0-9\_-]*$/)) {
+			setErrorMessage('');
+			setDisableSave(false);
+		} else {
+			// eslint-disable-next-line @wordpress/i18n-no-variables
+			setErrorMessage(__(ERROR_FLAG_INVALID, 'codeb-feature-flags'));
+			setDisableSave(true);
+		}
 
-			setFlags(updatedFlags);
-		},
-		[flags, setDisableSave, setErrorMessage, setFlags]
-	);
+		const updatedFlags = flags.map((flag: Flag) => {
+			if (flag.id === flagId) {
+				flag.name = value;
+			}
+			return flag;
+		});
+
+		setFlags(updatedFlags);
+	};
 
 	const openModal = () => {
-		setIsOpen(true);
+		setOpen(true);
 	};
-	const closeModal = () => setIsOpen(false);
+	const closeModal = () => setOpen(false);
 
 	const openSdkModal = () => {
 		setIsSdkOpen(true);
@@ -97,17 +93,14 @@ const FlagRow = ({
 
 	const closeSdkModal = () => setIsSdkOpen(false);
 
-	const handleDeleteModal = useCallback(
-		async (flag: Flag) => {
-			if (flag.name) {
-				openModal();
-				return;
-			}
+	const handleDeleteModal = (flag: Flag) => {
+		if (flag.name) {
+			openModal();
+			return;
+		}
 
-			await handleDeleteFlag(flag.id);
-		},
-		[handleDeleteFlag]
-	);
+		handleDeleteFlag(flag.id);
+	};
 
 	const handleSdkModal = () => {
 		openSdkModal();
