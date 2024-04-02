@@ -7,7 +7,7 @@ import {
 	// eslint-disable-next-line @wordpress/no-unsafe-wp-apis
 	__experimentalText as Text,
 } from '@wordpress/components';
-import { useState, useRef, useEffect } from '@wordpress/element';
+import { useState, useRef, useEffect, useCallback } from '@wordpress/element';
 import { Flag } from '../../types';
 import DeleteModal from './modals/DeleteModal';
 import SdkModal from './modals/SdkModal';
@@ -23,6 +23,14 @@ interface LineItemProps {
 	handleSave: () => Promise<void>;
 	handleDeleteFlag: (id: number) => Promise<void>;
 }
+
+const updateFlags = (flags: Flag[], flagId: number): Flag[] =>
+	flags.map((flag: Flag) => {
+		if (flag.id === flagId) {
+			flag.enabled = !flag.enabled;
+		}
+		return flag;
+	});
 
 const FlagRow = ({
 	flags,
@@ -46,23 +54,21 @@ const FlagRow = ({
 		}
 	}, [inputRef, item]);
 
-	const handleFlagToggle = (flagId: number) => {
-		const updatedFlags = flags.map((flag: Flag) => {
-			if (flag.id === flagId) {
-				flag.enabled = !flag.enabled;
-			}
-			return flag;
-		});
-		setFlags(updatedFlags);
-		handleSave();
-	};
+	const handleFlagToggle = useCallback(
+		(flagId: number) => {
+			const updatedFlags = updateFlags(flags, flagId);
+			setFlags(updatedFlags);
+			handleSave();
+		},
+		[flags, handleSave, setFlags]
+	);
 
 	const handleFlagEdit = (value: string, flagId: number) => {
 		if (checkIfFlagExists(flags, value)) {
 			// eslint-disable-next-line @wordpress/i18n-no-variables
 			setErrorMessage(__(ERROR_FLAG_EXISTS, 'codeb-feature-flags'));
 			setDisableSave(true);
-		} //Alphanumeric,hypen and underscore validation
+		} //Alphanumeric,hyphen and underscore validation
 		else if (value.match(/^[a-zA-Z0-9\_-]*$/)) {
 			setErrorMessage('');
 			setDisableSave(false);
