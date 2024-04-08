@@ -1,7 +1,0 @@
-parameters:
-    level: max
-    paths:
-        - plugin.php
-        - includes/
-    excludePaths:
-        - tests/*
