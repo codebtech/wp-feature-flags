@@ -55,7 +55,7 @@
 	"@wordpress/e2e-test-utils-playwright": "^0.22.0",
 	"@wordpress/env": "^9.5.0",
 	"@wordpress/eslint-plugin": "^17.10.0",
-	"@wordpress/scripts": "^27.5.0",
+	"@wordpress/scripts": "^27.6.0",
 	"eslint": "^8.57.0",
 	"eslint-import-resolver-alias": "^1.1.2",
 	"eslint-plugin-cypress": "^2.15.1",
