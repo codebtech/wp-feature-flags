@@ -8,7 +8,7 @@
 	},
 	"require-dev": {
 		"brain/monkey": "^2.6",
-		"newsuk/nuk-wp-phpcs-config": "^0.2.0",
+		"newsuk/nuk-wp-phpcs-config": "^0.4.1",
 		"newsuk/nuk-wp-phpmd-config": "^0.1.0",
 		"newsuk/nuk-wp-phpstan-config": "^0.1.0",
 		"phpunit/phpunit": "^9.4",
