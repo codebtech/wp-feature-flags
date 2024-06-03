@@ -1,7 +1,7 @@
 {
 	"core": null,
 	"plugins": ["."],
-	"phpVersion": "8.3",
+	"phpVersion": "8.2",
 	"env": {
 		"tests": {
 			"mappings": {
