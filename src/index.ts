@@ -9,9 +9,7 @@ codebFeatureFlags.isEnabled = (flag: string) => {
 		}
 	);
 
-	if (isFlagExist) return true;
-
-	return false;
+	return !!isFlagExist;
 };
 
 export {};
