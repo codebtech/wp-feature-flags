@@ -50,7 +50,7 @@
 	"@testing-library/react": "14.2.2",
 	"@types/jest": "^29.5.12",
 	"@types/node": "^20.12.5",
-	"@types/react-syntax-highlighter": "^15.5.11",
+	"@types/react-syntax-highlighter": "^15.5.13",
 	"@types/wordpress__components": "^23.0.11",
 	"@wordpress/e2e-test-utils-playwright": "^0.22.0",
 	"@wordpress/env": "^9.7.0",
