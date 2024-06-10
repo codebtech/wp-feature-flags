@@ -2743,7 +2743,7 @@
     "@wordpress/dom-ready" "^3.53.0"
     "@wordpress/i18n" "^4.53.0"
 
-"@wordpress/api-fetch@^6.48.0", "@wordpress/api-fetch@^6.51.0", "@wordpress/api-fetch@^6.52.0":
+"@wordpress/api-fetch@^6.48.0", "@wordpress/api-fetch@^6.51.0":
   version "6.52.0"
   resolved "https://registry.yarnpkg.com/@wordpress/api-fetch/-/api-fetch-6.52.0.tgz#eb79b4ab7ad7df5297a554e0839449e9217a32c8"
   integrity sha512-zLgpRT6iKdfQupF7hGYbixjqgkeU2taclEHbbQqP6ClLfG709I3kX6Ft+2wh6FaG8MhdVZkl0/E0DTROJ5lbyA==
@@ -2934,21 +2934,6 @@
     mime "^3.0.0"
     web-vitals "^3.5.0"
 
-"@wordpress/e2e-test-utils-playwright@^0.23.0":
-  version "0.23.0"
-  resolved "https://registry.yarnpkg.com/@wordpress/e2e-test-utils-playwright/-/e2e-test-utils-playwright-0.23.0.tgz#246c3c8d79a4a0cf2e639f4aa73154cbde247742"
-  integrity sha512-IrLvLho82nWG0tPYNODHtMYRjehMVR2w+wwM3NoEOjHxhAfDCBU0+/7e63z/obAOWDLKe1jeCXXQ6sRyr1cOMw==
-  dependencies:
-    "@wordpress/api-fetch" "^6.52.0"
-    "@wordpress/keycodes" "^3.55.0"
-    "@wordpress/url" "^3.56.0"
-    change-case "^4.1.2"
-    form-data "^4.0.0"
-    get-port "^5.1.1"
-    lighthouse "^10.4.0"
-    mime "^3.0.0"
-    web-vitals "^3.5.0"
-
 "@wordpress/element@^5.0.0", "@wordpress/element@^5.30.0":
   version "5.30.0"
   resolved "https://registry.yarnpkg.com/@wordpress/element/-/element-5.30.0.tgz#8ea18fe92419d7db279c2629c367bb7825578ef6"
@@ -2963,10 +2948,10 @@
     react "^18.2.0"
     react-dom "^18.2.0"
 
-"@wordpress/env@^9.7.0":
-  version "9.7.0"
-  resolved "https://registry.yarnpkg.com/@wordpress/env/-/env-9.7.0.tgz#c6e51ee2739799c1accafdf70e8cecfeb28011a2"
-  integrity sha512-99VaR3VEZlBsaX30Hx3wKyAWOrtZW/FPZsK5urY4UZbP7kRSlwvIQZdxEs7S17gYOrA72tDg7O4uXsX+IRyQDQ==
+"@wordpress/env@^10.0.0":
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/@wordpress/env/-/env-10.0.0.tgz#afb43ba7a0272c1410ebdccb9c81c5faf3dd5de1"
+  integrity sha512-GpbYT7P61U6PWOqpyPmTBGLswBoyOCUtGF2/0qCsbN7vC8oekm+iNpYT2JS0ETSC1/8esxxKlYVvLxXwTF9MPg==
   dependencies:
     chalk "^4.0.0"
     copy-dir "^1.3.0"
@@ -3088,7 +3073,7 @@
     "@wordpress/jest-console" "^7.25.0"
     babel-jest "^29.6.2"
 
-"@wordpress/keycodes@^3.53.0", "@wordpress/keycodes@^3.54.0", "@wordpress/keycodes@^3.55.0":
+"@wordpress/keycodes@^3.53.0", "@wordpress/keycodes@^3.54.0":
   version "3.55.0"
   resolved "https://registry.yarnpkg.com/@wordpress/keycodes/-/keycodes-3.55.0.tgz#a964da7a4089be33492fcb4df2442468c2f05c9d"
   integrity sha512-93Z479aesGmCo2BZ4UX8gVGabVfj128hCaod1cknZBkOymYxOCc6bobiEQ3ncZ1m6HTxAt5ikjeDXoWuCrPKsQ==
