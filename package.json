@@ -33,7 +33,7 @@
 	"@wordpress/components": "^27.1.0",
 	"@wordpress/data": "^9.23.0",
 	"@wordpress/dom-ready": "^3.53.0",
-	"@wordpress/hooks": "^3.53.0",
+	"@wordpress/hooks": "^4.2.0",
 	"@wordpress/i18n": "^4.54.0",
 	"@wordpress/notices": "^4.21.0",
 	"dotenv": "^16.4.5",
