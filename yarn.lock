@@ -1641,12 +1641,12 @@
   resolved "https://registry.yarnpkg.com/@pkgr/core/-/core-0.1.1.tgz#1ec17e2edbec25c8306d424ecfbf13c7de1aaa31"
   integrity sha512-cq8o4cWH0ibXh9VGi5P20Tu9XF/0fFXl9EUinr9QfTM7a7p0oTA4iJRCQWppXR1Pg8dSM0UCItCkPwsk9qWWYA==
 
-"@playwright/test@^1.42.1":
-  version "1.42.1"
-  resolved "https://registry.yarnpkg.com/@playwright/test/-/test-1.42.1.tgz#9eff7417bcaa770e9e9a00439e078284b301f31c"
-  integrity sha512-Gq9rmS54mjBL/7/MvBaNOBwbfnh7beHvS6oS4srqXFcQHpQCV1+c8JXWE8VLPyRDhgS3H8x8A7hztqI9VnwrAQ==
+"@playwright/test@^1.45.0":
+  version "1.45.0"
+  resolved "https://registry.yarnpkg.com/@playwright/test/-/test-1.45.0.tgz#790a66165a46466c0d7099dd260881802f5aba7e"
+  integrity sha512-TVYsfMlGAaxeUllNkywbwek67Ncf8FRGn8ZlRdO291OL3NjG9oMbfVhyP82HQF0CZLMrYsvesqoUekxdWuF9Qw==
   dependencies:
-    playwright "1.42.1"
+    playwright "1.45.0"
 
 "@pmmmwh/react-refresh-webpack-plugin@^0.5.11":
   version "0.5.11"
@@ -2743,7 +2743,7 @@
     "@wordpress/dom-ready" "^3.53.0"
     "@wordpress/i18n" "^4.53.0"
 
-"@wordpress/api-fetch@^6.48.0", "@wordpress/api-fetch@^6.51.0", "@wordpress/api-fetch@^6.52.0":
+"@wordpress/api-fetch@^6.48.0", "@wordpress/api-fetch@^6.51.0":
   version "6.52.0"
   resolved "https://registry.yarnpkg.com/@wordpress/api-fetch/-/api-fetch-6.52.0.tgz#eb79b4ab7ad7df5297a554e0839449e9217a32c8"
   integrity sha512-zLgpRT6iKdfQupF7hGYbixjqgkeU2taclEHbbQqP6ClLfG709I3kX6Ft+2wh6FaG8MhdVZkl0/E0DTROJ5lbyA==
@@ -2934,21 +2934,6 @@
     mime "^3.0.0"
     web-vitals "^3.5.0"
 
-"@wordpress/e2e-test-utils-playwright@^0.23.0":
-  version "0.23.0"
-  resolved "https://registry.yarnpkg.com/@wordpress/e2e-test-utils-playwright/-/e2e-test-utils-playwright-0.23.0.tgz#246c3c8d79a4a0cf2e639f4aa73154cbde247742"
-  integrity sha512-IrLvLho82nWG0tPYNODHtMYRjehMVR2w+wwM3NoEOjHxhAfDCBU0+/7e63z/obAOWDLKe1jeCXXQ6sRyr1cOMw==
-  dependencies:
-    "@wordpress/api-fetch" "^6.52.0"
-    "@wordpress/keycodes" "^3.55.0"
-    "@wordpress/url" "^3.56.0"
-    change-case "^4.1.2"
-    form-data "^4.0.0"
-    get-port "^5.1.1"
-    lighthouse "^10.4.0"
-    mime "^3.0.0"
-    web-vitals "^3.5.0"
-
 "@wordpress/element@^5.0.0", "@wordpress/element@^5.30.0":
   version "5.30.0"
   resolved "https://registry.yarnpkg.com/@wordpress/element/-/element-5.30.0.tgz#8ea18fe92419d7db279c2629c367bb7825578ef6"
@@ -3088,7 +3073,7 @@
     "@wordpress/jest-console" "^7.25.0"
     babel-jest "^29.6.2"
 
-"@wordpress/keycodes@^3.53.0", "@wordpress/keycodes@^3.54.0", "@wordpress/keycodes@^3.55.0":
+"@wordpress/keycodes@^3.53.0", "@wordpress/keycodes@^3.54.0":
   version "3.55.0"
   resolved "https://registry.yarnpkg.com/@wordpress/keycodes/-/keycodes-3.55.0.tgz#a964da7a4089be33492fcb4df2442468c2f05c9d"
   integrity sha512-93Z479aesGmCo2BZ4UX8gVGabVfj128hCaod1cknZBkOymYxOCc6bobiEQ3ncZ1m6HTxAt5ikjeDXoWuCrPKsQ==
@@ -8906,17 +8891,17 @@ pkg-dir@4.2.0, pkg-dir@^4.1.0, pkg-dir@^4.2.0:
   dependencies:
     find-up "^4.0.0"
 
-playwright-core@1.42.1:
-  version "1.42.1"
-  resolved "https://registry.yarnpkg.com/playwright-core/-/playwright-core-1.42.1.tgz#13c150b93c940a3280ab1d3fbc945bc855c9459e"
-  integrity sha512-mxz6zclokgrke9p1vtdy/COWBH+eOZgYUVVU34C73M+4j4HLlQJHtfcqiqqxpP0o8HhMkflvfbquLX5dg6wlfA==
+playwright-core@1.45.0:
+  version "1.45.0"
+  resolved "https://registry.yarnpkg.com/playwright-core/-/playwright-core-1.45.0.tgz#5741a670b7c9060ce06852c0051d84736fb94edc"
+  integrity sha512-lZmHlFQ0VYSpAs43dRq1/nJ9G/6SiTI7VPqidld9TDefL9tX87bTKExWZZUF5PeRyqtXqd8fQi2qmfIedkwsNQ==
 
-playwright@1.42.1:
-  version "1.42.1"
-  resolved "https://registry.yarnpkg.com/playwright/-/playwright-1.42.1.tgz#79c828b51fe3830211137550542426111dc8239f"
-  integrity sha512-PgwB03s2DZBcNRoW+1w9E+VkLBxweib6KTXM0M3tkiT4jVxKSi6PmVJ591J+0u10LUrgxB7dLRbiJqO5s2QPMg==
+playwright@1.45.0:
+  version "1.45.0"
+  resolved "https://registry.yarnpkg.com/playwright/-/playwright-1.45.0.tgz#400c709c64438690f13705cb9c88ef93089c5c27"
+  integrity sha512-4z3ac3plDfYzGB6r0Q3LF8POPR20Z8D0aXcxbJvmfMgSSq1hkcgvFRXJk9rUq5H/MJ0Ktal869hhOdI/zUTeLA==
   dependencies:
-    playwright-core "1.42.1"
+    playwright-core "1.45.0"
   optionalDependencies:
     fsevents "2.3.2"
 
