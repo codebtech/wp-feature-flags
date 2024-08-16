@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import DeleteModal from '../DeleteModal';
 
 jest.mock('@wordpress/components', () => ({
-	...jest.requireActual('@wordpress/components'),
+	// ...jest.requireActual('@wordpress/components'),
 	Modal: jest
 		.fn()
 		.mockImplementation(({ children }) => <div>{children}</div>),

@@ -28,7 +28,10 @@
 		"php:multisite": "wp-env run tests-wordpress --env-cwd=wp-content/plugins/feature-flags composer test:multisite"
 	},
 	"dependencies": {
+		"@testing-library/dom": "^10.4.0",
 		"@testing-library/user-event": "^14.5.2",
+		"@typescript-eslint/eslint-plugin": "^8.1.0",
+		"@typescript-eslint/parser": "^8.1.0",
 		"@wordpress/api-fetch": "^7.5.0",
 		"@wordpress/components": "^28.5.0",
 		"@wordpress/data": "^10.5.0",
@@ -55,10 +58,9 @@
 		"@wordpress/e2e-test-utils-playwright": "^1.5.0",
 		"@wordpress/env": "^10.5.0",
 		"@wordpress/eslint-plugin": "^20.2.0",
-		"@wordpress/scripts": "^28.5.0",
-		"eslint": "^9.9.0",
+		"@wordpress/scripts": "27.0.0",
+		"eslint": "8.56.0",
 		"eslint-import-resolver-alias": "^1.1.2",
-		"eslint-plugin-cypress": "^3.5.0",
 		"eslint-plugin-import": "^2.29.1",
 		"husky": "^9.1.4",
 		"jest-environment-jsdom": "^29.7.0",

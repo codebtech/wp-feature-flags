@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import Header from '../Header';
 
 jest.mock('@wordpress/components', () => ({
-	...jest.requireActual('@wordpress/components'),
+	// ...jest.requireActual('@wordpress/components'),
 	Flex: jest.fn().mockImplementation(({ children }) => <div>{children}</div>),
 	FlexItem: jest
 		.fn()

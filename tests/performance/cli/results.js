@@ -2,7 +2,7 @@
 /**
  * External dependencies
  */
-// eslint-disable-next-line @typescript-eslint/no-var-requires
+/* eslint-disable @typescript-eslint/no-require-imports*/
 const { existsSync, readFileSync, writeFileSync } = require('node:fs');
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { join, resolve } = require('node:path');
@@ -31,8 +31,12 @@ if (beforeFile && !existsSync(beforeFile)) {
  * @return {string} Formatted value.
  */
 function formatTableValue(v) {
-	if (v === true || v === 'true') return '✅';
-	if (!v || v === 'false') return '';
+	if (v === true || v === 'true') {
+		return '✅';
+	}
+	if (!v || v === 'false') {
+		return '';
+	}
 	return v?.toString() || String(v);
 }
 

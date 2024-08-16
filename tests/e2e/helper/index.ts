@@ -27,7 +27,9 @@ export async function deleteAllFlags(page: Page) {
 				.count();
 
 			if (count > 0) {
-				for (let i = 0; i < count; ++i) await deleteLastFlag(page);
+				for (let i = 0; i < count; ++i) {
+					await deleteLastFlag(page);
+				}
 			}
 		},
 		{ box: true }
