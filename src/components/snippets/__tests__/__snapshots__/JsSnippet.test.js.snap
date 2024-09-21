@@ -8,149 +8,127 @@ exports[`JsSnippet component should update the JavaScript snippet when the flag 
     <h3>
       JavaScript Snippet
     </h3>
-    <button
-      aria-label="Copy to clipboard"
-      aria-pressed="false"
-      class="components-button codeb-feature-flags-clipboard-base is-tertiary has-icon"
-      type="button"
+    <div
+      class="base16 darcula"
     >
-      <span
-        class="dashicon dashicons dashicons-clipboard"
-      />
-    </button>
-    <pre
-      style="display: block; overflow-x: auto; background: rgb(43, 43, 43); color: rgb(248, 248, 242); padding: 0.5em;"
-    >
-      <code
-        class="language-typescript"
-        style="white-space: pre;"
+      <button
+        class="react_highlight_syntax_copy btn__dark "
       >
-        <span
-          style="color: rgb(220, 198, 224);"
+        <svg
+          fill="none"
+          height="24"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          import
-        </span>
-        <span>
+          <rect
+            height="13"
+            rx="2"
+            ry="2"
+            width="13"
+            x="9"
+            y="9"
+          />
+          <path
+            d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+          />
+        </svg>
+      </button>
+      <pre>
+        <code
+          class="hljs language-javascript"
+          data-type="react-highlight-syntax"
+        >
+          <span
+            class="hljs-keyword"
+          >
+            import
+          </span>
            domReady 
-        </span>
-        <span
-          style="color: rgb(220, 198, 224);"
-        >
-          from
-        </span>
-        <span>
+          <span
+            class="hljs-keyword"
+          >
+            from
+          </span>
            
-        </span>
-        <span
-          style="color: rgb(171, 227, 56);"
-        >
-          '@wordpress/dom-ready'
-        </span>
-        <span>
+          <span
+            class="hljs-string"
+          >
+            '@wordpress/dom-ready'
+          </span>
           ;
-
-        </span>
-        <span>
-          domReady(
-        </span>
-        <span
-          class="hljs-function"
-          style="color: rgb(220, 198, 224);"
-        >
-          function
-        </span>
-        <span
-          class="hljs-function"
-        >
-           (
-        </span>
-        <span
-          class="hljs-function"
-        >
-          ) 
-        </span>
-        <span>
+domReady(
+          <span
+            class="hljs-function"
+          >
+            <span
+              class="hljs-keyword"
+            >
+              function
+            </span>
+             (
+            <span
+              class="hljs-params"
+            />
+            ) 
+          </span>
           {
-
-        </span>
-        <span>
-          	
-        </span>
-        <span
-          style="color: rgb(220, 198, 224);"
-        >
-          if
-        </span>
-        <span>
+	
+          <span
+            class="hljs-keyword"
+          >
+            if
+          </span>
            (
-
-        </span>
-        <span>
-          		
-        </span>
-        <span
-          style="color: rgb(220, 198, 224);"
-        >
-          typeof
-        </span>
-        <span>
+		
+          <span
+            class="hljs-keyword"
+          >
+            typeof
+          </span>
            
-        </span>
-        <span
-          style="color: rgb(245, 171, 53);"
-        >
-          window
-        </span>
-        <span>
+          <span
+            class="hljs-built_in"
+          >
+            window
+          </span>
           ?.codebFeatureFlags !== 
-        </span>
-        <span
-          style="color: rgb(171, 227, 56);"
-        >
-          'undefined'
-        </span>
-        <span>
+          <span
+            class="hljs-string"
+          >
+            'undefined'
+          </span>
            &&
-
-        </span>
-        <span>
-          		
-        </span>
-        <span
-          style="color: rgb(245, 171, 53);"
-        >
-          window
-        </span>
-        <span>
+		
+          <span
+            class="hljs-built_in"
+          >
+            window
+          </span>
           .codebFeatureFlags.isEnabled(
-        </span>
-        <span
-          style="color: rgb(171, 227, 56);"
-        >
-          'testFlag1'
-        </span>
-        <span>
+          <span
+            class="hljs-string"
+          >
+            'testFlag1'
+          </span>
           )
-
-        </span>
-        	) {
-
-        <span>
-          		
-        </span>
-        <span
-          style="color: rgb(212, 208, 171);"
-        >
-          // js code goes here...
-        </span>
-        <span>
+	) {
+		
+          <span
+            class="hljs-comment"
+          >
+            // js code goes here...
+          </span>
           
-
-        </span>
-        	}
+	}
 });
-      </code>
-    </pre>
+        </code>
+      </pre>
+    </div>
   </div>
 </DocumentFragment>
 `;
@@ -163,149 +141,127 @@ exports[`JsSnippet component should update the JavaScript snippet when the flag 
     <h3>
       JavaScript Snippet
     </h3>
-    <button
-      aria-label="Copy to clipboard"
-      aria-pressed="false"
-      class="components-button codeb-feature-flags-clipboard-base is-tertiary has-icon"
-      type="button"
+    <div
+      class="base16 darcula"
     >
-      <span
-        class="dashicon dashicons dashicons-clipboard"
-      />
-    </button>
-    <pre
-      style="display: block; overflow-x: auto; background: rgb(43, 43, 43); color: rgb(248, 248, 242); padding: 0.5em;"
-    >
-      <code
-        class="language-typescript"
-        style="white-space: pre;"
+      <button
+        class="react_highlight_syntax_copy btn__dark "
       >
-        <span
-          style="color: rgb(220, 198, 224);"
+        <svg
+          fill="none"
+          height="24"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          import
-        </span>
-        <span>
+          <rect
+            height="13"
+            rx="2"
+            ry="2"
+            width="13"
+            x="9"
+            y="9"
+          />
+          <path
+            d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+          />
+        </svg>
+      </button>
+      <pre>
+        <code
+          class="hljs language-javascript"
+          data-type="react-highlight-syntax"
+        >
+          <span
+            class="hljs-keyword"
+          >
+            import
+          </span>
            domReady 
-        </span>
-        <span
-          style="color: rgb(220, 198, 224);"
-        >
-          from
-        </span>
-        <span>
+          <span
+            class="hljs-keyword"
+          >
+            from
+          </span>
            
-        </span>
-        <span
-          style="color: rgb(171, 227, 56);"
-        >
-          '@wordpress/dom-ready'
-        </span>
-        <span>
+          <span
+            class="hljs-string"
+          >
+            '@wordpress/dom-ready'
+          </span>
           ;
-
-        </span>
-        <span>
-          domReady(
-        </span>
-        <span
-          class="hljs-function"
-          style="color: rgb(220, 198, 224);"
-        >
-          function
-        </span>
-        <span
-          class="hljs-function"
-        >
-           (
-        </span>
-        <span
-          class="hljs-function"
-        >
-          ) 
-        </span>
-        <span>
+domReady(
+          <span
+            class="hljs-function"
+          >
+            <span
+              class="hljs-keyword"
+            >
+              function
+            </span>
+             (
+            <span
+              class="hljs-params"
+            />
+            ) 
+          </span>
           {
-
-        </span>
-        <span>
-          	
-        </span>
-        <span
-          style="color: rgb(220, 198, 224);"
-        >
-          if
-        </span>
-        <span>
+	
+          <span
+            class="hljs-keyword"
+          >
+            if
+          </span>
            (
-
-        </span>
-        <span>
-          		
-        </span>
-        <span
-          style="color: rgb(220, 198, 224);"
-        >
-          typeof
-        </span>
-        <span>
+		
+          <span
+            class="hljs-keyword"
+          >
+            typeof
+          </span>
            
-        </span>
-        <span
-          style="color: rgb(245, 171, 53);"
-        >
-          window
-        </span>
-        <span>
+          <span
+            class="hljs-built_in"
+          >
+            window
+          </span>
           ?.codebFeatureFlags !== 
-        </span>
-        <span
-          style="color: rgb(171, 227, 56);"
-        >
-          'undefined'
-        </span>
-        <span>
+          <span
+            class="hljs-string"
+          >
+            'undefined'
+          </span>
            &&
-
-        </span>
-        <span>
-          		
-        </span>
-        <span
-          style="color: rgb(245, 171, 53);"
-        >
-          window
-        </span>
-        <span>
+		
+          <span
+            class="hljs-built_in"
+          >
+            window
+          </span>
           .codebFeatureFlags.isEnabled(
-        </span>
-        <span
-          style="color: rgb(171, 227, 56);"
-        >
-          'testFlag2'
-        </span>
-        <span>
+          <span
+            class="hljs-string"
+          >
+            'testFlag2'
+          </span>
           )
-
-        </span>
-        	) {
-
-        <span>
-          		
-        </span>
-        <span
-          style="color: rgb(212, 208, 171);"
-        >
-          // js code goes here...
-        </span>
-        <span>
+	) {
+		
+          <span
+            class="hljs-comment"
+          >
+            // js code goes here...
+          </span>
           
-
-        </span>
-        	}
+	}
 });
-      </code>
-    </pre>
+        </code>
+      </pre>
+    </div>
   </div>
 </DocumentFragment>
 `;
