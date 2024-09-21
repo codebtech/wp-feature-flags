@@ -2948,6 +2948,18 @@
     mime "^3.0.0"
     web-vitals "^3.5.0"
 
+"@wordpress/e2e-test-utils-playwright@^1.8.0":
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/@wordpress/e2e-test-utils-playwright/-/e2e-test-utils-playwright-1.8.0.tgz#d5e627ce0573f2428542afdc947d2805e1eaa683"
+  integrity sha512-/BzX6NujT8S3Ogj379Cnp1LsURFeyksnXz9jd9rK0KB9PhqPU0O3jmkt1Ugcs9jttOtANSvaBJqYC9W7kZuoNQ==
+  dependencies:
+    change-case "^4.1.2"
+    form-data "^4.0.0"
+    get-port "^5.1.1"
+    lighthouse "^10.4.0"
+    mime "^3.0.0"
+    web-vitals "^4.2.1"
+
 "@wordpress/element@^5.0.0", "@wordpress/element@^5.30.0":
   version "5.30.0"
   resolved "https://registry.yarnpkg.com/@wordpress/element/-/element-5.30.0.tgz#8ea18fe92419d7db279c2629c367bb7825578ef6"
@@ -11258,6 +11270,11 @@ web-vitals@^3.5.0:
   version "3.5.2"
   resolved "https://registry.yarnpkg.com/web-vitals/-/web-vitals-3.5.2.tgz#5bb58461bbc173c3f00c2ddff8bfe6e680999ca9"
   integrity sha512-c0rhqNcHXRkY/ogGDJQxZ9Im9D19hDihbzSQJrsioex+KnFgmMzBiy57Z1EjkhX/+OjyBpclDCzz2ITtjokFmg==
+
+web-vitals@^4.2.1:
+  version "4.2.3"
+  resolved "https://registry.yarnpkg.com/web-vitals/-/web-vitals-4.2.3.tgz#270c4baecfbc6ec6fc15da1989e465e5f9b94fb7"
+  integrity sha512-/CFAm1mNxSmOj6i0Co+iGFJ58OS4NRGVP+AWS/l509uIK5a1bSoIVaHz/ZumpHTfHSZBpgrJ+wjfpAOrTHok5Q==
 
 webidl-conversions@^3.0.0:
   version "3.0.1"
