@@ -7,10 +7,11 @@
 
 Stable tag: 0.3.2
 Requires at least: 6.2
-Tested up to: 6.4
+Tested up to: 6.6
 Requires PHP: 8.1
 
-WordPress Feature flags plugin allow developers to configure features in plugins/themes behind the feature flags on both the server (PHP) and client (JS/TS) side.
+WordPress Feature flags plugin allow developers to configure features in plugins/themes behind the feature flags on both
+the server (PHP) and client (JS/TS) side.
 
 ## Installation
 
@@ -61,60 +62,63 @@ To build the plugin
 
 PHP setup
 
--   `composer install`
+- `composer install`
 
 JS setup
 
--   `yarn install`
--   `yarn build` to create the build
--   `yarn start` to start the watch mode
+- `yarn install`
+- `yarn build` to create the build
+- `yarn start` to start the watch mode
 
 ### wp-env
 
 This plugin uses `wp-env` setup to for local environment.
 
--   `wp-env start` to start the containers
--   `wp-env stop` to stop the containers
+- `wp-env start` to start the containers
+- `wp-env stop` to stop the containers
 
-More details on how to access local environment can be found [here](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-env/#quick-tldr-instructions).
+More details on how to access local environment can be
+found [here](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-env/#quick-tldr-instructions).
 
 ## Linting and formatting
 
 PHP
 
--   `composer lint`
--   `composer lint:fix` to auto fix PHP linting errors.
+- `composer lint`
+- `composer lint:fix` to auto fix PHP linting errors.
 
 JS
 
--   `yarn lint:js`
--   `yarn lint:js:fix` to auto fix JS linting errors.
+- `yarn lint:js`
+- `yarn lint:js:fix` to auto fix JS linting errors.
 
 CSS
 
--   `yarn lint:css`
--   `yarn lint:css:fix` to auto fix CSS linting errors.
+- `yarn lint:css`
+- `yarn lint:css:fix` to auto fix CSS linting errors.
 
 ## Testing
 
 ### PHP
 
-The WordPress unit and integration tests depends on `wp-env` setup. Ensure you run `yarn wp-env:coverage` before running the tests.
+The WordPress unit and integration tests depends on `wp-env` setup. Ensure you run `yarn wp-env:coverage` before running
+the tests.
 
--   To run unit tests `yarn php:unit`
--   To run integrations tests `yarn php:integration`
--   To run integrations tests as multisite `yarn php:multisite`
+- To run unit tests `yarn php:unit`
+- To run integrations tests `yarn php:integration`
+- To run integrations tests as multisite `yarn php:multisite`
 
 ### JS
 
--   Run `yarn test:js` to run all Jest and React Testing Library tests
+- Run `yarn test:js` to run all Jest and React Testing Library tests
 
 ### E2E
 
 The E2E tests depends on `wp-env` setup. Ensure you run `wp-env start` before running the tests.
 
--   Run `yarn test:e2e` to run all Playwright e2e tests.
+- Run `yarn test:e2e` to run all Playwright e2e tests.
 
 ## Contributing
 
-Code contributions, feedback, issue reporting and feature suggestions are welcome. See [CONTRIBUTING.md](https://github.com/codebtech/wp-feature-flags/blob/main/CONTRIBUTING.md) for more details.
+Code contributions, feedback, issue reporting and feature suggestions are welcome.
+See [CONTRIBUTING.md](https://github.com/codebtech/wp-feature-flags/blob/main/CONTRIBUTING.md) for more details.
