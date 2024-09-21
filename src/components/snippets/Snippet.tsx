@@ -1,17 +1,16 @@
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import { a11yDark } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
+import ReactHighlightSyntax from 'react-highlight-syntax';
+import type { Language } from 'react-highlight-syntax';
 
-const Snippet = ({
-	data,
-	language,
-}: {
-	data: string;
-	language: string;
-}): JSX.Element => {
+const Snippet = ({ data, language }: { data: string; language: Language }) => {
 	return (
-		<SyntaxHighlighter language={language} style={a11yDark}>
+		<ReactHighlightSyntax
+			theme={'Base16Darcula'}
+			language={language}
+			copy={true}
+			copyBtnTheme={'Dark'}
+		>
 			{data}
-		</SyntaxHighlighter>
+		</ReactHighlightSyntax>
 	);
 };
 

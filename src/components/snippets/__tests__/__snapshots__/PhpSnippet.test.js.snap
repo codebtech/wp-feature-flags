@@ -8,97 +8,95 @@ exports[`PhpSnippet component matches snapshot 1`] = `
     <h3>
       PHP Snippet
     </h3>
-    <button
-      aria-label="Copy to clipboard"
-      aria-pressed="false"
-      class="components-button codeb-feature-flags-clipboard-base is-tertiary has-icon"
-      type="button"
+    <div
+      class="base16 darcula"
     >
-      <span
-        class="dashicon dashicons dashicons-clipboard"
-      />
-    </button>
-    <pre
-      style="display: block; overflow-x: auto; background: rgb(43, 43, 43); color: rgb(248, 248, 242); padding: 0.5em;"
-    >
-      <code
-        class="language-php"
-        style="white-space: pre;"
+      <button
+        class="react_highlight_syntax_copy btn__dark "
       >
-        <span
-          style="color: rgb(220, 198, 224);"
+        <svg
+          fill="none"
+          height="24"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          use
-        </span>
-        <span>
+          <rect
+            height="13"
+            rx="2"
+            ry="2"
+            width="13"
+            x="9"
+            y="9"
+          />
+          <path
+            d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+          />
+        </svg>
+      </button>
+      <pre>
+        <code
+          class="hljs language-php"
+          data-type="react-highlight-syntax"
+        >
+          <span
+            class="hljs-keyword"
+          >
+            use
+          </span>
            
-        </span>
-        <span
-          style="color: rgb(0, 224, 224);"
-        >
-          CodeB
-        </span>
-        <span>
+          <span
+            class="hljs-title"
+          >
+            CodeB
+          </span>
           \\
-        </span>
-        <span
-          style="color: rgb(0, 224, 224);"
-        >
-          FeatureFlags
-        </span>
-        <span>
+          <span
+            class="hljs-title"
+          >
+            FeatureFlags
+          </span>
           \\
-        </span>
-        <span
-          style="color: rgb(0, 224, 224);"
-        >
-          Flag
-        </span>
-        <span>
+          <span
+            class="hljs-title"
+          >
+            Flag
+          </span>
           ;
 
-        </span>
-        <span />
-        <span
-          style="color: rgb(220, 198, 224);"
-        >
-          if
-        </span>
-        <span>
+          <span
+            class="hljs-keyword"
+          >
+            if
+          </span>
            ( class_exists( 
-        </span>
-        <span
-          style="color: rgb(171, 227, 56);"
-        >
-          '\\CodeB\\FeatureFlags\\Flag'
-        </span>
-        <span>
+          <span
+            class="hljs-string"
+          >
+            '\\CodeB\\FeatureFlags\\Flag'
+          </span>
            ) && Flag::is_enabled( 
-        </span>
-        <span
-          style="color: rgb(171, 227, 56);"
-        >
-          'testFlag'
-        </span>
-        <span>
+          <span
+            class="hljs-string"
+          >
+            'testFlag'
+          </span>
            ) ) {
-
-        </span>
-        <span>
-          	
-        </span>
-        <span
-          style="color: rgb(212, 208, 171);"
-        >
-          // php code goes here...
-        </span>
-        <span>
+	
+          <span
+            class="hljs-comment"
+          >
+            // php code goes here...
+          </span>
           
-
-        </span>
-        }
-      </code>
-    </pre>
+}
+        </code>
+      </pre>
+    </div>
   </div>
 </DocumentFragment>
 `;

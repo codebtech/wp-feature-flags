@@ -23,164 +23,137 @@ exports[`Typescript snippet component renders without any error 1`] = `
       </span>
        directory ) and add the following declaration.
     </p>
-    <button
-      aria-label="Copy to clipboard"
-      aria-pressed="false"
-      class="components-button codeb-feature-flags-clipboard-base is-tertiary has-icon"
-      type="button"
+    <div
+      class="base16 darcula"
     >
-      <span
-        class="dashicon dashicons dashicons-clipboard"
-      />
-    </button>
-    <pre
-      style="display: block; overflow-x: auto; background: rgb(43, 43, 43); color: rgb(248, 248, 242); padding: 0.5em;"
-    >
-      <code
-        class="language-typescript"
-        style="white-space: pre;"
+      <button
+        class="react_highlight_syntax_copy btn__dark "
       >
-        <span
-          style="color: rgb(220, 198, 224);"
+        <svg
+          fill="none"
+          height="24"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          declare
-        </span>
-        <span>
+          <rect
+            height="13"
+            rx="2"
+            ry="2"
+            width="13"
+            x="9"
+            y="9"
+          />
+          <path
+            d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+          />
+        </svg>
+      </button>
+      <pre>
+        <code
+          class="hljs language-typescript"
+          data-type="react-highlight-syntax"
+        >
+          <span
+            class="hljs-keyword"
+          >
+            declare
+          </span>
            
-        </span>
-        <span
-          style="color: rgb(220, 198, 224);"
-        >
-          namespace
-        </span>
-        <span>
+          <span
+            class="hljs-keyword"
+          >
+            namespace
+          </span>
            codebFeatureFlags {
-
-        </span>
-        <span>
-          	
-        </span>
-        <span
-          style="color: rgb(220, 198, 224);"
-        >
-          export
-        </span>
-        <span>
+	
+          <span
+            class="hljs-keyword"
+          >
+            export
+          </span>
            
-        </span>
-        <span
-          style="color: rgb(220, 198, 224);"
-        >
-          interface
-        </span>
-        <span>
+          <span
+            class="hljs-keyword"
+          >
+            interface
+          </span>
            FeatureFlagProps {
-
-        </span>
-        <span>
-                  
-        </span>
-        <span
-          class="hljs-attr"
-        >
-          isEnabled
-        </span>
-        <span>
+        
+          <span
+            class="hljs-attr"
+          >
+            isEnabled
+          </span>
           : 
-        </span>
-        <span
-          class="hljs-function"
-        >
-          (
-        </span>
-        <span
-          class="hljs-function"
-          style="color: rgb(245, 171, 53);"
-        >
-          flag: 
-        </span>
-        <span
-          class="hljs-function"
-          style="color: rgb(245, 171, 53);"
-        >
-          string
-        </span>
-        <span
-          class="hljs-function"
-        >
-          ) =&gt;
-        </span>
-        <span>
+          <span
+            class="hljs-function"
+          >
+            (
+            <span
+              class="hljs-params"
+            >
+              flag: 
+              <span
+                class="hljs-built_in"
+              >
+                string
+              </span>
+            </span>
+            ) =&gt;
+          </span>
            
-        </span>
-        <span
-          style="color: rgb(245, 171, 53);"
-        >
-          boolean
-        </span>
-        <span>
+          <span
+            class="hljs-built_in"
+          >
+            boolean
+          </span>
           ;
-
-        </span>
-            }
+    }
 }
 
-        <span />
-        <span
-          style="color: rgb(220, 198, 224);"
-        >
-          declare
-        </span>
-        <span>
+          <span
+            class="hljs-keyword"
+          >
+            declare
+          </span>
            
-        </span>
-        <span
-          style="color: rgb(245, 171, 53);"
-        >
-          global
-        </span>
-        <span>
+          <span
+            class="hljs-built_in"
+          >
+            global
+          </span>
            {
-
-        </span>
-        <span>
-              
-        </span>
-        <span
-          style="color: rgb(220, 198, 224);"
-        >
-          interface
-        </span>
-        <span>
+    
+          <span
+            class="hljs-keyword"
+          >
+            interface
+          </span>
            Window {
-
-        </span>
-        <span>
-                  
-        </span>
-        <span
-          class="hljs-attr"
-        >
-          codebFeatureFlags
-        </span>
-        <span>
+        
+          <span
+            class="hljs-attr"
+          >
+            codebFeatureFlags
+          </span>
           : codebFeatureFlags.FeatureFlagProps;
-
-        </span>
-            }
+    }
 }
 
-        <span />
-        <span
-          style="color: rgb(220, 198, 224);"
-        >
-          export
-        </span>
-        <span>
+          <span
+            class="hljs-keyword"
+          >
+            export
+          </span>
            {};
-        </span>
-      </code>
-    </pre>
+        </code>
+      </pre>
+    </div>
   </div>
 </DocumentFragment>
 `;

@@ -1,7 +1,5 @@
 import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
-import Clipboard from '../common/Clipboard';
-
 import Snippet from './Snippet';
 
 const TsSupport = (): JSX.Element => {
@@ -30,8 +28,7 @@ export {};`;
 				<span className="codeb-feature-flags-slug"> src</span> directory
 				) and add the following declaration.
 			</p>
-			<Clipboard text={tsSnippet} />
-			<Snippet data={tsSnippet} language={'typescript'} />
+			<Snippet data={tsSnippet} language="TypeScript" />
 		</div>
 	);
 };

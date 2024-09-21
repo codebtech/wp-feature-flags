@@ -18,7 +18,13 @@
 	.components-snackbar__icon {
 		top: auto;
 		left: 18px;
+		position: absolute;
 	}
+}
+
+.components-snackbar .components-snackbar__content-with-icon {
+	padding-left: 24px;
+	position: static !important;
 }
 
 .feature-flag-loader {

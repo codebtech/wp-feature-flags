@@ -97,14 +97,16 @@ test.describe('Feature flags', () => {
 		).toBeVisible();
 
 		// Check PHP Snippet clipboard details
-		await page.getByLabel('Copy to clipboard').first().click();
+		await page.getByRole('button').nth(1).click();
+
+		// await page.getByLabel('Copy to clipboard').first().click();
 		const phpClipboardText = await page.evaluate(
 			'navigator.clipboard.readText()'
 		);
 		expect(phpClipboardText).toContain(`Flag::is_enabled( '${flagName}' )`);
 
 		// Check JS Snippet clipboard details
-		await page.getByLabel('Copy to clipboard').nth(1).click();
+		await page.getByRole('button').nth(2).click();
 		const jsClipboardText: string = await page.evaluate(
 			'navigator.clipboard.readText()'
 		);
