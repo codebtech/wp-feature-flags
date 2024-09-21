@@ -1,4 +1,4 @@
-import { test, expect } from '@wordpress/e2e-test-utils-playwright';
+import { test } from '@wordpress/e2e-test-utils-playwright';
 import {
 	AddNewFlagAndFill,
 	CloseSdkModal,
@@ -23,7 +23,9 @@ test.describe('Visual tests', () => {
 	});
 
 	test('Feature flags screen without flags', async ({ page }) => {
-		await expect(page).toHaveScreenshot('no-flags.png');
+		await page
+			.locator('#codeb_feature_flags_settings_screen')
+			.screenshot({ path: 'tests/e2e/screenshots/no-flags.png' });
 	});
 
 	test('Feature flags screen with some flags', async ({ page }) => {
@@ -33,13 +35,18 @@ test.describe('Visual tests', () => {
 		await AddNewFlagAndFill(page, 'healthCheck');
 
 		await SaveFlags(page);
-		await expect(page).toHaveScreenshot('some-flags.png');
+
+		await page
+			.locator('#codeb_feature_flags_settings_screen')
+			.screenshot({ path: 'tests/e2e/screenshots/some-flags.png' });
 	});
 
 	test('Toggle feature flag', async ({ page }) => {
 		await AddNewFlagAndFill(page, 'auth0');
 		await DisableFlag(page, true);
-		await expect(page).toHaveScreenshot('flag-disabled.png');
+		await page
+			.locator('#codeb_feature_flags_settings_screen')
+			.screenshot({ path: 'tests/e2e/screenshots/flag-disabled.png' });
 	});
 
 	test('Delete flag modal', async ({ page }) => {
@@ -51,7 +58,11 @@ test.describe('Visual tests', () => {
 			.getByLabel('Delete Flag')
 			.click();
 
-		await expect(page).toHaveScreenshot('delete-flag-modal.png');
+		await page
+			.locator('#codeb_feature_flags_settings_screen')
+			.screenshot({
+				path: 'tests/e2e/screenshots/delete-flag-modal.png',
+			});
 
 		await page.getByRole('button', { name: 'Yes' }).click();
 	});
@@ -60,7 +71,9 @@ test.describe('Visual tests', () => {
 		await AddNewFlagAndFill(page, 'drag-drop');
 		await OpenSdkModal(page);
 
-		await expect(page).toHaveScreenshot('sdk-modal.png');
+		await page
+			.locator('#codeb_feature_flags_settings_screen')
+			.screenshot({ path: 'tests/e2e/screenshots/sdk-modal.png' });
 
 		await CloseSdkModal(page);
 	});

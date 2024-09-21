@@ -13,6 +13,7 @@
 	"prepare": "husky",
 	"start": "wp-scripts start",
 	"test:e2e": "wp-scripts test-playwright",
+	"test:e2e:debug": "wp-scripts test-playwright --ui",
 	"test:js": "wp-scripts test-unit-js",
 	"test:js:update": "wp-scripts test-unit-js --updateSnapshot",
 	"test:performance": "wp-scripts test-playwright --config tests/performance/playwright.config.ts",
