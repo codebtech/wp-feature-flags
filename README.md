@@ -5,7 +5,7 @@
 [![E2E Tests](https://github.com/codebtech/wp-feature-flags/actions/workflows/e2e.yml/badge.svg)](https://github.com/codebtech/wp-feature-flags/actions/workflows/e2e.yml)
 [![codecov](https://codecov.io/github/codebtech/wp-feature-flags/graph/badge.svg?token=QNUWGCRJGR)](https://codecov.io/github/codebtech/wp-feature-flags)
 
-Stable tag: 0.4.0
+Stable tag: 0.4.1
 Requires at least: 6.2
 Tested up to: 6.8
 Requires PHP: 8.1
