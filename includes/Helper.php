@@ -21,11 +21,12 @@ class Helper {
 	/**
 	 * Flag search helper, returns true if flag is found and enabled.
 	 *
+	 * @since 0.1.0
+	 *
 	 * @param array<int, array{id: int, name: string, enabled: bool}> $flags flags array.
 	 * @param string                                                  $field field to search.
 	 * @param string                                                  $flag name of the flag.
 	 * @return boolean
-	 * @since 0.1.0
 	 */
 	public function search_flag( $flags, $field, $flag ) {
 		
