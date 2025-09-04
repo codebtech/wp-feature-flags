@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<ruleset name="NewsUK WP PHPCS Rules">
-	<rule ref="NewsUK"/>
+<ruleset name="WP PHPCS Rules">
+	<rule ref="WPDev"/>
 	<rule ref="WordPress.WP.I18n">
 		<properties>
 			<property name="text_domain" type="array">

@@ -29,9 +29,10 @@ class Flag {
 	/**
 	 * Check if given feature is enabled or not.
 	 *
+	 * @since 0.1.0
+	 *
 	 * @param string $flag name of the flag.
 	 * @return bool
-	 * @since 0.1.0
 	 */
 	public static function is_enabled( string $flag ): bool {
 		$flags = get_option( self::$option_name, [] );

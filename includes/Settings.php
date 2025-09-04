@@ -21,8 +21,9 @@ class Settings {
 	/**
 	 * Register feature flag settings page.
 	 *
-	 * @return void
 	 * @since 0.1.0
+	 *
+	 * @return void
 	 */
 	public function register_feature_settings() {
 		add_action( 'admin_menu', [ $this, 'register_settings' ] );
@@ -31,8 +32,9 @@ class Settings {
 	/**
 	 * Register settings action method.
 	 *
-	 * @return void
 	 * @since 0.1.0
+	 *
+	 * @return void
 	 */
 	public function register_settings() {
 

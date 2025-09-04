@@ -2,8 +2,8 @@
 /**
  * The plugin bootstrap file
  *
- * @since 0.1.0
  * @package codeb-feature-flags
+ * @since 0.1.0
  *
  * @wordpress-plugin
  * Plugin Name:       Feature Flags
