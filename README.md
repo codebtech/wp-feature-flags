@@ -7,7 +7,7 @@
 
 Stable tag: 0.3.2
 Requires at least: 6.2
-Tested up to: 6.6
+Tested up to: 6.8
 Requires PHP: 8.1
 
 WordPress Feature flags plugin allow developers to configure features in plugins/themes behind the feature flags on both

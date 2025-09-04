@@ -1,12 +1,11 @@
 <?php
-
-declare(strict_types = 1);
-
 /**
- * Bootstap file for PHPUnit integration tests.
+ * Bootstrap file for PHPUnit integration tests.
  *
  * @package codeb-feature-flags
  */
+
+declare(strict_types = 1);
 
 use function Yoast\WPTestUtils\WPIntegration\bootstrap_it;
 
